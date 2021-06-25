@@ -1,0 +1,39 @@
+[
+    {
+      "id": 50,
+      "name": "C (GCC 9.2.0)",
+      "mode": "text/x-csrc"
+    },
+    {
+      "id": 54,
+      "name": "C++ (GCC 9.2.0)",
+      "mode": "text/x-c++src"
+    },
+    {
+      "id": 62,
+      "name": "Java (OpenJDK 13.0.1)",
+      "mode": "text/x-java"
+    },
+    {
+      "id": 63,
+      "name": "JavaScript (Node.js 12.14.0)",
+      "mode": "javascript"
+    },
+    {
+      "id": 66,
+      "name": "Octave (5.1.0)",
+      "mode": "text/x-octave"
+    },
+    
+    {
+      "id": 43,
+      "name": "Plain Text",
+      "mode": "null"
+    },
+    {
+      "id": 71,
+      "name": "Python (3.8.1)",
+      "mode": "text/x-python"
+    }
+    
+  ]
