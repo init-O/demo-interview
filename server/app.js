@@ -45,7 +45,6 @@ io.on('connection', (socket)=>
         socket.join(codeId)
         if (codeData)
         {
-            console.log('This runs when you click that')
             socket.emit("load-code", codeData.data)
         }
         
@@ -56,10 +55,55 @@ io.on('connection', (socket)=>
         })
     
         socket.on("save-code", async data => {
-            console.log('The code saving was started')
           await Code.findByIdAndUpdate(codeId, { data })
         })
       })
+
+      socket.on("get-output", async outputId => {
+          var outputData = await Code.findById(outputId)
+          if(!outputData){
+              document=await Code.create({_id: outputId, data: ''})
+          }
+  
+          socket.join(outputId)
+          if(outputData){
+              socket.emit('load-output', outputData.data)
+          }
+  
+          socket.on("change-output", change =>{
+              console.log('server change output....',change)
+              socket.broadcast.to(outputId).emit("receive-output-change",change)
+          })
+  
+          socket.on("save-output", async data => {
+              await Code.findByIdAndUpdate(outputId,{data});
+          })
+
+          socket.on('output-change-on-run', data=>{
+              socket.broadcast.to(outputId).emit("change-output-on-run",data)
+          })
+      })
+
+
+      socket.on("get-input", async inputId => {
+          var inputData = await Code.findById(inputId)
+          if(!inputData){
+              document=await Code.create({_id: inputId, data:''})
+          }
+          socket.join(inputId)
+          if(inputData){
+              socket.emit("load-input",inputData.data)
+          }
+
+          socket.on("save-input", async data => {
+              await Code.findByIdAndUpdate(inputId, {data});
+          })
+
+          socket.on("change-input", async change => {
+              socket.broadcast.to(inputId).emit("receive-input-change",change)
+          })
+      })
+
 })
 
 
