@@ -1,10 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react'
+import {v4 as uuidv4} from 'uuid'
 
 import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
-
+import EditorThemes from '../../data/EditorThemes'
 //Material UI imports 
-import { Button, Container, Grid, Select, MenuItem, Input, MenuProps, FormControl, InputLabel, TextField, Box, Paper } from '@material-ui/core'
+import { Button, Container, Grid, Select, MenuItem, Input, MenuProps, FormControl, InputLabel, TextField, Box, Paper, Typography } from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core'
 import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 
@@ -13,7 +14,7 @@ import CodeMirror from 'codemirror'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/addon/display/fullscreen.css'
 //Languages Modes
-import languageList from './data/languages.json'
+import languageList from '../../data/languages.json'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/clike/clike'
 import 'codemirror/mode/python/python'
@@ -38,7 +39,7 @@ import 'codemirror/theme/yeti.css'
 window.JSHINT = require('jshint').JSHINT;
 
 
-
+const soc=io("http://localhost:5000")
 
 const useStyles=makeStyles((theme)=>({
     runButton:{
@@ -89,13 +90,28 @@ const useStyles=makeStyles((theme)=>({
     paperSurface:
     {
         borderRadius: '0%'
+    },
+
+    editorWindow:{
+        backgroundColor:"#252520"
+    },
+
+    editorText:{
+        color:"#FF9B36"
+    },
+
+    webCam:{
+        backgroundColor:"#031632"
     }
+
 
 }))
 
 export default function CodeEditor() {
     const classes=useStyles()
     const editorRef=useRef(null)
+    const inputRef=useRef(null)
+
     const [editor, setEditor]=useState(null)
     const [socket, setSocket]=useState(null)
     const [submissionCode, setSubmissionCode]=useState('')
@@ -107,11 +123,20 @@ export default function CodeEditor() {
     const [stdInput, setStdInput]=useState('')
     const [output, setOutput]=useState('')
     const id=useParams()
+
+    const outputId = `${id.id}output`
+    const inputId = `${id.id}input`
+
+    const [outputEditor, setOutputEditor] = useState(null)
+    const [inputEditor, setInputEditor] = useState(null)
+    const outputRef = useRef(null)
   
+    //initalizing all the editors with codeMirror api
 
     useEffect(()=>{
         if (editorRef==null)
             return 
+        
         var myCodeMirror = CodeMirror(editorRef.current, {
             lineNumbers: true,
             mode: editorLanguage,
@@ -120,13 +145,39 @@ export default function CodeEditor() {
             gutters: ["CodeMirror-lint-markers"],
             fullscreen: true
         });
+        // editorRef.current.editor.display.wrapper.style.height = "500px";
         setEditor(myCodeMirror)
+
+        const editorLanguagePlain = {"id": 43,"name": "Plain Text","mode": "null"}
+
+        var outputCodeMirror = CodeMirror(outputRef.current, {
+            lineNumbers: true,
+            mode: editorLanguagePlain,
+            lint: true,
+            theme: editorTheme,
+            gutters: ["CodeMirror-lint-markers"],
+            fullscreen: true
+        })
+        setOutputEditor(outputCodeMirror);
+
+        const inputCodeMirror = CodeMirror(inputRef.current,{
+            lineNumbers: true,
+            mode: editorLanguagePlain,
+            lint: true,
+            theme: editorTheme,
+            gutters: ["CodeMirror-lint-markers"],
+            fullscreen: true,
+        })
+        setInputEditor(inputCodeMirror)
         
         //console.log(editor)
     }, [])
 
+    //sending the code to judge zero when hit run and gettig the output
+
     useEffect(()=>
     {
+
         if (loading)
         {
             console.log("IT has happened")
@@ -172,12 +223,13 @@ export default function CodeEditor() {
     }, [loading])
 
     useEffect(()=>{
-        const soc=io("http://localhost:5000")
         setSocket(soc)
         return ()=>{
             socket.disconnect()
         }
     }, [])
+
+    //receiving changes from other perosn and saving on our editor
 
     useEffect(()=>
     { 
@@ -197,11 +249,50 @@ export default function CodeEditor() {
         }
         socket.on('receive-changes', handler)
 
+
         return ()=>{
             socket.off('receive-changes', handler)
         }
 
     }, [socket, editor])
+    useEffect(()=>
+    { 
+        if (socket==null || outputEditor==null)
+            return
+        const handler=(changeObj)=>{
+            console.log(changeObj)
+            if (changeObj.text[0].length>2){
+                return 
+            }
+            outputEditor.replaceRange(changeObj.text, changeObj.from, changeObj.to, "+move")         
+            
+        }
+        socket.on("receive-output-change",handler)
+
+        return ()=>{
+            socket.off('receive-output-change', handler)
+        }
+
+    }, [outputEditor])
+
+    useEffect(()=>{
+        if(socket==null || inputEditor==null)
+            return
+        
+        const handler=(changeObj)=>{
+            if(changeObj.text[0].length>2)
+                return
+            inputEditor.replaceRange(changeObj.text,changeObj.from,changeObj.to,"+move")
+        }
+
+        socket.on("receive-input-change",handler)
+        return ()=>{
+            socket.off("receive-input-change",handler)
+        }
+
+    },[socket,inputEditor])
+
+    //saving changes and broadcasting it to other user
 
     useEffect(()=>{
         if (editor==null || socket==null)
@@ -224,6 +315,42 @@ export default function CodeEditor() {
         }
     }, [socket, editor])
 
+    useEffect(()=>{
+        if (outputEditor==null || socket==null)
+            return 
+        
+        const handler=(cmObj, changeObj)=>{
+            if (socket==null || outputEditor==null)
+                return
+            if (changeObj.origin==="+move")
+                return
+            console.log(changeObj)
+            console.log(cmObj)
+            socket.emit('change-output', changeObj)
+        }
+        outputEditor.on('change', handler)
+
+        return ()=>{
+            outputEditor.off('change', handler)
+        }
+    }, [outputEditor])
+
+    useEffect(()=>{
+        if(inputEditor==null || socket==null) return
+        const handler=(cmobj,changeObj)=>{
+            if(socket==null || inputEditor==null || changeObj.origin==="+move") return
+            socket.emit("change-input",changeObj)
+        }
+        inputEditor.on("change",handler)
+
+        return ()=>{
+            inputEditor.off("change",handler)
+        }
+
+    },[inputEditor])
+
+    //making initial connection with socket io on the server side
+
     useEffect(() => {
         if (socket == null || editor == null) return
     
@@ -232,10 +359,33 @@ export default function CodeEditor() {
             editor.setValue(code)
 
         })
-    
         socket.emit("get-code", id.id)
+        
+
       }, [socket, editor, id])
 
+    useEffect(() => {
+        if (socket == null || outputEditor == null) return
+    
+        socket.emit("get-output",outputId)
+        socket.on("load-output",data=>{
+            outputEditor.setValue(data)
+        })
+        
+      }, [socket, outputEditor, id])
+
+    useEffect(() => {
+        if (socket == null || inputEditor == null) return
+ 
+        socket.emit("get-input",inputId)
+        socket.on("load-input",data=>{
+            inputEditor.setValue(data)
+        })     
+
+      }, [socket, inputEditor, id])
+    
+
+    //saving changes of all the editors
     useEffect(()=>{
         if (socket==null || editor==null)
             return 
@@ -249,13 +399,52 @@ export default function CodeEditor() {
           }
     }, [socket, editor])
 
+    useEffect(()=>{
+
+        if(outputEditor==null)
+        return
+        socket.emit('output-change-on-run',output)
+        outputEditor.setValue(output)
+
+        socket.on("change-output-on-run",data=>{
+            outputEditor.setValue(data)
+        })
+    },[socket,output])
+
+    useEffect(()=>{
+        if (socket==null || outputEditor==null)
+            return 
+        
+        const interval=setInterval(()=>{
+            socket.emit('save-output', outputEditor.getValue())
+        }, 2000)
+
+        return () => {
+            clearInterval(interval)
+          }
+    }, [socket, outputEditor])
+
+    useEffect(()=>{
+        if(socket==null || inputEditor==null) return
+
+        const interval = setInterval(()=>{
+            socket.emit("save-input", inputEditor.getValue())
+        }, 2000)
+        return () => {
+            clearInterval(interval)
+        }
+    },[socket,inputEditor])
+
+
+
+    //Button logics
     const submitCode=(e)=>
     {
         const sourceCode=editor.getValue()
         const bodyData={
             language_id: langCode,
             source_code: sourceCode,
-            stdin: stdInput
+            stdin: inputEditor.getValue()
         }
         console.log(bodyData)
         fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&fields=*", {
@@ -321,13 +510,16 @@ export default function CodeEditor() {
         setEditorLanguage(e.target.value.name)
         editor.setOption('mode', e.target.value.mode)
         setLangCode(e.target.value.id)
+
     }
 
-    const handleInputChange=(e)=>
-    {
+    const handleThemeChange=(e) => {
         console.log(e.target.value)
-        setStdInput(e.target.value)
+        editor.setOption('theme', e.target.value)
+        outputEditor.setOption('theme', e.target.value)
+        inputEditor.setOption('theme', e.target.value)
     }
+
 
     return (
         <Container>
@@ -335,6 +527,7 @@ export default function CodeEditor() {
             
                 <Grid xs={12} item>
                 <FormControl>
+                    <InputLabel>Language</InputLabel>
                     <Select
                     className={classes.langSelector}
                     defaultValue={editorLanguage}
@@ -345,6 +538,20 @@ export default function CodeEditor() {
                     ))}
                     </Select>
                 </FormControl>
+
+                <FormControl>
+                    <InputLabel>Theme</InputLabel>
+                    <Select
+                    className={classes.langSelector}
+                    defaultValue={editorLanguage}
+                    onChange={handleThemeChange}
+                    >
+                    {EditorThemes.map((theme)=>(
+                        <MenuItem value={theme}>{theme}</MenuItem>
+                    ))}
+                    </Select>
+                </FormControl>
+
                     <Button onClick={syncHandler} className={classes.syncButton}><AllInclusiveIcon /> </Button>
                     
                     </Grid>
@@ -352,42 +559,34 @@ export default function CodeEditor() {
             </Grid>
 
             <Container>
-            
-            <div ref={editorRef}>
 
-            </div>
-            
-            <TextField
-                onChange={handleInputChange}
-                label="Input"
-                className={classes.inputField}
-                multiline
-                rows={4}
-                variant="outlined"
-                />
+                <Grid container>
+                    <Grid item sm={12} md={9} className={classes.editorWindow}>
+                        <Grid item sm={12} md={12}>
+                            <Typography variant="h6" className={classes.editorText}>Code :</Typography>
+                            <div ref={editorRef}></div>
+                        </Grid>
+                            <Grid container spacing={3}>
+
+                            <Grid item sm={12} md={6}>
+                                <Typography variant="h6" className={classes.editorText}>Input :</Typography>
+                                <div ref={inputRef}></div>
+                            </Grid>
+                            <Grid item sm={12} md={6}>
+                                <Typography variant="h6" className={classes.editorText}>Output :</Typography>
+                                <div ref={outputRef}></div>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid item sm={12} md={3} className={classes.webCam}>
+                        <h1 className={classes.editorText}>Webcam</h1>
+                    </Grid>
+                </Grid>
+
             <Button className={classes.runButton} onClick={submitCode} variant="outlined" color="primary" >Run</Button>
             <Button className={classes.checkButton} variant="outlined" onClick={checkResult} color="secondary" >Check result</Button>
             
-            <Grid container>
-                <Grid sm={3} item></Grid>
-                <Grid sm={6} className={output!==""?classes.outputFieldVisible:classes.outputFieldInvisible} item>
-                    <Box>
-                        <Paper className={classes.paperSurface}>
-                            <p>
-                                <b>Input:</b>
-                                {stdInput}
-                            </p>
-                            <p>
-                                <b>Output:</b>
-                                <p>{output}</p>
-
-                            </p>
-                            
-                        </Paper>
-                    </Box>
-                </Grid>
-                <Grid sm={3} item></Grid>
-            </Grid>
+            
             </Container>
             
         </Container>
