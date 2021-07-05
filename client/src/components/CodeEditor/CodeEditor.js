@@ -107,7 +107,7 @@ const useStyles=makeStyles((theme)=>({
 
 }))
 
-export default function CodeEditor() {
+export default function CodeEditor({id}) {
     const classes=useStyles()
     const editorRef=useRef(null)
     const inputRef=useRef(null)
@@ -122,7 +122,6 @@ export default function CodeEditor() {
     const [langCode, setLangCode]=useState('54')
     const [stdInput, setStdInput]=useState('')
     const [output, setOutput]=useState('')
-    const id=useParams()
 
     const outputId = `${id.id}output`
     const inputId = `${id.id}input`
@@ -225,7 +224,7 @@ export default function CodeEditor() {
     useEffect(()=>{
         setSocket(soc)
         return ()=>{
-            socket.disconnect()
+            if(socket) socket.disconnect()
         }
     }, [])
 
@@ -525,43 +524,41 @@ export default function CodeEditor() {
         <Container>
             <Grid container>
             
-                <Grid xs={12} item>
+                <Grid xs={12} item >
                 <FormControl>
-                    <InputLabel>Language</InputLabel>
+                    <InputLabel className={classes.editorText}>Language</InputLabel>
                     <Select
                     className={classes.langSelector}
                     defaultValue={editorLanguage}
                     onChange={handleLanguageChange}
                     >
                     {languageList.map((language)=>(
-                        <MenuItem value={language}>{language.name}</MenuItem>
+                        <MenuItem className={classes.editorText} value={language}>{language.name}</MenuItem>
                     ))}
                     </Select>
                 </FormControl>
 
                 <FormControl>
-                    <InputLabel>Theme</InputLabel>
+                    <InputLabel className={classes.editorText}>Theme</InputLabel>
                     <Select
                     className={classes.langSelector}
                     defaultValue={editorLanguage}
                     onChange={handleThemeChange}
                     >
                     {EditorThemes.map((theme)=>(
-                        <MenuItem value={theme}>{theme}</MenuItem>
+                        <MenuItem className={classes.editorText} value={theme}>{theme}</MenuItem>
                     ))}
                     </Select>
                 </FormControl>
 
-                    <Button onClick={syncHandler} className={classes.syncButton}><AllInclusiveIcon /> </Button>
+                    <Button onClick={syncHandler} className={`${classes.syncButton} ${classes.editorText}`}><AllInclusiveIcon /> </Button>
                     
                     </Grid>
                 
             </Grid>
 
             <Container>
-
-                <Grid container>
-                    <Grid item sm={12} md={9} className={classes.editorWindow}>
+                    <Grid item sm={12} md={12} className={classes.editorWindow}>
                         <Grid item sm={12} md={12}>
                             <Typography variant="h6" className={classes.editorText}>Code :</Typography>
                             <div ref={editorRef}></div>
@@ -578,10 +575,6 @@ export default function CodeEditor() {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item sm={12} md={3} className={classes.webCam}>
-                        <h1 className={classes.editorText}>Webcam</h1>
-                    </Grid>
-                </Grid>
 
             <Button className={classes.runButton} onClick={submitCode} variant="outlined" color="primary" >Run</Button>
             <Button className={classes.checkButton} variant="outlined" onClick={checkResult} color="secondary" >Check result</Button>

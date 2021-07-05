@@ -1,5 +1,7 @@
 import './App.css';
 import CodeEditor from './components/CodeEditor/CodeEditor';
+import VideoPlayer from './components/Video/Video'
+import Room from './components/Room/Room'
 import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home'
 import Navbar from './components/Layouts/Navbar'
@@ -16,11 +18,10 @@ function App() {
       <Switch>
           <Route path="/" exact><Home /></Route>
           <Route path='/editor' exact>
-            <Redirect to={`/editors/${uuidv4()}`} />
+            <Redirect to={`/room/:${uuidv4()}`} />
           </Route>
-          <Route path='/editors/:id'>
-            <CodeEditor />
-          </Route>
+          <Route path={`/room/:id`} exact><Room/></Route>
+          <Route path={`/room/video/:videoId`} exact><VideoPlayer /></Route>
 
       </Switch>
     </div>
