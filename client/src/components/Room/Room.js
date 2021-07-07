@@ -39,15 +39,14 @@ const useStyles=makeStyles((theme)=>({
 
 }))
 
+
 export default function Room() {
-    const myPeer = new Peer('',{
-        host:'/',
-        port:9000
-    })
+
     const history = useHistory()
     const classes=useStyles()
+    const [myPeer,setMyPeer] = useState();
     const [openCodeEditor,setOpenCodeEditor]=useState(false)
-
+    const [userId,setUserId]=useState()
     const id=useParams()
     const roomId = `${id.id}room`
 
@@ -64,6 +63,15 @@ export default function Room() {
     //Getting user Media permissons
     useEffect(()=>{
 
+        const newPeer = new Peer()
+
+        setMyPeer(newPeer)
+        newPeer.on('open', id=>{
+            console.log('user connected...',id)
+            setUserId(id)
+            socket.emit('join-room', roomId,id)
+        })
+
         navigator.mediaDevices.getUserMedia({
             video:true,
             audio:true
@@ -71,79 +79,54 @@ export default function Room() {
             setStream(currentStream)
             myVideo.current.srcObject = currentStream
 
-            socket.on("user-connected", (id)=>{
+            socket.on("user-connected",  (id)=>{
                 console.log('new user',id)
-                const call = myPeer.call(id, currentStream)
+                if(id!==userId){
+                const call = newPeer.call(id, currentStream)
                 console.log('this is call',call)
-                if(call){    
-                    call.on('stream', userVideoStream =>{
-                        console.log('getting new user', userVideoStream)
-                        userVideo.current.srcObject = userVideoStream
-                    })
-        
-                    peers[id] = call;
-                }
+                console.log('chal raha hai yeh...')
+                call.on('stream', userVideoStream =>{
+                    console.log('getting new user', userVideoStream)
+                    userVideo.current.srcObject = userVideoStream
+                })
+    
+                peers[id] = call;}
             })
-
-            myPeer.on('call',(call) =>{
+        
+        
+            newPeer.on('call',(call) =>{
                 console.log('user is caling....')
                 call.answer(currentStream)
                 call.on('stream',userVideoStream=>{
                     if(userVideo.current) userVideo.current.srcObject = userVideoStream
                 })
             })
-
         })
 
-        myPeer.on('open',id=>{
-            console.log('open peer',id)
-            socket.emit('join-room',roomId,id);
+        socket.on("user-disconnected",id=>{
+            console.log('user disconnected...',id)
+            if(peers[id]) peers[id].close()
+            
+        })
+
+        socket.on('user-change-editor',value=>{
+            setOpenCodeEditor(value)
         })
     },[])
 
+
     //----> All the code for Video Stream <-----
-    // myPeer.on('call',(call) =>{
-    //     console.log('user is caling....')
-    //     call.answer(stream)
-    //     call.on('stream',userVideoStream=>{
-    //         if(userVideo.current) userVideo.current.srcObject = userVideoStream
-    //     })
-    // })
-
-    socket.on("user-disconnected",id=>{
-        if(peers[id]) peers[id].close()
-    
-    })
-
-    // socket.on("user-connected", async (id)=>{
-    //     console.log('new user',id)
-    //     const call = await myPeer.call(id, stream)
-    //     console.log('this is call',call)
-    //     if(call){    
-    //         call.on('stream', userVideoStream =>{
-    //             console.log('getting new user', userVideoStream)
-    //             userVideo.current.srcObject = userVideoStream
-    //         })
-
-    //         peers[id] = call;
-    //     }
-    // })
-
-
-    // myPeer.on('open',id=>{
-    //     console.log('open peer',id)
-    //     socket.emit('join-room',roomId,id);
-    // })
 
     const handleEditorChange=()=>{
         // history.replace(`/room/video/:${roomId}`)
+        socket.emit('change-editor',!openCodeEditor)
         setOpenCodeEditor(!openCodeEditor)
     }
 
     return (
         <Container>
 
-                <Grid container align="center">
+                <Grid container >
                     {openCodeEditor && <Grid item sm={12} md={9} className={classes.editorWindow}>
                       <CodeEditor id={id}/>
                     </Grid>}

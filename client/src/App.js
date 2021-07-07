@@ -6,22 +6,20 @@ import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-rou
 import Home from './components/Home/Home'
 import Navbar from './components/Layouts/Navbar'
 import { v4 as uuidv4 } from 'uuid';
+import Peer from 'peerjs';
 
 function App() {
   return (
     <Router>
       <div>
-        
-      
-
       <Navbar />
       <Switch>
           <Route path="/" exact><Home /></Route>
           <Route path='/editor' exact>
-            <Redirect to={`/room/:${uuidv4()}`} />
+            <Redirect to={`/room/${uuidv4()}`} />
           </Route>
           <Route path={`/room/:id`} exact><Room/></Route>
-          <Route path={`/room/video/:videoId`} exact><VideoPlayer /></Route>
+          <Route path={`/video/:videoId`} exact><VideoPlayer /></Route>
 
       </Switch>
     </div>
