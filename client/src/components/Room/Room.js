@@ -7,8 +7,14 @@ import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
 import CodeEditor from '../CodeEditor/CodeEditor'
 //Material UI imports 
-import { Button, Container, Grid, Select, MenuItem, Input, MenuProps, FormControl, InputLabel, TextField, Box, Paper, Typography } from '@material-ui/core'
+import { Button, Container, Grid} from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core'
+
+import MicOpenIcon from '@material-ui/icons/MicTwoTone'
+import MicCloseIcon from '@material-ui/icons/MicOffTwoTone'
+import VideoOpenIcon from '@material-ui/icons/VideoCallTwoTone'
+import VideoCloseIcon from '@material-ui/icons/VideocamOffTwoTone'
+import VideoEndIcon from '@material-ui/icons/MissedVideoCallTwoTone'
 
 
 
@@ -36,6 +42,9 @@ const useStyles=makeStyles((theme)=>({
         backgroundColor:"#252520",
         color:"#FF9B36"
     },
+    controlButtons:{
+        margin:"3px",
+    }
 
 }))
 
@@ -49,6 +58,8 @@ export default function Room() {
     const [userId,setUserId]=useState()
     const id=useParams()
     const roomId = `${id.id}room`
+    const [micOpen,setMicOpen] = useState(true)
+    const [videoOpen,setVideoOpen] = useState(true)
 
     
     const peers = {}
@@ -114,6 +125,33 @@ export default function Room() {
         })
     },[])
 
+    const handleMicToggle = () =>{
+        const enabled = myVideo.current.srcObject.getAudioTracks()[0].enabled
+        if(enabled){
+            myVideo.current.srcObject.getAudioTracks()[0].enabled = false;
+            setMicOpen(false)
+        }else{
+            myVideo.current.srcObject.getAudioTracks()[0].enabled = true;
+            setMicOpen(true)
+        }
+    }
+
+    const handleVideoToggle = () =>{
+        const enabled = myVideo.current.srcObject.getVideoTracks()[0].enabled
+        if(enabled){
+            myVideo.current.srcObject.getVideoTracks()[0].enabled = false;
+            setVideoOpen(false)
+        }else{
+            myVideo.current.srcObject.getVideoTracks()[0].enabled = true;
+            setVideoOpen(true)
+        }
+    }
+
+    const handleLeaveCall=() =>{
+        socket.disconnect();
+        history.replace('/')
+    }
+
 
     //----> All the code for Video Stream <-----
 
@@ -134,7 +172,28 @@ export default function Room() {
                         <Grid container align="center">
                             <Grid item sm={12} md={openCodeEditor?12:6}>
                                 <h1 className={classes.editorText}>Webcam 1</h1>
+                                <Grid item sm={12} md={12}>
                                 <video className={openCodeEditor?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
+                                </Grid>
+                                <Grid item sm={12} md={12} align="space-between">
+                                    {micOpen? <Button className={classes.controlButtons} variant="outlined" color="secondary" onClick={handleMicToggle}>
+                                        <MicCloseIcon />
+                                    </Button>:
+                                    <Button className={classes.controlButtons} onClick={handleMicToggle}>
+                                        <MicOpenIcon />
+                                    </Button>
+                                    }
+                                    {videoOpen? <Button className={classes.controlButtons} variant="outlined" color="secondary" onClick={handleVideoToggle}>
+                                        <VideoCloseIcon />
+                                    </Button>:
+                                    <Button  className={classes.controlButtons} onClick={handleVideoToggle}>
+                                        <VideoOpenIcon />
+                                    </Button>
+                                    }
+                                    <Button className={classes.controlButtons} onClick={handleLeaveCall} variant="contained" color="secondary" >
+                                        <VideoEndIcon />Leave
+                                    </Button>
+                                </Grid>
                             </Grid>
                             <Grid item sm={12} md={openCodeEditor?12:6} >
                                 <h1 className={classes.editorText}>Webcam 2</h1>
