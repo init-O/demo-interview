@@ -104,6 +104,21 @@ io.on('connection', (socket)=>
           })
       })
 
+      socket.on('join-room',(roomId, userId)=>{
+        console.log(`inside room on server ${roomId} ${userId}`)
+        socket.join(roomId)
+        socket.broadcast.to(roomId).emit('user-connected', userId);
+
+        socket.on('disconnect', ()=>{
+            socket.broadcast.to(roomId).emit("user-disconnected",userId)
+        })
+
+        socket.on("change-editor", (value)=>{
+            socket.broadcast.to(roomId).emit("user-change-editor", value)
+        })
+
+    })
+
 })
 
 
