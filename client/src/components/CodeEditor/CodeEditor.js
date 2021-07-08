@@ -73,7 +73,8 @@ const useStyles=makeStyles((theme)=>({
     },
     langSelector: {
         width: "200px",
-        marginLeft:"20px"
+        marginLeft:"20px",
+        color: "#FF9B36"
     },
     inputField:
     {

@@ -44,6 +44,23 @@ const useStyles=makeStyles((theme)=>({
     },
     controlButtons:{
         margin:"3px",
+    },
+    controlButtonAlt:
+    {
+        borderColor: '#f50057',
+        color: '#f50057',
+        marginRight: '5px',
+        borderRadius: '0%',
+        '&:hover': {
+            backgroundColor: '#f50057',
+            color: 'white',
+            borderColor: '#f50057'
+        }
+    },
+    headingText:
+    {
+        color: 'white',
+        fontWeight: '200'
     }
 
 }))
@@ -171,32 +188,32 @@ export default function Room() {
                     <Grid item sm={12} md={openCodeEditor?3:12} className={classes.webCam}>
                         <Grid container align="center">
                             <Grid item sm={12} md={openCodeEditor?12:6}>
-                                <h1 className={classes.editorText}>Webcam 1</h1>
+                                <h1 className={classes.headingText}>Webcam 1</h1>
                                 <Grid item sm={12} md={12}>
                                 <video className={openCodeEditor?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
                                 </Grid>
                                 <Grid item sm={12} md={12} align="space-between">
-                                    {micOpen? <Button className={classes.controlButtons} variant="outlined" color="secondary" onClick={handleMicToggle}>
+                                    {micOpen? <Button className={classes.controlButtonAlt} variant="outlined" color="secondary" onClick={handleMicToggle}>
                                         <MicCloseIcon />
                                     </Button>:
                                     <Button className={classes.controlButtons} onClick={handleMicToggle}>
                                         <MicOpenIcon />
                                     </Button>
                                     }
-                                    {videoOpen? <Button className={classes.controlButtons} variant="outlined" color="secondary" onClick={handleVideoToggle}>
+                                    {videoOpen? <Button className={classes.controlButtonAlt} variant="outlined" color="secondary" onClick={handleVideoToggle}>
                                         <VideoCloseIcon />
                                     </Button>:
                                     <Button  className={classes.controlButtons} onClick={handleVideoToggle}>
                                         <VideoOpenIcon />
                                     </Button>
                                     }
-                                    <Button className={classes.controlButtons} onClick={handleLeaveCall} variant="contained" color="secondary" >
+                                    <Button className={classes.controlButtonAlt} onClick={handleLeaveCall} variant="outlined" >
                                         <VideoEndIcon />Leave
                                     </Button>
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} md={openCodeEditor?12:6} >
-                                <h1 className={classes.editorText}>Webcam 2</h1>
+                                <h1 className={classes.headingText}>Webcam 2</h1>
                                 <video className={openCodeEditor?classes.videoRefCollapsed:classes.videoRef} playsInline  ref={userVideo} autoPlay ></video>
                             </Grid>
                         </Grid>
