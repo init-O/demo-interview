@@ -10,6 +10,10 @@ const Navbar = () => {
         history.push('/editor')
     }
 
+    const handleLogin = () =>{
+        history.push('/signIn')
+    }
+
     return (
        <Grid container align="center">
            <Grid item xs={12} md={4}>
@@ -19,7 +23,7 @@ const Navbar = () => {
                 <Button variant="outlined" color="primary">Join Room</Button>
            </Grid>
            <Grid item xs={12} md={4}>
-                <Button variant="outlined" color="primary">Room</Button>
+                <Button variant="outlined" color="primary" onClick={handleLogin}>Login</Button>
            </Grid>
        </Grid>
     )

@@ -3,7 +3,7 @@ import {v4 as uuidv4} from 'uuid'
 
 import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
-import EditorThemes from '../../data/EditorThemes'
+import EditorThemes from '../../../data/EditorThemes'
 //Material UI imports 
 import { Button, Container, Grid, Select, MenuItem, Input, MenuProps, FormControl, InputLabel, TextField, Box, Paper, Typography } from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core'
@@ -16,7 +16,7 @@ import 'codemirror/addon/display/fullscreen.css'
 import 'codemirror/addon/edit/matchbrackets'
 import 'codemirror/addon/edit/closebrackets'
 //Languages Modes
-import languageList from '../../data/languages.json'
+import languageList from '../../../data/languages.json'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/clike/clike'
 import 'codemirror/mode/python/python'

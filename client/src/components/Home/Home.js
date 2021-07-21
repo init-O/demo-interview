@@ -1,5 +1,4 @@
 import React from 'react'
-import CodeEditor from '../CodeEditor/CodeEditor'
 import {Container, Grid, Typography} from '@material-ui/core'
 
 export default function Home() {

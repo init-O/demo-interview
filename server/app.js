@@ -28,6 +28,7 @@ const PORT=process.env.PORT||5000;
 
 //Routes
 const questionRoutes=require('./routes/questionRoutes')
+const userRoutes=require('./routes/userRoutes')
 
 
 //Socket IO Setup
@@ -47,6 +48,7 @@ const onConnection=(socket)=>
 io.on('connection', onConnection)
 
 app.use('/', questionRoutes)
+app.use('/user', userRoutes)
 
 app.get('/', (req,res)=>
 {
