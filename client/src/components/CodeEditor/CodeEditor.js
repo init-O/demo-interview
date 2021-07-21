@@ -13,6 +13,8 @@ import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import CodeMirror from 'codemirror'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/addon/display/fullscreen.css'
+import 'codemirror/addon/edit/matchbrackets'
+import 'codemirror/addon/edit/closebrackets'
 //Languages Modes
 import languageList from '../../data/languages.json'
 import 'codemirror/mode/javascript/javascript'
@@ -143,7 +145,9 @@ export default function CodeEditor({id}) {
             lint: true,
             theme: editorTheme,
             gutters: ["CodeMirror-lint-markers"],
-            fullscreen: true
+            fullscreen: true,
+            matchBrackets: true,
+            autoCloseBrackets: true
         });
         // editorRef.current.editor.display.wrapper.style.height = "500px";
         setEditor(myCodeMirror)
