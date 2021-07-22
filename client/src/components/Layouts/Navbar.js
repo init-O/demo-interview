@@ -1,29 +1,32 @@
 import React from 'react'
-import {Grid,Button} from '@material-ui/core'
+import {Grid,Button, Typography} from '@material-ui/core'
 import CreateRoomIcon from '@material-ui/icons/RoomOutlined'
 import { useHistory } from 'react-router'
+import { useDispatch } from 'react-redux'
 
 
 const Navbar = () => {
+    const dispatch = useDispatch()
     const history = useHistory()
-    const handleCreateRoom = () =>{
-        history.push('/editor')
-    }
+    const user = JSON.parse(localStorage.getItem('profile'))
 
     const handleLogin = () =>{
         history.push('/signIn')
     }
 
+    const handleLogout = () =>{
+        dispatch({type:"LOGOUT"})
+        history.push('/')
+    }
+
     return (
        <Grid container align="center">
-           <Grid item xs={12} md={4}>
-               <Button variant="outlined" color="primary" onClick={handleCreateRoom}>Create Room</Button>
+           <Grid>
+                <Typography variant="h6">Demo-Interview</Typography>
            </Grid>
            <Grid item xs={12} md={4}>
-                <Button variant="outlined" color="primary">Join Room</Button>
-           </Grid>
-           <Grid item xs={12} md={4}>
-                <Button variant="outlined" color="primary" onClick={handleLogin}>Login</Button>
+                {user ? <Button variant="outlined" color="secondary" onClick={handleLogout}>Logout</Button>
+                 : <Button variant="outlined" color="primary" onClick={handleLogin}>Login</Button>}
            </Grid>
        </Grid>
     )

@@ -34,6 +34,7 @@ const postQuestionPack=async (req, res)=>
     })
     try{
         const savedQuestionPack=await tempQuestionPack.save()
+        console.log(savedQuestionPack)
         return res.json(savedQuestionPack)
     }
     catch (error)
@@ -69,8 +70,9 @@ const addQuestion=async (req, res)=>
     console.log(req.body)
     const packId=req.params.packId
     const tempQuestion=new Question({
+        name: req.body.name,
         statement: req.body.statement,
-        hint: req.body.hint,
+        // hint: req.body.hint,
         created_by: req.body.userId
     })
     const savedQuestion=await tempQuestion.save()

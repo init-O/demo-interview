@@ -1,9 +1,17 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
+const faker=require('faker')
+
+const getNewUserName = () => {
+    return faker.internet.userName()
+}
 
 const userSchema=new Schema({
     name: String,
-    username: String,
+    username:{
+        type:String,
+        default:getNewUserName()
+    },
     age: Number,
     email: String,
     isAdmin: {
