@@ -2,6 +2,7 @@ const mongoose=require('mongoose')
 const User=require('./userModel')
 
 const questionSchema=new mongoose.Schema({
+    name:String,
     statement: String,
     hint: String,
     created_by: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}

@@ -166,6 +166,9 @@ export default function Room() {
 
     const handleLeaveCall=() =>{
         socket.disconnect();
+        // stream.getAudioTracks.forEach(track =>{
+        //     track.stop()
+        // })
         history.replace('/')
     }
 
