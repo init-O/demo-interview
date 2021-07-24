@@ -7,8 +7,11 @@ export default function Home() {
     return (
         <Container>
             <Grid align="center">
-                This is Going to be the Home change it with the landing page offcourse.
+                This is Going to be the Home change it with the landing page offcourse. 
+                <h1 className="text-2xl	font-black">Tailwind has been successfulyy added .</h1>
             </Grid>
+
+            
         </Container>
     )
 }
