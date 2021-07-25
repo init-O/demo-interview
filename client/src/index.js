@@ -8,6 +8,7 @@ import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
