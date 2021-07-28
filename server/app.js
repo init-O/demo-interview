@@ -42,10 +42,10 @@ const io=socketio(server, {
 
 const onConnection=(socket)=>
 {
-    socketHandler(io, socket)
+    socketHandler(io, socket);
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
 }
-
-io.on('connection', onConnection)
+io.on('connection', onConnection) 
 
 app.use('/', questionRoutes)
 app.use('/user', userRoutes)
@@ -59,3 +59,6 @@ server.listen(PORT, ()=>
 {
     console.log("Server is up and running")
 })
+
+
+  
