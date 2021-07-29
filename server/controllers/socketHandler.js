@@ -4,6 +4,10 @@ const defaultValue = ""
 
 module.exports=(io, socket)=>
 {
+    //Whiteboard Socket IO Code goes here
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+
+    //DO NOT TOUCH CODE EDITOR AND ROOM CODE
     socket.on("get-code", async codeId => {
         console.log(codeId)
         if (codeId==null)
