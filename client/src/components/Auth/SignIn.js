@@ -50,7 +50,7 @@ const SignIn = () => {
     const googleFailure = async () => alert('Google Sign In was unsuccessful. Try again later');
     const body=(
         <div className={classes.paper}>
-            <p className={classes.modalText} >Log in using Google to be able to buy your favourite artwork!</p>
+            <p className={classes.modalText} >Log in using Google</p>
                 <GoogleLogin
                     // ---> CREATE YOUR OWN GOOGLE CLIENT FROM "console.developers.google.com" AND PASTE HERE (DELETE IT BEFORE PUSHING) <---
                     clientId="845509955979-rd59hfvhufjcfnqfjnidlvm1mgqv1jkg.apps.googleusercontent.com"
