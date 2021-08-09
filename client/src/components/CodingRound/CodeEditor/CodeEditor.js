@@ -583,7 +583,7 @@ export default function CodeEditor({id}) {
 
             <Button className={classes.runButton} onClick={submitCode} variant="outlined" color="primary" >Run</Button>
             <Button className={classes.checkButton} variant="outlined" onClick={checkResult} color="secondary" >Check result</Button>            
-            <Button className={classes.checkButton} variant="contained" color="White" href="/boardcollab">Start WhiteBoard </Button>
+            
             
             </Container>
             
