@@ -6,6 +6,7 @@ import Peer from 'peerjs'
 import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
 import CodeEditor from '../CodeEditor/CodeEditor'
+import Whiteboard from '../Whiteboard/Whiteboard'
 //Material UI imports 
 import { Button, Container, Grid} from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core'
@@ -72,6 +73,7 @@ export default function Room() {
     const classes=useStyles()
     const [myPeer,setMyPeer] = useState();
     const [openCodeEditor,setOpenCodeEditor]=useState(false)
+    const [openWhiteboard, setOpenWhiteboard]=useState(false)
     const [userId,setUserId]=useState()
     const id=useParams()
     const roomId = `${id.id}room`
@@ -139,6 +141,7 @@ export default function Room() {
 
         socket.on('user-change-editor',value=>{
             setOpenCodeEditor(value)
+            setOpenWhiteboard(!value)
         })
     },[])
 
@@ -179,6 +182,14 @@ export default function Room() {
         // history.replace(`/room/video/:${roomId}`)
         socket.emit('change-editor',!openCodeEditor)
         setOpenCodeEditor(!openCodeEditor)
+        setOpenWhiteboard(false)
+    }
+
+    const handleWhiteboardChange=()=>
+    {
+        socket.emit('change-editor',!openCodeEditor)
+        setOpenWhiteboard(!openWhiteboard)
+        setOpenCodeEditor(false)
     }
 
     return (
@@ -188,12 +199,15 @@ export default function Room() {
                     {openCodeEditor && <Grid item sm={12} md={9} className={classes.editorWindow}>
                       <CodeEditor id={id}/>
                     </Grid>}
-                    <Grid item sm={12} md={openCodeEditor?3:12} className={classes.webCam}>
+                    {openWhiteboard && <Grid item sm={12} md={9}>
+                      <Whiteboard />
+                    </Grid>}
+                    <Grid item sm={12} md={openCodeEditor||openWhiteboard?3:12} className={classes.webCam}>
                         <Grid container align="center">
-                            <Grid item sm={12} md={openCodeEditor?12:6}>
+                            <Grid item sm={12} md={openCodeEditor||openWhiteboard?12:6}>
                                 <h1 className={classes.headingText}>Webcam 1</h1>
                                 <Grid item sm={12} md={12}>
-                                <video className={openCodeEditor?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
+                                <video className={openCodeEditor||openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
                                 </Grid>
                                 <Grid item sm={12} md={12} align="space-between">
                                     {micOpen? <Button className={classes.controlButtonAlt} variant="outlined" color="secondary" onClick={handleMicToggle}>
@@ -215,13 +229,14 @@ export default function Room() {
                                     </Button>
                                 </Grid>
                             </Grid>
-                            <Grid item sm={12} md={openCodeEditor?12:6} >
+                            <Grid item sm={12} md={openCodeEditor||openWhiteboard?12:6} >
                                 <h1 className={classes.headingText}>Webcam 2</h1>
-                                <video className={openCodeEditor?classes.videoRefCollapsed:classes.videoRef} playsInline  ref={userVideo} autoPlay ></video>
+                                <video className={openCodeEditor||openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline  ref={userVideo} autoPlay ></video>
                             </Grid>
                         </Grid>
                     </Grid>
                     <Button variant="contained" onClick={handleEditorChange} color={openCodeEditor?"secondary":"primary"}>{openCodeEditor?"Close Editor":"Open Editor"}</Button>
+                    <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
                 </Grid>
             
         </Container>

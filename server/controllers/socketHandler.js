@@ -4,6 +4,21 @@ const defaultValue = ""
 
 module.exports=(io, socket)=>
 {
+    //Whiteboard Socket IO Code goes here
+    //socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
+
+    socket.on('get-drawing', async (boardId)=>
+    {
+        console.log('The whiteboard has connected')
+        console.log(boardId)
+        if (boardId==null)
+            return 
+        socket.join(boardId)
+        socket.on('drawing', (data)=>socket.broadcast.to(boardId).emit('drawing', data))
+
+    })
+
+    //FUCK AROUND->FIND OUT
     socket.on("get-code", async codeId => {
         console.log(codeId)
         if (codeId==null)
