@@ -27,6 +27,7 @@ const Navbar = () => {
            <Grid item xs={12} md={4}>
                 {user ? <Button variant="outlined" color="secondary" onClick={handleLogout}>Logout</Button>
                  : <Button variant="outlined" color="primary" onClick={handleLogin}>Login</Button>}
+                 console.log(user);
            </Grid>
        </Grid>
     )
