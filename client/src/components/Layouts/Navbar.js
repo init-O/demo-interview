@@ -15,7 +15,7 @@ const Navbar = (props) => {
   };
 
   const handleLogout = () => {
-    dispatch({ type: "LOGOUT" });
+    dispatch({type:"LOGOUT"});
     history.push("/");
   };
 

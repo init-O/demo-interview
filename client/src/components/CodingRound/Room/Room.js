@@ -7,6 +7,8 @@ import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
 import CodeEditor from '../CodeEditor/CodeEditor'
 import Whiteboard from '../Whiteboard/Whiteboard'
+import ViewIntreViewQuestion from '../../QuestionBankView/Main'
+import SingleQuestionBankView from '../../QuestionBankView/SingleQuestionBankView'
 //Material UI imports 
 import { Button, Container, Grid} from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core'
@@ -79,6 +81,8 @@ export default function Room() {
     const roomId = `${id.id}room`
     const [micOpen,setMicOpen] = useState(true)
     const [videoOpen,setVideoOpen] = useState(true)
+    const [singleQuestionview,setSingleQuestionview] = useState(false)
+    const [questionBankId,setQuestionBankId] = useState()
 
     
     const peers = {}
@@ -168,11 +172,11 @@ export default function Room() {
     }
 
     const handleLeaveCall=() =>{
-        socket.disconnect();
-        // stream.getAudioTracks.forEach(track =>{
+        // stream.getaudioTracks.forEach(track =>{
         //     track.stop()
         // })
-        history.replace('/')
+        socket.disconnect();
+        history.replace('/user/dashboard')
     }
 
 
@@ -237,6 +241,12 @@ export default function Room() {
                     </Grid>
                     <Button variant="contained" onClick={handleEditorChange} color={openCodeEditor?"secondary":"primary"}>{openCodeEditor?"Close Editor":"Open Editor"}</Button>
                     <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
+                </Grid>
+                <Grid item sm={12} md={12} >
+                    <h1 className="mt-4" >Interview Questions</h1>
+                    {!singleQuestionview ? 
+                    <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
+                    : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
                 </Grid>
             
         </Container>

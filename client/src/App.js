@@ -9,6 +9,8 @@ import SignIn from './components/Auth/SignIn'
 import DashBoard from './components/User/dashboard'
 import QuestionBank from './components/QuestionBank/QuestionBank'
 import SingleQuestionBank from './components/QuestionBank/SingleQuestionBank'
+import SingleQuestionBankView from './components/QuestionBankView/SingleQuestionBankView'
+import InterviewQuestionBank from './components/QuestionBankView/Main'
 import { v4 as uuidv4 } from 'uuid';
 import Peer from 'peerjs';
 import {useDispatch} from 'react-redux'
@@ -41,6 +43,10 @@ function App() {
           <Route path='/user/dashboard' exact><DashBoard /></Route>
           <Route path='/questionBanks' exact><QuestionBank /></Route>
           <Route path='/questionBanks/:id' exact><SingleQuestionBank /></Route>
+          <Route path='/questionBankView/:id' exact><SingleQuestionBankView /></Route>
+
+          {/* will delete the below route later.... */}
+          <Route path='/interviewquestion' eaxct> <InterviewQuestionBank /> </Route>
 
       </Switch>
     </div>
