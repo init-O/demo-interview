@@ -1,6 +1,7 @@
 import './App.css';
 import {useEffect} from 'react'
 import Room from './components/CodingRound/Room/Room'
+import MachineLearning from './components/MachineLearning/Room/Room'
 import Whiteboard from './components/CodingRound/Whiteboard/Whiteboard'
 import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home'
@@ -33,20 +34,17 @@ function App() {
             <Redirect to={`/room/${uuidv4()}`} />
           </Route>
 
-          <Route path='/boardcollab' exact>
-            <Redirect to={`/whiteboard/${uuidv4()}`} />
+          <Route path='/ml' exact>
+            <Redirect to={`/ml/room/${uuidv4()}`} />
           </Route>
 
           <Route path={`/room/:id`} exact><Room/></Route>
-          <Route path={`/whiteboard/:id`} exact><Whiteboard/></Route>
+          <Route path={`/ml/room/:id`} exact><MachineLearning/></Route>
+
           <Route path='/signIn' exact><SignIn /></Route>
           <Route path='/user/dashboard' exact><DashBoard /></Route>
           <Route path='/questionBanks' exact><QuestionBank /></Route>
           <Route path='/questionBanks/:id' exact><SingleQuestionBank /></Route>
-          <Route path='/questionBankView/:id' exact><SingleQuestionBankView /></Route>
-
-          {/* will delete the below route later.... */}
-          <Route path='/interviewquestion' eaxct> <InterviewQuestionBank /> </Route>
 
       </Switch>
     </div>

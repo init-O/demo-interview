@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from 'react'
-import {Grid, Typography, Button, TextField,Avatar} from '@material-ui/core'
+import {MenuItem, Select, FormControl, InputLabel} from '@material-ui/core'
 import { useHistory } from 'react-router'
 import {useDispatch} from 'react-redux'
 import {getQuestionBank} from '../../action/user/user'
@@ -11,6 +11,8 @@ const Dashboard = () => {
     console.log(user)
 
     const [roomId,setRoomId] = useState('')
+    const roomTypes = ["Coding Round", "Machine Learning", "Viva"]
+    const [currentRoomType,setCurrentRoomType] = useState("Coding Round")
 
     useEffect(() => {
         dispatch(getQuestionBank())
@@ -18,7 +20,19 @@ const Dashboard = () => {
 
     const handleCreateRoom = (e) => {
         e.preventDefault()
-        history.push('/editor')
+        switch (currentRoomType) {
+            case "Coding Round":
+                history.push('/editor')
+                break;
+
+            case "Machine Learning":
+                history.push('/ml')
+                break;
+        
+            default:
+                break;
+        }
+        
     }
 
     const handleJoinRoom = (e) => {
@@ -29,6 +43,10 @@ const Dashboard = () => {
     const handleContribute = (e) => {
         e.preventDefault()
         history.push('/questionBanks')
+    }
+
+    const handleRoomTypeChange = (e) =>{
+        setCurrentRoomType(e.target.value)
     }
 
     return (
@@ -51,6 +69,19 @@ const Dashboard = () => {
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleCreateRoom}>
              Create Room
            </button>
+
+           <FormControl>
+                <InputLabel>Room Type</InputLabel>
+                <Select
+                defaultValue={currentRoomType}
+                onChange={handleRoomTypeChange}
+                >
+                {roomTypes.map((theme)=>(
+                    <MenuItem value={theme}>{theme}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+
            <p className="text-xl font-semibold">To join existing interview.</p>
            <div className="flex  items-center  py-2"> 
            <input className="appearance-none bg-transparent border-none  text-gray-700 mr-3 py-1 px-2  focus:outline" type="text" placeholder="Room Id" aria-label="Id" onChange={(e)=>setRoomId(e.target.value)} />
