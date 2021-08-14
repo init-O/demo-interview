@@ -13,3 +13,5 @@ export const getSingleQuestionBank = (id) => axios.get(`${URL}/questionPack/${id
 export const addQuestionToBank = (id,data) => axios.post(`${URL}/question/${id}`,data)
 
 export const deleteQuestionBank = (id) => axios.delete(`${URL}/questionPack/${id}`)
+
+export const changeUsername = (data) => axios.post(`${URL}/user/username/change`,data)

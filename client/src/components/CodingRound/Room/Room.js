@@ -83,6 +83,8 @@ export default function Room() {
     const [videoOpen,setVideoOpen] = useState(true)
     const [singleQuestionview,setSingleQuestionview] = useState(false)
     const [questionBankId,setQuestionBankId] = useState()
+    const [resume,setResume] = useState(true)
+    const user = JSON.parse(localStorage.getItem('profile'))
 
     
     const peers = {}
@@ -243,10 +245,21 @@ export default function Room() {
                     <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
                 </Grid>
                 <Grid item sm={12} md={12} >
-                    <h1 className="mt-4" >Interview Questions</h1>
-                    {!singleQuestionview ? 
-                    <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
-                    : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
+                    {
+                        resume?
+                        <div className="justify-around">
+                            <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>Interview Questions</Button>
+                            <iframe src={user.result.resume} height="800" width="800" frameborder="2"></iframe>
+                        </div>:
+                        <Grid>
+                            <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>open resume</Button>
+                            <h1 className="mt-4" >Interview Questions</h1>
+                            {!singleQuestionview ? 
+                            <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
+                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
+                        </Grid>
+                
+                    } 
                 </Grid>
             
         </Container>

@@ -23,3 +23,7 @@ export const deleteQuestionBank = (id) => async (dispatch) => {
     const {data} = await api.deleteQuestionBank(id)
     dispatch({type:'DELETE_QUESTION_BANK', payload:id})
 }
+
+export const changeUsername = async  (sendData) => {
+    const {data} = await api.changeUsername(sendData)
+}
