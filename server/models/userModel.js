@@ -10,7 +10,7 @@ const userSchema=new Schema({
     name: String,
     username:{
         type:String,
-        default:getNewUserName()
+        default:'abcd'
     },
     age: Number,
     email: String,
@@ -21,7 +21,11 @@ const userSchema=new Schema({
     profilePic:{
         type:String,
     },
-    googleId: String
+    googleId: String,
+    resume:{
+        type:String,
+        default:"https://drive.google.com/file/d/1jl59zhajODpEuyAfn1esANluoVxN0fVC/preview?usp=drivesdk"
+    }
 })
 
 const User=mongoose.model('User', userSchema)

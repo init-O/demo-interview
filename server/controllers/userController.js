@@ -14,7 +14,8 @@ const getUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         console.log('indise log in')
-        const email = req.params.email
+        const email = req.body.email
+        console.log(email)
         const user = await User.findOne({ email: email})
         if (user) {
             res.status(200).json(user)
@@ -34,4 +35,23 @@ const loginUser = async (req, res) => {
     }
 }
 
-module.exports = {getUser, loginUser}
+const changeUsername = async (req, res) => {
+    try {
+        const {email,username} = req.body
+        const user = await User.findOne({ username: username})
+        if(user){
+            res.status(400).json({ message: "User Already Exists"})
+        }else{
+            const user2 = await User.findOne({email: email})
+            user2.username = username
+            await user2.save()
+            const user4  = await User.findOne({email: email})
+            console.log(user4)
+            res.status(200).json(user2)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = {getUser, loginUser, changeUsername}

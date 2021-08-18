@@ -1,16 +1,18 @@
 import React, {useState,useEffect} from 'react'
-import {Grid, Typography, Button, TextField,Avatar} from '@material-ui/core'
+import {MenuItem, Select, FormControl, InputLabel, TextField} from '@material-ui/core'
 import { useHistory } from 'react-router'
 import {useDispatch} from 'react-redux'
-import {getQuestionBank} from '../../action/user/user'
+import {getQuestionBank, changeUsername} from '../../action/user/user'
 
 const Dashboard = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'))
     console.log(user)
-
+    const [currentUsername,setCurrentUsername] = useState()
     const [roomId,setRoomId] = useState('')
+    const roomTypes = ["Coding Round", "Machine Learning", "Viva"]
+    const [currentRoomType,setCurrentRoomType] = useState("Coding Round")
 
     useEffect(() => {
         dispatch(getQuestionBank())
@@ -18,7 +20,19 @@ const Dashboard = () => {
 
     const handleCreateRoom = (e) => {
         e.preventDefault()
-        history.push('/editor')
+        switch (currentRoomType) {
+            case "Coding Round":
+                history.push('/editor')
+                break;
+
+            case "Machine Learning":
+                history.push('/ml')
+                break;
+        
+            default:
+                break;
+        }
+        
     }
 
     const handleJoinRoom = (e) => {
@@ -31,6 +45,20 @@ const Dashboard = () => {
         history.push('/questionBanks')
     }
 
+    const handleRoomTypeChange = (e) =>{
+        setCurrentRoomType(e.target.value)
+    }
+
+    const handleUsernameChage = (e) => {
+        if(currentUsername!==user.result.username){
+            changeUsername({email:user.result.email, username:currentUsername})
+        }
+    }
+
+    const handleUploadResume = (e) => {
+        //update the resume link to user.resume
+    }
+
     return (
        <div className="relative min-h-screen grid grid-cols-1 sm:grid-cols-4  ">
         <div className="bg-blue-500  col-span-1  items-strech">
@@ -41,8 +69,14 @@ const Dashboard = () => {
         <span className="italic"> @{user.result.username}</span>
         </div>
         </div>
-        <button  href="#" className="text-white font-bold px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-yellow-500 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150">
+        <div className="m-3">
+        <TextField label="username" className="mx-2" onChange={(e)=>setCurrentUsername(e.target.value)}/>
+        </div>
+        <button  href="#" className="text-white font-bold px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-yellow-500 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUsernameChage}>
         Update User Name
+        </button>
+        <button  href="#" className="text-white font-bold mt-3 px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadResume}>
+        Upload Resume
         </button>
         </div>
 
@@ -51,6 +85,19 @@ const Dashboard = () => {
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleCreateRoom}>
              Create Room
            </button>
+
+           <FormControl>
+                <InputLabel>Room Type</InputLabel>
+                <Select
+                defaultValue={currentRoomType}
+                onChange={handleRoomTypeChange}
+                >
+                {roomTypes.map((theme)=>(
+                    <MenuItem value={theme}>{theme}</MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+
            <p className="text-xl font-semibold">To join existing interview.</p>
            <div className="flex  items-center  py-2"> 
            <input className="appearance-none bg-transparent border-none  text-gray-700 mr-3 py-1 px-2  focus:outline" type="text" placeholder="Room Id" aria-label="Id" onChange={(e)=>setRoomId(e.target.value)} />
