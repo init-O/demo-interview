@@ -2,10 +2,9 @@ import React, {useState, useEffect} from 'react'
 import InviteEntry from './InviteEntry'
 const URL = 'http://localhost:5000'
 
-export default function InviteList() {
+export default function InviteList({changeDetector, setChangeDetector}) {
     const [invites, setInvites]=useState([])
     const user = JSON.parse(localStorage.getItem('profile'))
-    const [changeDetector, setChangeDetector]=useState(true)
     useEffect(()=>
     {
         console.log("This runs")

@@ -166,7 +166,7 @@ const Dashboard = () => {
             </div>
             
             <Schedule changeDetector={changeDetector}/>
-            <InviteList />
+            <InviteList changeDetector={changeDetector} setChangeDetector={setChangeDetector} />
 
 
         </div>
