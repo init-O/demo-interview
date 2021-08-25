@@ -27,3 +27,12 @@ export const deleteQuestionBank = (id) => async (dispatch) => {
 export const changeUsername = async  (sendData) => {
     const {data} = await api.changeUsername(sendData)
 }
+
+export const scheduleInterview= async  (sendData) => {
+    const {data} = await api.scheduleInterview(sendData)
+}
+
+export const createActiveInterview=  async (sendData) =>
+{
+    const {data}= await api.createActiveInterview(sendData)
+}

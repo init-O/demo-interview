@@ -95,6 +95,7 @@ module.exports=(io, socket)=>
         socket.broadcast.to(roomId).emit('user-connected', userId);
 
         socket.on('disconnect', ()=>{
+            console.log('This user disconnected')
             socket.broadcast.to(roomId).emit("user-disconnected",userId)
         })
 

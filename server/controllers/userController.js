@@ -11,6 +11,12 @@ const getUser = async (req, res) => {
     }
 }
 
+const getAllUsers=async (req, res)=>
+{
+    const users=await User.find()
+    return res.json(users)
+}
+
 const loginUser = async (req, res) => {
     try {
         console.log('indise log in')
@@ -54,4 +60,22 @@ const changeUsername = async (req, res) => {
     }
 }
 
-module.exports = {getUser, loginUser, changeUsername}
+const searchByName=(req, res)=>
+{
+    const name=req.body.name
+    console.log(name)
+    User.find({name: new RegExp(name)}, (err, users)=>
+    {
+        if (err)
+        {
+            console.log(err)
+        }
+        else
+        {
+            console.log(users)
+            return res.json(users)
+        }
+    })
+}
+
+module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers}
