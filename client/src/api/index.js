@@ -15,3 +15,7 @@ export const addQuestionToBank = (id,data) => axios.post(`${URL}/question/${id}`
 export const deleteQuestionBank = (id) => axios.delete(`${URL}/questionPack/${id}`)
 
 export const changeUsername = (data) => axios.post(`${URL}/user/username/change`,data)
+
+export const scheduleInterview = (data) => axios.post(`${URL}/scheduledRoom`, data)
+
+export const createActiveInterview = (data) => axios.post(`${URL}/activeRoom`, data)

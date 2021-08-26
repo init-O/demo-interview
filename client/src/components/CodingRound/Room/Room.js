@@ -1,10 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import { useHistory } from 'react-router'
-
 import Peer from 'peerjs'
 import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
+import { createActiveInterview } from '../../../action/user/user'
 import CodeEditor from '../CodeEditor/CodeEditor'
 import Whiteboard from '../Whiteboard/Whiteboard'
 import ViewIntreViewQuestion from '../../QuestionBankView/Main'
@@ -150,6 +150,15 @@ export default function Room() {
             setOpenWhiteboard(!value)
         })
     },[])
+
+    useEffect(()=>
+    {
+        const data={
+            createdBy: user.result._id,
+            roomId: id
+        }
+        createActiveInterview(data)
+    }, [])
 
     const handleMicToggle = () =>{
         const enabled = myVideo.current.srcObject.getAudioTracks()[0].enabled
