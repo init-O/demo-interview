@@ -1,28 +1,17 @@
 import React, {useState, useEffect} from 'react'
-
+import { useSelector } from 'react-redux'
 import InterviewEntry from './InterviewEntry'
 const URL = 'http://localhost:5000'
 
 
 export default function Schedule({changeDetector}) {
     const user = JSON.parse(localStorage.getItem('profile'))
-    const [interviews, setInterviews]=useState([])
-
-    
-
-    useEffect(()=>
-    {
-        fetch(`${URL}/user/rooms/${user.result._id}`)
-        .then((res)=>res.json())
-        .then((json)=>setInterviews(json))
-    }, [changeDetector])
-
+    const allInterviews= useSelector(state => state.Meetings)
+  
     return (
         <div className="">
             <h1 className="text-4xl mt-4 mb-4 font-light" >Scheduled Interviews</h1>
-            {
-                interviews.map((interview)=>
-                (<InterviewEntry interview={interview}/>))
+            {allInterviews.map((interview)=>{return <InterviewEntry interview={interview}/>})
             }
         </div>
     )

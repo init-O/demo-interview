@@ -3,10 +3,13 @@ import CloseIcon from '@material-ui/icons/Close';
 import PersonAddIcon from '@material-ui/icons/PersonAdd'
 import SearchIcon from '@material-ui/icons/Search';
 import CallIcon from '@material-ui/icons/Call';
+import DeleteIcon from '@material-ui/icons/DeleteOutlineSharp'
 import { Grid, Typography, Container, Button, Modal, makeStyles} from '@material-ui/core'
 import { EmailShareButton, WhatsappShareButton, TelegramShareButton, LinkedinShareButton, FacebookShareButton} from 'react-share';
 import { EmailIcon, WhatsappIcon, TelegramIcon, LinkedinIcon, FacebookIcon } from 'react-share';
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import {deleteRoom} from '../../action/user/user'
 
 const URL = 'http://localhost:5000'
 
@@ -43,6 +46,7 @@ export default function InterviewEntry({interview}) {
     const [searchText, setSearchText]=useState('')
     const [searchResults, setSearchResults]=useState([])
     const [interviewId, setInterviewId]=useState('')
+    const dispatch = useDispatch()
 
     const handleClose=()=>
     {
@@ -107,6 +111,10 @@ export default function InterviewEntry({interview}) {
         .then(json=>{
             console.log(json)
         })
+    }
+
+    const handleDeleteRoom = (id)=>{
+        dispatch(deleteRoom(id))
     }
 
     function getRandomInt(min, max) {
@@ -184,7 +192,7 @@ export default function InterviewEntry({interview}) {
             {body}
             </Modal>
 
-                    <div className="grid grid-cols-2">
+                    <div className="grid justify-items-stretch ">
                         <div>
                         
                             <h1 className="font-normal text-xl">{interview.type}</h1>
@@ -197,6 +205,10 @@ export default function InterviewEntry({interview}) {
                             <button onClick={()=>interview.type=='Coding Round'?handleJoinRoom(interview.roomId):handleJoinMLRoom(interview.roomId)} className="bg-green-500 hover:bg-green-700 ml-2 text-white font-bold py-2 px-4 mt-3 rounded-full">
                                 <CallIcon /> Join
                             </button>
+                            <button onClick={()=>handleDeleteRoom(interview.roomId)} className="bg-red-600 text--black hover:bg-red-800 font-bold py-2 mt-3 px-4 ml-2 rounded-full" >
+                                <DeleteIcon />
+                            </button>
+                            
                         </div>
                     </div>
                     
