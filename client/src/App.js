@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Peer from 'peerjs';
 import {useDispatch} from 'react-redux'
 import {getQuestionBank} from './action/user/user'
+import Stream from './components/Stream'
 
 function App() {
   const dispatch = useDispatch()
@@ -45,6 +46,8 @@ function App() {
           <Route path='/user/dashboard' exact><DashBoard /></Route>
           <Route path='/questionBanks' exact><QuestionBank /></Route>
           <Route path='/questionBanks/:id' exact><SingleQuestionBank /></Route>
+
+          <Route path='/stream/:id' exact><Stream /></Route>
 
       </Switch>
     </div>

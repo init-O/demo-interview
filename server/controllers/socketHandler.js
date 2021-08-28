@@ -104,4 +104,10 @@ module.exports=(io, socket)=>
         })
 
     })
+
+    socket.on("join-stream", (roomId,userId)=>{
+        console.log('inside stream',roomId,userId)
+        socket.join(roomId)
+        socket.broadcast.to(roomId).emit("user-join-stream", userId)
+    })
 }
