@@ -19,3 +19,7 @@ export const changeUsername = (data) => axios.post(`${URL}/user/username/change`
 export const scheduleInterview = (data) => axios.post(`${URL}/scheduledRoom`, data)
 
 export const createActiveInterview = (data) => axios.post(`${URL}/activeRoom`, data)
+
+export const deleteRoom= (id) => axios.delete(`${URL}/room/${id}`)
+
+export const getscheduledInterviews = (id) => axios.get(`${URL}/user/rooms/${id}`)

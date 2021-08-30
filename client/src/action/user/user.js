@@ -28,11 +28,22 @@ export const changeUsername = async  (sendData) => {
     const {data} = await api.changeUsername(sendData)
 }
 
-export const scheduleInterview= async  (sendData) => {
+export const scheduleInterview =  (sendData) => async (dispatch) => {
     const {data} = await api.scheduleInterview(sendData)
+    dispatch({type:"ADD_MEETING", payload:data})
 }
 
 export const createActiveInterview=  async (sendData) =>
 {
     const {data}= await api.createActiveInterview(sendData)
+}
+
+export const deleteRoom = (id) => async (dispatch) =>{
+    const {data} = await api.deleteRoom(id)
+    dispatch({type:"DELETE_MEETING", payload:id})
+}
+
+export const getscheduledInterviews = (id) => async (dispatch) =>{
+    const {data} = await api.getscheduledInterviews(id)
+    dispatch({type:"GET_MEETINGS",payload:data})
 }

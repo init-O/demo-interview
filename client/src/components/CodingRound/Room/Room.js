@@ -84,6 +84,9 @@ export default function Room() {
     const [singleQuestionview,setSingleQuestionview] = useState(false)
     const [questionBankId,setQuestionBankId] = useState()
     const [resume,setResume] = useState(true)
+    const [startStream,setStartStream] = useState(false)
+    const [streamVideo,setStreamVideo]  = useState(null)
+
     const user = JSON.parse(localStorage.getItem('profile'))
 
     
@@ -207,6 +210,42 @@ export default function Room() {
         setOpenCodeEditor(false)
     }
 
+    const handleStartStream = ()=>{
+        if(!startStream){
+            try {           
+                navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        cursor: "always"
+                    },
+                    audio: {
+                    echoCancellation: true,
+                    noiseSuppression: true,
+                    sampleRate: 44100
+                    }
+                }).then(displayMedia =>{
+                    setStreamVideo(displayMedia)
+                    socket.on("user-join-stream",userId=>{
+    
+                        console.log('stream dekhne aaya hai log....')
+                        const call = myPeer.call(userId, displayMedia)
+    
+                    })
+                })
+                setStartStream(!startStream)
+            } catch (error) {
+                console.log(error)
+            }
+        }else{
+            if(streamVideo){
+                const tracks = streamVideo.getTracks()
+
+                tracks.forEach(track => track.stop())
+                setStreamVideo(null)
+                setStartStream(!startStream)
+            }
+        }
+    }
+
     return (
         <Container>
 
@@ -252,6 +291,7 @@ export default function Room() {
                     </Grid>
                     <Button variant="contained" onClick={handleEditorChange} color={openCodeEditor?"secondary":"primary"}>{openCodeEditor?"Close Editor":"Open Editor"}</Button>
                     <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
+                    <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
                 </Grid>
                 <Grid item sm={12} md={12} >
                     {

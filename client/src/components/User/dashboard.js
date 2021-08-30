@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {MenuItem, Select, FormControl, InputLabel, TextField} from '@material-ui/core'
 import { useHistory } from 'react-router'
 import {useDispatch} from 'react-redux'
-import {getQuestionBank, changeUsername, scheduleInterview} from '../../action/user/user'
+import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews} from '../../action/user/user'
 import DateTimePicker from 'react-datetime-picker';
 import Schedule from './Schedule'
 import InviteList from './InviteList'
@@ -22,6 +22,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         dispatch(getQuestionBank())
+        dispatch(getscheduledInterviews(user.result._id))
     }, [])
 
     
@@ -75,11 +76,10 @@ const Dashboard = () => {
             scheduledDate: dateValue,
             type: currentRoomType
         }
-        console.log(interviewData)
-        setChangeDetector(!changeDetector)
-        scheduleInterview(interviewData)
+        dispatch(scheduleInterview(interviewData))
 
     }
+
 
     return (
     <div>

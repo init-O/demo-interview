@@ -50,7 +50,18 @@ const createScheduledRoom=(req, res)=>
         }
         else 
         {
-            return res.json(savedRoom)
+            Room.findById(savedRoom._id).populate('createdBy invitedUser').exec((err, rooms)=>
+            {
+                if (err)
+                {
+                    console.log(err)
+                    return res.status(404).json({message: "Error"})
+                }
+                else
+                {
+                    return res.json(rooms)
+                }
+            })
         }
     })
 }
@@ -117,7 +128,8 @@ const getUserRooms=async (req, res)=>
 const deleteRoom=(req, res)=>
 {
     const roomId=req.params.id
-    Room.findByIdAndDelete(roomId, (err, deletedRoom)=>
+    console.log('inside the deleteting room', roomId)
+    Room.findOneAndDelete(roomId, (err, deletedRoom)=>
     {
         if (err)
         {
