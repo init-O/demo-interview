@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import { useHistory } from 'react-router'
+import {addNewStream, deleteStream} from '../../../action/user/user'
 
 import Peer from 'peerjs'
 import {io} from 'socket.io-client'
@@ -17,6 +18,7 @@ import MicCloseIcon from '@material-ui/icons/MicOffTwoTone'
 import VideoOpenIcon from '@material-ui/icons/VideoCallTwoTone'
 import VideoCloseIcon from '@material-ui/icons/VideocamOffTwoTone'
 import VideoEndIcon from '@material-ui/icons/MissedVideoCallTwoTone'
+import { useDispatch } from 'react-redux'
 
 
 
@@ -69,7 +71,7 @@ const useStyles=makeStyles((theme)=>({
 
 
 export default function Room() {
-
+    const dispatch = useDispatch()
     const history = useHistory()
     const classes=useStyles()
     const [myPeer,setMyPeer] = useState();
@@ -85,7 +87,7 @@ export default function Room() {
     const [resume,setResume] = useState(true)
     const [startStream,setStartStream] = useState(false)
     const [streamVideo,setStreamVideo]  = useState(null)
-
+    const [streamName,setStreamName] = useState()
     
     const peers = {}
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -192,31 +194,38 @@ export default function Room() {
 
     const handleStartStream = ()=>{
         if(!startStream){
-            try {           
-                navigator.mediaDevices.getDisplayMedia({
-                    video: {
-                        cursor: "always"
+            try {
+                if(streamName && roomId){
+
+                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Machine Learning"}
+                    console.log('Stream Data',sendData)
+                    dispatch(addNewStream(sendData))        
+                    navigator.mediaDevices.getDisplayMedia({
+                        video: {
+                            cursor: "always"
                     },
                     audio: {
-                    echoCancellation: true,
-                    noiseSuppression: true,
-                    sampleRate: 44100
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        sampleRate: 44100
                     }
-                }).then(displayMedia =>{
-                    setStreamVideo(displayMedia)
-                    socket.on("user-join-stream",userId=>{
-    
-                        console.log('stream dekhne aaya hai log....')
-                        const call = myPeer.call(userId, displayMedia)
-    
+                    }).then(displayMedia =>{
+                        setStreamVideo(displayMedia)
+                        socket.on("user-join-stream",userId=>{
+                            
+                            console.log('stream dekhne aaya hai log....')
+                            const call = myPeer.call(userId, displayMedia)
+                            
+                        })
                     })
-                })
-                setStartStream(!startStream)
+                    setStartStream(!startStream)
+                } 
             } catch (error) {
                 console.log(error)
             }
         }else{
             if(streamVideo){
+                dispatch(deleteStream(`${id.id}`))
                 const tracks = streamVideo.getTracks()
 
                 tracks.forEach(track => track.stop())
@@ -266,8 +275,18 @@ export default function Room() {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
-                    <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
+                    </div>
+                    <div class="mb-4 mr-2">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                            Stream Name
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="STream Name" onChange={(e)=>{setStreamName(e.target.value)}}/>
+                    </div>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
+                    </div>
                 </Grid>
                 <Grid item sm={12} md={12} >
                     {

@@ -129,7 +129,7 @@ const deleteRoom=(req, res)=>
 {
     const roomId=req.params.id
     console.log('inside the deleteting room', roomId)
-    Room.findOneAndDelete(roomId, (err, deletedRoom)=>
+Room.findOneAndDelete({roomId}, (err, deletedRoom)=>
     {
         if (err)
         {

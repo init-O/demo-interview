@@ -6,7 +6,7 @@ const cors=require('cors');
 const mongoose=require('mongoose')
 
 //Mongoose setup
-mongoose.connect("mongodb://localhost/google-docs-clone", {
+mongoose.connect("mongodb://localhost/demon-interview-3", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -30,6 +30,7 @@ const PORT=process.env.PORT||5000;
 const questionRoutes=require('./routes/questionRoutes')
 const userRoutes=require('./routes/userRoutes')
 const inviteRoutes=require('./routes/inviteRoutes')
+const streamRoutes = require('./routes/streamRoutes')
 
 
 //Socket IO Setup
@@ -51,6 +52,7 @@ io.on('connection', onConnection)
 app.use('/', questionRoutes)
 app.use('/user', userRoutes)
 app.use('/', inviteRoutes)
+app.use('/stream', streamRoutes)
 
 app.get('/', (req,res)=>
 {
