@@ -88,6 +88,9 @@ export default function Room() {
     const [startStream,setStartStream] = useState(false)
     const [streamVideo,setStreamVideo]  = useState(null)
     const [streamName,setStreamName] = useState()
+
+    const [insideMeeting,setInsideMeeting] = useState(false)
+    const [meetingClosed,setMeetingClosed] = useState(false)
     
     const peers = {}
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -118,18 +121,32 @@ export default function Room() {
             setStream(currentStream)
             myVideo.current.srcObject = currentStream
 
+            socket.on("meeting-closed-exit",()=>{
+                console.log("meeting is closed")
+                if(!userVideo.current?.srcObject){
+                    const tracks = currentStream.getTracks()
+                    tracks.forEach(track => track.stop())
+                    history.replace('/user/dashboard')
+                }
+            })
+
             socket.on("user-connected",  (id)=>{
-                console.log('new user',id)
-                if(id!==userId){
-                const call = newPeer.call(id, currentStream)
-                console.log('this is call',call)
-                console.log('chal raha hai yeh...')
-                call.on('stream', userVideoStream =>{
-                    console.log('getting new user', userVideoStream)
-                    userVideo.current.srcObject = userVideoStream
-                })
-    
-                peers[id] = call;}
+                if(userVideo.current?.srcObject){
+                    socket.emit("meeting-closed")
+                }else{
+                    setInsideMeeting(true)
+                    console.log('new user',id)
+                    if(id!==userId){
+                    const call = newPeer.call(id, currentStream)
+                    console.log('this is call',call)
+                    console.log('chal raha hai yeh...')
+                    call.on('stream', userVideoStream =>{
+                        console.log('getting new user', userVideoStream)
+                        userVideo.current.srcObject = userVideoStream
+                    })
+        
+                    peers[id] = call;}
+                }
             })
         
             newPeer.on('call',(call) =>{
@@ -144,7 +161,10 @@ export default function Room() {
 
         socket.on("user-disconnected",id=>{
             console.log('user disconnected...',id)
-            if(peers[id]) peers[id].close()
+            if(peers[id]) {
+                userVideo.current.srcObject = null
+                peers[id].close()
+            }
             
         })
 
@@ -176,9 +196,12 @@ export default function Room() {
     }
 
     const handleLeaveCall=() =>{
+        const tracks = stream.getTracks()
+        tracks.forEach(track => track.stop())
         // stream.getaudioTracks.forEach(track =>{
         //     track.stop()
         // })
+        userVideo.current.srcObject = null
         socket.disconnect();
         history.replace('/user/dashboard')
     }
@@ -235,6 +258,11 @@ export default function Room() {
         }
     }
 
+    const handleIsolateMeeting = () =>{
+        setMeetingClosed(!meetingClosed)
+        console.log("closing meeting", meetingClosed)
+    }
+
     return (
         <Container>
 
@@ -286,6 +314,9 @@ export default function Room() {
                     </div>
                     <div className="px-2 h-20 w-25 mt-7">
                         <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
+                    </div>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <Button variant="contained" onClick={handleIsolateMeeting} color={meetingClosed?"secondary":"primary"}>{!meetingClosed?"Open to all":"Make Private"}</Button>
                     </div>
                 </Grid>
                 <Grid item sm={12} md={12} >
