@@ -258,11 +258,6 @@ export default function Room() {
         }
     }
 
-    const handleIsolateMeeting = () =>{
-        setMeetingClosed(!meetingClosed)
-        console.log("closing meeting", meetingClosed)
-    }
-
     return (
         <Container>
 
@@ -314,9 +309,6 @@ export default function Room() {
                     </div>
                     <div className="px-2 h-20 w-25 mt-7">
                         <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
-                    </div>
-                    <div className="px-2 h-20 w-25 mt-7">
-                        <Button variant="contained" onClick={handleIsolateMeeting} color={meetingClosed?"secondary":"primary"}>{!meetingClosed?"Open to all":"Make Private"}</Button>
                     </div>
                 </Grid>
                 <Grid item sm={12} md={12} >

@@ -62,3 +62,7 @@ export const deleteStream = (id) => async (dispatch) =>{
     await api.deleteStream(id)
     dispatch({type:"DELETE_STREAM",payload:id})
 }
+
+export const uploadResume = async (sendData) =>{
+    await api.uploadResume(sendData)
+}

@@ -2,13 +2,17 @@ import React, {useState,useEffect} from 'react'
 import {MenuItem, Select, FormControl, InputLabel, TextField} from '@material-ui/core'
 import { useHistory } from 'react-router'
 import {useDispatch} from 'react-redux'
-import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews} from '../../action/user/user'
+import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews, uploadResume} from '../../action/user/user'
 import DateTimePicker from 'react-datetime-picker';
 import Schedule from './Schedule'
 import InviteList from './InviteList'
 
+const {create} = require('ipfs-http-client')
+const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
+
 
 const Dashboard = () => {
+
     const history = useHistory()
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -19,6 +23,7 @@ const Dashboard = () => {
     const [currentRoomType,setCurrentRoomType] = useState("Coding Round")
     const [dateValue, onChange] = useState(new Date());
     const [changeDetector, setChangeDetector]=useState(false)
+    const [resumeHash, setResumeHash] = useState()
 
     useEffect(() => {
         dispatch(getQuestionBank())
@@ -64,8 +69,25 @@ const Dashboard = () => {
         }
     }
 
+    const handleCaptureResume = (e)=>{
+        e.preventDefault()
+        const file = e.target.files[0]
+        const reader = new window.FileReader()
+        reader.readAsArrayBuffer(file)
+
+        reader.onloadend =async ()=>{
+            const buffer = new Buffer(reader.result)
+            const result =await ipfs.add(buffer)
+            setResumeHash(result.path)
+        }
+    }
+
     const handleUploadResume = (e) => {
         //update the resume link to user.resume
+        e.preventDefault()
+        const sendData = {id:user.result._id,resume:`https://ipfs.infura.io/ipfs/${resumeHash}`}
+        uploadResume(sendData)
+        
     }
 
     const handleSchedule = (e)=>
@@ -98,6 +120,7 @@ const Dashboard = () => {
         <button  href="#" className="text-white font-bold px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-yellow-500 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUsernameChage}>
         Update User Name
         </button>
+        <input type="file" accept="image/*,.pdf" className="ml-4 mt-3 mb-2 px-2" onChange={handleCaptureResume}/>
         <button  href="#" className="text-white font-bold mt-3 px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadResume}>
         Upload Resume
         </button>
