@@ -22,7 +22,8 @@ import VideoEndIcon from '@material-ui/icons/MissedVideoCallTwoTone'
 import {addNewStream, deleteStream} from '../../../action/user/user'
 import { useDispatch } from 'react-redux'
 
-
+const {create} = require('ipfs-http-client')
+const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 const socket=io("http://localhost:5000")
 
@@ -93,6 +94,7 @@ export default function Room() {
 
     const [insideMeeting,setInsideMeeting] = useState(false)
     const [meetingClosed,setMeetingClosed] = useState(false)
+    const [pdfHash,setPdfHash] = useState()
 
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -175,6 +177,11 @@ export default function Room() {
         socket.on('user-change-editor',value=>{
             setOpenCodeEditor(value)
             setOpenWhiteboard(!value)
+        })
+
+        socket.on("upload-question-pdf-hash",hash=>{
+            console.log('naya hash aaya hau///', hash)
+            setPdfHash(hash)
         })
     },[])
 
@@ -279,6 +286,26 @@ export default function Room() {
         }
     }
 
+    const handleUploadCustomQuestion = (e) =>{
+        e.preventDefault()
+        const file = e.target.files[0]
+        const reader = new window.FileReader()
+        reader.readAsArrayBuffer(file)
+
+        reader.onloadend =async ()=>{
+            const buffer = new Buffer(reader.result)
+            const result =await ipfs.add(buffer)
+            setPdfHash(result.path)
+        }
+    }
+
+    const handleUploadPdf = (e) =>{
+        e.preventDefault()
+        const link=`https://ipfs.infura.io/ipfs/${pdfHash}`
+    
+        socket.emit('upload-question-pdf',pdfHash)
+    }
+
     return (
         <Container>
 
@@ -345,13 +372,20 @@ export default function Room() {
                             <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>Interview Questions</Button>
                             <iframe src={user.result.resume} height="800" width="800" frameborder="2"></iframe>
                         </div>:
-                        <Grid>
+                        <div>
                             <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>open resume</Button>
+                            <input type="file" accept=".pdf" onChange={handleUploadCustomQuestion}/>
+                            <button className="ml-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
+                        <Grid sm={12} md={4}>
                             <h1 className="mt-4" >Interview Questions</h1>
                             {!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
                             : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
                         </Grid>
+                        <Grid sm={12} md={4}>
+                        {pdfHash && <iframe src={`https://ipfs.infura.io/ipfs/${pdfHash}`} height="800" width="800" frameborder="2"></iframe>}
+                        </Grid>
+                        </div>
                 
                     } 
                 </Grid>

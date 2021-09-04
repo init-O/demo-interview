@@ -107,6 +107,10 @@ module.exports=(io, socket)=>
             socket.broadcast.to(roomId).emit("meeting-closed-exit")
         })
 
+        socket.on("upload-question-pdf",(hash)=>{
+            socket.broadcast.to(roomId).emit("upload-question-pdf-hash", hash)
+        })
+
     })
 
     socket.on("join-stream", (roomId,userId)=>{
