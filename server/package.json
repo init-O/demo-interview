@@ -4,7 +4,7 @@
   "description": "Live editing of code on different clients via sockets",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "Ishan Madhav",
   "license": "ISC",

@@ -36,7 +36,7 @@ const inviteRoutes=require('./routes/inviteRoutes')
 const server=http.createServer(app);
 const io=socketio(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://demointerview01.herokuapp.com/",
         methods: ["GET", "POST"]
       }
 });
