@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import InterviewEntry from './InterviewEntry'
-const URL = 'http://localhost:5000'
+const URL = 'https://dragonapp10.herokuapp.com'
 
 
 export default function Schedule({changeDetector}) {

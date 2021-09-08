@@ -25,7 +25,7 @@ import { useDispatch } from 'react-redux'
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
-const socket=io("http://localhost:5000")
+const socket=io("https://dragonapp10.herokuapp.com")
 
 const useStyles=makeStyles((theme)=>({
 

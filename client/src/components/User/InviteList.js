@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import InviteEntry from './InviteEntry'
-const URL = 'http://localhost:5000'
+const URL = 'https://dragonapp10.herokuapp.com'
 
 export default function InviteList({changeDetector, setChangeDetector}) {
     const [invites, setInvites]=useState([])

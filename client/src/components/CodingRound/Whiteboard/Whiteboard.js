@@ -128,7 +128,7 @@ const Whiteboard = () => {
       drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
     }
 
-    socketRef.current = io.connect('http://localhost:5000');
+    socketRef.current = io.connect('https://dragonapp10.herokuapp.com');
     socketRef.current.on('drawing', onDrawingEvent);
     socketRef.current.emit('get-drawing', id.id)
   }, []);

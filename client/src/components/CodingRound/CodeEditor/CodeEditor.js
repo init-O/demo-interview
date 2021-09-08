@@ -41,7 +41,7 @@ import 'codemirror/theme/yeti.css'
 window.JSHINT = require('jshint').JSHINT;
 
 
-const soc=io("http://localhost:5000")
+const soc=io("https://dragonapp10.herokuapp.com")
 
 const useStyles=makeStyles((theme)=>({
     runButton:{
