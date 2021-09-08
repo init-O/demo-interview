@@ -359,7 +359,7 @@ export default function Room() {
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                             Stream Name
                         </label>
-                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="STream Name" onChange={(e)=>{setStreamName(e.target.value)}}/>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Stream Name" onChange={(e)=>{setStreamName(e.target.value)}}/>
                     </div>
                     <div className="px-2 h-20 w-25 mt-7">
                         <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>

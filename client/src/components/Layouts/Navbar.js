@@ -67,7 +67,7 @@ const Navbar = (props) => {
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mr-8 text-lg">
             <li className="flex items-center">
-              <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={hanldeOpenAllStreams}>Stream</button>
+              <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={hanldeOpenAllStreams}>Streams</button>
               <Grid item xs={12} md={4}>
                 {user ? (
                   <Button
