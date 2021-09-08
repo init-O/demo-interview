@@ -6,7 +6,7 @@ const cors=require('cors');
 const mongoose=require('mongoose')
 
 //Mongoose setup
-mongoose.connect("mongodb://localhost/demon-interview-3", {
+mongoose.connect("mongodb+srv://jacksapera:muhmeinlele69!@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -37,7 +37,7 @@ const streamRoutes = require('./routes/streamRoutes')
 const server=http.createServer(app);
 const io=socketio(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "https://demointerview01.herokuapp.com/",
         methods: ["GET", "POST"]
       }
 });
