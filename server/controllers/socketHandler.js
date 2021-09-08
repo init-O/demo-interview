@@ -103,6 +103,14 @@ module.exports=(io, socket)=>
             socket.broadcast.to(roomId).emit("user-change-editor", value)
         })
 
+        socket.on("meeting-closed", ()=>{
+            socket.broadcast.to(roomId).emit("meeting-closed-exit")
+        })
+
+        socket.on("upload-question-pdf",(hash)=>{
+            socket.broadcast.to(roomId).emit("upload-question-pdf-hash", hash)
+        })
+
     })
 
     socket.on("join-stream", (roomId,userId)=>{
@@ -110,4 +118,5 @@ module.exports=(io, socket)=>
         socket.join(roomId)
         socket.broadcast.to(roomId).emit("user-join-stream", userId)
     })
+
 }

@@ -15,14 +15,17 @@ import InterviewQuestionBank from './components/QuestionBankView/Main'
 import { v4 as uuidv4 } from 'uuid';
 import Peer from 'peerjs';
 import {useDispatch} from 'react-redux'
-import {getQuestionBank} from './action/user/user'
-import Stream from './components/Stream'
+import {getQuestionBank, getAllStreams} from './action/user/user'
+import Stream from './components/Streams/Stream'
+import StreamList from './components/Streams/StreamList'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getQuestionBank())
+    dispatch(getAllStreams())
 }, [])
+
 
   return (
     <Router>
@@ -48,6 +51,7 @@ function App() {
           <Route path='/questionBanks/:id' exact><SingleQuestionBank /></Route>
 
           <Route path='/stream/:id' exact><Stream /></Route>
+          <Route path='/stream' exact><StreamList /></Route>
 
       </Switch>
     </div>

@@ -19,6 +19,10 @@ const Navbar = (props) => {
     history.push("/");
   };
 
+  const hanldeOpenAllStreams = ()=>{
+    history.push("/stream");
+  }
+
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
   return (
@@ -63,8 +67,12 @@ const Navbar = (props) => {
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mr-8 text-lg">
             <li className="flex items-center">
+              {
+                user?(<button className="px-2 py-1 mr-2 bg-green-300 text-indigo-800 hover:bg-green-500 hover:text-white rounded" onClick={()=>history.push('/user/dashboard')}>Dashboard</button>):<span></span>
+              }
+              <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={hanldeOpenAllStreams}>Streams</button>
               <Grid item xs={12} md={4}>
-                {user ? (
+                {user ? (<span>
                   <Button
                     variant="outlined"
                     color="secondary"
@@ -72,6 +80,8 @@ const Navbar = (props) => {
                   >
                     Logout
                   </Button>
+                  </span>
+                  
                 ) : (
                   <Button
                     variant="outlined"

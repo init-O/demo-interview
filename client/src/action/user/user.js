@@ -47,3 +47,22 @@ export const getscheduledInterviews = (id) => async (dispatch) =>{
     const {data} = await api.getscheduledInterviews(id)
     dispatch({type:"GET_MEETINGS",payload:data})
 }
+
+export const getAllStreams = () => async (dispatch) =>{
+    const {data} = await api.getAllStreams()
+    dispatch({type:"GET_ALL_STREAMS",payload:data})
+}
+
+export const addNewStream = (sendData) => async (dispatch) =>{
+    const {data} = await api.addNewStream(sendData)
+    dispatch({type:"ADD_STREAM",payload:data})
+}
+
+export const deleteStream = (id) => async (dispatch) =>{
+    await api.deleteStream(id)
+    dispatch({type:"DELETE_STREAM",payload:id})
+}
+
+export const uploadResume = async (sendData) =>{
+    await api.uploadResume(sendData)
+}

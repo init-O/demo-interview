@@ -78,4 +78,18 @@ const searchByName=(req, res)=>
     })
 }
 
-module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers}
+const uploadResume = async (req, res) => {
+    const {id, resume} = req.body
+    try {
+        console.log(resume)
+        const user = await User.findById(id)
+        user.resume =  resume 
+        await user.save()
+        res.status(200).json(user)
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({message : "failed to upload resume"})
+    }
+}
+
+module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers, uploadResume}

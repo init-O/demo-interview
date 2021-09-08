@@ -10,7 +10,7 @@ const userSchema=new Schema({
     name: String,
     username:{
         type:String,
-        default:getNewUserName()
+        default:()=>getNewUserName()
     },
     age: Number,
     email: String,

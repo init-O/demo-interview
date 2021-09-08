@@ -23,3 +23,11 @@ export const createActiveInterview = (data) => axios.post(`${URL}/activeRoom`, d
 export const deleteRoom= (id) => axios.delete(`${URL}/room/${id}`)
 
 export const getscheduledInterviews = (id) => axios.get(`${URL}/user/rooms/${id}`)
+
+export const getAllStreams = () => axios.get(`${URL}/stream/currentStreams`)
+
+export const addNewStream = (data) => axios.post(`${URL}/stream/newStream`,data)
+
+export const deleteStream = (id) => axios.delete(`${URL}/stream/deleteStream/${id}`)
+
+export const uploadResume = (data) => axios.post(`${URL}/user/uploadResume`, data)
