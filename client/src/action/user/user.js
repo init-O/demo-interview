@@ -1,68 +1,137 @@
 import * as api from '../../api'
+import {NotificationManager} from 'react-notifications'
 
-export const createQuestionBank = (sendData) => async (dispatch) => {
-    const {data} = await api.createQuestionBank(sendData)
-    dispatch({type:'CREATE_QUESTION_BANK', payload:data})
+export const createQuestionBank = (sendData,setLoading) => async (dispatch) => {
+    try {
+        const {data} = await api.createQuestionBank(sendData)
+        setLoading(false)
+        NotificationManager.info("","Created New Question Bank")
+        dispatch({type:'CREATE_QUESTION_BANK', payload:data})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const getQuestionBank = () => async (dispatch) => {
-    const {data} = await api.getQuestionBank()
-    dispatch({type:'GET_QUESTION_BANK', payload:data})
+    try {
+        const {data} = await api.getQuestionBank()
+        dispatch({type:'GET_QUESTION_BANK', payload:data})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const getSingleQuestionBank = async (id) => {
-    const {data} = await api.getSingleQuestionBank(id)
-    return data.questions
+    try {
+        const {data} = await api.getSingleQuestionBank(id)
+        return data.questions
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
-export const addQuestionToBank = async (id,sendData) =>{
-    const {data} = await api.addQuestionToBank(id,sendData)
+export const addQuestionToBank = async (id,sendData,setLoading) =>{
+    try {
+        const {data} = await api.addQuestionToBank(id,sendData)
+        setLoading(false)
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
-export const deleteQuestionBank = (id) => async (dispatch) => {
-    const {data} = await api.deleteQuestionBank(id)
-    dispatch({type:'DELETE_QUESTION_BANK', payload:id})
+export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
+    try {
+        const {data} = await api.deleteQuestionBank(id)
+        setLoading(false)
+        NotificationManager.error("","Question Bank Deleted!")
+        dispatch({type:'DELETE_QUESTION_BANK', payload:id})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
-export const changeUsername = async  (sendData) => {
-    const {data} = await api.changeUsername(sendData)
+export const changeUsername = async  (sendData, setLoading) => {
+    try {
+        const {data} = await api.changeUsername(sendData)
+        setLoading(false)
+        NotificationManager.success("","Username Changed")
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
-export const scheduleInterview =  (sendData) => async (dispatch) => {
-    const {data} = await api.scheduleInterview(sendData)
-    dispatch({type:"ADD_MEETING", payload:data})
+export const scheduleInterview =  (sendData, setLoading) => async (dispatch) => {
+    try {
+        const {data} = await api.scheduleInterview(sendData)
+        dispatch({type:"ADD_MEETING", payload:data})
+        setLoading(false)
+        NotificationManager.info("","scheduled New Interview")
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const createActiveInterview=  async (sendData) =>
 {
-    const {data}= await api.createActiveInterview(sendData)
+    try {
+        const {data}= await api.createActiveInterview(sendData)
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
-export const deleteRoom = (id) => async (dispatch) =>{
-    const {data} = await api.deleteRoom(id)
-    dispatch({type:"DELETE_MEETING", payload:id})
+export const deleteRoom = (id,setLoading) => async (dispatch) =>{
+    try {
+        const {data} = await api.deleteRoom(id)
+        setLoading(false)
+        dispatch({type:"DELETE_MEETING", payload:id})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const getscheduledInterviews = (id) => async (dispatch) =>{
-    const {data} = await api.getscheduledInterviews(id)
-    dispatch({type:"GET_MEETINGS",payload:data})
+    try {
+        const {data} = await api.getscheduledInterviews(id)
+        dispatch({type:"GET_MEETINGS",payload:data})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const getAllStreams = () => async (dispatch) =>{
-    const {data} = await api.getAllStreams()
-    dispatch({type:"GET_ALL_STREAMS",payload:data})
+    try {
+        const {data} = await api.getAllStreams()
+        dispatch({type:"GET_ALL_STREAMS",payload:data})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const addNewStream = (sendData) => async (dispatch) =>{
-    const {data} = await api.addNewStream(sendData)
-    dispatch({type:"ADD_STREAM",payload:data})
+    try {
+        const {data} = await api.addNewStream(sendData)
+        dispatch({type:"ADD_STREAM",payload:data})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
 export const deleteStream = (id) => async (dispatch) =>{
-    await api.deleteStream(id)
-    dispatch({type:"DELETE_STREAM",payload:id})
+    try {
+        await api.deleteStream(id)
+        dispatch({type:"DELETE_STREAM",payload:id})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }
 
-export const uploadResume = async (sendData) =>{
-    await api.uploadResume(sendData)
+export const uploadResume = async (sendData,setLoading) =>{
+    try {
+        await api.uploadResume(sendData)
+        setLoading(false)
+        NotificationManager.success("","Uploaded resume successfully")
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
 }

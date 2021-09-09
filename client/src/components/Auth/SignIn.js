@@ -5,6 +5,8 @@ import {useDispatch} from 'react-redux'
 import { login } from '../../action/auth/auth.js'
 import {useHistory} from 'react-router-dom'
 
+import {NotificationManager} from 'react-notifications'
+
 const useStyles=makeStyles((theme) => ({
     paper: {
       position: 'absolute',
@@ -29,7 +31,7 @@ const useStyles=makeStyles((theme) => ({
     }
   }))
 
-const SignIn = () => {
+const SignIn = ({setNotification}) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const classes=useStyles()
@@ -37,6 +39,8 @@ const SignIn = () => {
     const handleClose=()=>
     {
         setOpen(false)
+        NotificationManager.error("try logging in again", "Google Login Failed");
+        history.push('/')
     }
     
 
@@ -44,10 +48,14 @@ const SignIn = () => {
         const result = res?.profileObj;
         const token = res?.tokenId;
         console.log('google result', result)
+        NotificationManager.success("Success", `Logged in as ${result?.email}`);
         dispatch(login({result,token}, history));    
       };
     
-    const googleFailure = async () => alert('Google Sign In was unsuccessful. Try again later');
+    const googleFailure = async () => {
+        NotificationManager.error("try logging in again", "Google Login Failed");
+        history.replace('/')
+    }
     const body=(
         <div className={classes.paper}>
             <p className={classes.modalText} >Log in using Google</p>

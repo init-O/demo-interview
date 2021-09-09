@@ -4,8 +4,9 @@ import { useParams } from 'react-router'
 import {getSingleQuestionBank, addQuestionToBank} from '../../action/user/user'
 import {Grid, TextField, Button} from '@material-ui/core'
 import Questions from './Questions'
+import { NotificationManager } from 'react-notifications'
 
-const SingleQuestionBank = () => {
+const SingleQuestionBank = ({setLoading}) => {
     const user = JSON.parse(localStorage.getItem('profile'))
     const {id} = useParams()
     const dispatch = useDispatch()
@@ -14,8 +15,9 @@ const SingleQuestionBank = () => {
 
     useEffect(() => {
         const getQuestions = async ()=>{
+            setLoading(true)
             const newQuestions = await getSingleQuestionBank(id)
-        
+            setLoading(false)
             console.log(newQuestions)
             setQuestions(newQuestions)
         }
@@ -23,9 +25,15 @@ const SingleQuestionBank = () => {
     },[])
 
     const handleCreateQuestion = () => {
-        setQuestions([...questions,addQuestion])
-        addQuestionToBank(id,addQuestion)
-        setAddQuestion('')
+        if(addQuestion.name && addQuestion.statement){
+            setLoading(true)
+            setQuestions([...questions,addQuestion])
+    
+            addQuestionToBank(id,addQuestion,setLoading)
+            setAddQuestion({name:'', statement:'', created_by:user.result._id})
+        }else{
+            NotificationManager.error('Name and statement',"Missing Required Fields")
+        }
     }
 
     return (

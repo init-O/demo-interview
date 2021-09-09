@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:5000'
+const URL = 'https://dragonapp10.herokuapp.com'
 
 export const login = (data) => axios.post(`${URL}/user/login`, data)
 
