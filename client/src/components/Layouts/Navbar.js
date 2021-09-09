@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoomIcon from "@material-ui/icons/RoomOutlined";
 import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import {NotificationManager} from 'react-notifications'
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = JSON.parse(localStorage.getItem("profile"));
-
+  const user = JSON.parse(localStorage.getItem('profile'))
+  
   const handleLogin = () => {
     history.push("/signIn");
   };
 
   const handleLogout = () => {
     dispatch({type:"LOGOUT"});
-    history.push("/");
+    NotificationManager.error("logging Out")
+    history.go(0);
   };
 
   const hanldeOpenAllStreams = ()=>{
@@ -35,6 +38,8 @@ const Navbar = (props) => {
       }
     >
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      {user && <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={()=>history.goBack()}>Back</button>}
+
         <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
           <a
             className={
@@ -70,7 +75,7 @@ const Navbar = (props) => {
               {
                 user?(<button className="px-2 py-1 mr-2 bg-green-300 text-indigo-800 hover:bg-green-500 hover:text-white rounded" onClick={()=>history.push('/user/dashboard')}>Dashboard</button>):<span></span>
               }
-              <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={hanldeOpenAllStreams}>Streams</button>
+              {user && <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={hanldeOpenAllStreams}>Streams</button>}
               <Grid item xs={12} md={4}>
                 {user ? (<span>
                   <Button

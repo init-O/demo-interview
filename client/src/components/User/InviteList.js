@@ -8,7 +8,7 @@ export default function InviteList({changeDetector, setChangeDetector}) {
     useEffect(()=>
     {
         console.log("This runs")
-        fetch(`${URL}/invites/${user.result._id}`)
+        fetch(`${URL}/invites/${user?.result._id}`)
         .then((res)=>res.json())
         .then((json)=>{
             console.log(json)

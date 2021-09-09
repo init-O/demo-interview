@@ -454,12 +454,12 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("./assets/img/anu.jpg").default}
+                    src="https://freerangestock.com/sample/23839/random-paint-splats-background.jpg"
                     className="shadow-lg rounded-full max-w-full mx-auto"
                     style={{ maxWidth: "120px" }}
                   />
                   <div className="pt-6 text-center">
-                    <h5 className="text-xl font-bold">Anurag Tiwary</h5>
+                    <h5 className="text-xl font-bold">Anurag Tiwari</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
                       Web Developer
                     </p>

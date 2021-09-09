@@ -21,6 +21,7 @@ import VideoEndIcon from '@material-ui/icons/MissedVideoCallTwoTone'
 
 import {addNewStream, deleteStream} from '../../../action/user/user'
 import { useDispatch } from 'react-redux'
+import { NotificationManager } from 'react-notifications'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
@@ -119,7 +120,7 @@ export default function Room() {
             setUserId(id)
             socket.emit('join-room', roomId,id)
         })
-
+        NotificationManager.success("Starting Interview....","Created Room")
         navigator.mediaDevices.getUserMedia({
             video:true,
             audio:true
@@ -219,6 +220,7 @@ export default function Room() {
     const handleLeaveCall=() =>{
         const tracks = stream.getTracks()
         tracks.forEach(track => track.stop())
+        NotificationManager.error("","Ending Interview")
         // stream.getaudioTracks.forEach(track =>{
         //     track.stop()
         // })
@@ -247,8 +249,7 @@ export default function Room() {
         if(!startStream){
             try {
                 if(streamName && roomId){
-
-                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Machine Learning"}
+                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Coding Interview"}
                     console.log('Stream Data',sendData)
                     dispatch(addNewStream(sendData))        
                     navigator.mediaDevices.getDisplayMedia({
@@ -261,6 +262,7 @@ export default function Room() {
                         sampleRate: 44100
                     }
                     }).then(displayMedia =>{
+                        NotificationManager.warning("","Stating Live stream")
                         setStreamVideo(displayMedia)
                         socket.on("user-join-stream",userId=>{
                             
@@ -270,12 +272,15 @@ export default function Room() {
                         })
                     })
                     setStartStream(!startStream)
-                } 
+                }else if(!streamName){
+                    NotificationManager.info("","Enter the Name of Live Stream")
+                }
             } catch (error) {
                 console.log(error)
             }
         }else{
             if(streamVideo){
+                NotificationManager.error("","Ending Live Stream")
                 dispatch(deleteStream(`${id.id}`))
                 const tracks = streamVideo.getTracks()
 

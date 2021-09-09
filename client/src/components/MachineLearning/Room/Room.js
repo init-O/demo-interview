@@ -19,6 +19,7 @@ import VideoOpenIcon from '@material-ui/icons/VideoCallTwoTone'
 import VideoCloseIcon from '@material-ui/icons/VideocamOffTwoTone'
 import VideoEndIcon from '@material-ui/icons/MissedVideoCallTwoTone'
 import { useDispatch } from 'react-redux'
+import {NotificationManager} from 'react-notifications'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
@@ -115,7 +116,7 @@ export default function Room() {
             setUserId(id)
             socket.emit('join-room', roomId,id)
         })
-
+        NotificationManager.success("starting Interview","Creating Room")
         navigator.mediaDevices.getUserMedia({
             video:true,
             audio:true
@@ -205,6 +206,7 @@ export default function Room() {
     const handleLeaveCall=() =>{
         const tracks = stream.getTracks()
         tracks.forEach(track => track.stop())
+        NotificationManager.error("","Ending Interview")
         // stream.getaudioTracks.forEach(track =>{
         //     track.stop()
         // })
@@ -240,6 +242,7 @@ export default function Room() {
                         sampleRate: 44100
                     }
                     }).then(displayMedia =>{
+                        NotificationManager.warning("","Starting Live Stream")
                         setStreamVideo(displayMedia)
                         socket.on("user-join-stream",userId=>{
                             
@@ -249,12 +252,15 @@ export default function Room() {
                         })
                     })
                     setStartStream(!startStream)
-                } 
+                }else if(!streamName){
+                    NotificationManager.info("","Enter Stream Name")
+                }
             } catch (error) {
                 console.log(error)
             }
         }else{
             if(streamVideo){
+                NotificationManager.error("","Ending Live Stream")
                 dispatch(deleteStream(`${id.id}`))
                 const tracks = streamVideo.getTracks()
 
