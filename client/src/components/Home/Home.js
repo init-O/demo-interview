@@ -44,7 +44,7 @@ export default function Home() {
                     Your Interview preparation starts with us.
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
-                    Demo-Interview lets you conduct hassle-free technical
+                    Interviewhub lets you conduct hassle-free technical
                     interviews in a real-time shared coding environment.
                   </p>
                 </div>
@@ -137,7 +137,7 @@ export default function Home() {
                   Let candidates show off their real skills
                 </h3>
                 <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-                  Demo-Interview is an interview and screening tool designed to
+                  Interviewhub is an interview and screening tool designed to
                   let candidates write programs that run. It’s simple, fast, and
                   remarkably powerful. And it looks, feels and behaves way more
                   like your real-world, working environment than, say, a
@@ -180,7 +180,7 @@ export default function Home() {
                       Top Notch Services all for free
                     </h4>
                     <p className="text-md font-light mt-2 text-white">
-                      Most of the services that Demo-Interview offers for free
+                      Most of the services that Interviewhub offers for free
                       are given as paid services by other sites in market.
                     </p>
                   </blockquote>
@@ -229,7 +229,7 @@ export default function Home() {
                     Interviews, troubleshooting, teaching & more
                   </h3>
                   <p className="mt-4 text-lg leading-relaxed text-gray-600">
-                    Demo-Interview collaborative coding environment allows you
+                    Interviewhub collaborative coding environment allows you
                     to quickly evaluate candidates and understand their thought
                     processes. Easily tailor each interview assessment to fit
                     your team’s needs – so you can find the right person faster.
@@ -345,27 +345,43 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("./assets/img/saheb.jpg").default}
+                    src={require("./assets/img/saheb.JPG").default}
                     className="shadow-lg rounded-full max-w-full mx-auto"
                     style={{ maxWidth: "120px" }}
                   />
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">Saheb Kumar</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Marketing Specialist
+                     Backend Developer & Marketing Specialist
                     </p>
                     <div className="mt-6">
+                      
+                      <button
+                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      > 
+                        <i className="fab fa-linkedin -f"></i>
+                      </button>
+                      <button
+                        className="bg-gray-800 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        type="button"
+                      >
+                        <i className="fab fa-github"></i>
+                      </button>
+
+
                       <button
                         className="bg-red-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-google"></i>
+                        <i className="fa fa-envelope"></i>
                       </button>
+
                       <button
-                        className="bg-blue-600 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                        className="bg-blue-400 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                         type="button"
                       >
-                        <i className="fab fa-facebook-f"></i>
+                        <i className="fab fa-twitter"></i>
                       </button>
                     </div>
                   </div>
@@ -515,10 +531,10 @@ export default function Home() {
             <div className="flex flex-wrap text-center justify-center">
               <div className="w-full lg:w-6/12 px-4">
                 <h2 className="text-4xl font-semibold text-white">
-                Join 2,000+ happy Demo-Interview users
+                Join 2,000+ happy Interviewhub users
                 </h2>
                 <p className="text-lg leading-relaxed mt-4 mb-4 text-gray-500">
-                Challenge yourself to code and interview better.Demo-Interview is the #1 platform for 2,000+ developers that want to take their careers to the next level.
+                Challenge yourself to code and interview better.Interviewhub is the #1 platform for 2,000+ developers that want to take their careers to the next level.
 
                 </p>
               </div>
@@ -532,7 +548,7 @@ export default function Home() {
                 Real-world interview kits to help you prepare
                 </h6>
                 <p className="mt-2 mb-4 text-gray-500">
-                Demo-Interview makes it easy to set up your custom environment and run code in over 30 of the most popular programming languages.
+                Interviewhub makes it easy to set up your custom environment and run code in over 30 of the most popular programming languages.
                 </p>
               </div>
               <div className="w-full lg:w-3/12 px-4 text-center">
@@ -567,7 +583,7 @@ export default function Home() {
                 <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-300">
                   <div className="flex-auto p-5 lg:p-10">
                     <h4 className="text-2xl font-semibold">
-                      Want to praise the work of developers team of Demo-Interview or have any query ?
+                      Want to praise the work of developers team of Interviewhub or have any query ?
                     </h4>
                     <p className="leading-relaxed mt-1 mb-4 text-gray-600">
                       Complete this form and we will get back to you in 24
