@@ -35,21 +35,22 @@ const QuestionBank = ({setLoading}) => {
     console.log('question bank',questionPack)
 
     return (
-        <Grid container>
-            <Grid item sm={12} md={8}>
-                <div className="flex justify-around">
+        <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4">
+            <div className="col-span-1 lg:col-span-2">
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
                 {questionPack.map(questionPackName=>{
-                    return <Grid item sm={12} md={5}>
+                    return <div className="col-span-1 lg:col-span-2">
                         <div key={questionPackName._id} className="m-3 w-full">
                             <div className=" QuestionPack-Background border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                                <div className="mb-4">
-                                <div className="text-blue-400 font-bold text-xl mb-2">{questionPackName.name}</div>
+                                <div className="mb-2">
+                                <div className="text-blue-400 font-bold text-2xl mb-1">{questionPackName.name}</div>
+                                <div className="text-yellow-300 font-bold text-lg mb-1">{questionPackName.category}</div>
                                 </div>
                                 <div className="relative pt-1">
                                 <div className="flex mb-2 items-center justify-between">
                                     <div>
                                     <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200">
-                                        Medium
+                                        {questionPackName.difficulty}
                                     </span>
                                     </div>
                                 </div>
@@ -60,8 +61,9 @@ const QuestionBank = ({setLoading}) => {
                                 <div className="flex items-center">
                                     <img className="w-11 h-11 p-0.5 rounded-full bg-pink-200 mr-4" src="https://coolbackgrounds.io/images/backgrounds/index/compute-ea4c57a4.png" alt="Avatar of Jonathan Reinink"/>
                                 <div className="text-sm text-pink-400">
-                                    <p className="text-whiteleading-none">Jonathan Reinink</p>
-                                    <p >Aug 18</p>
+                                    <p className="text-whiteleading-none">questionPackName.created_by.name.toUppercase()</p>
+                                    
+                                    <p >{new Date(questionPackName.modified_on).toDateString()}</p>
                                 </div>
                                 </div>
                                 <div className="flex justify-around mt-2">
@@ -74,11 +76,11 @@ const QuestionBank = ({setLoading}) => {
                                 </div>
                             </div>
                         </div>
-                    </Grid>
+                    </div>
                 })}
                 </div>
-            </Grid>
-            <Grid item sm={12} md={4}>
+            </div>
+            <div className="col-span-1">
             <div className="flex flex-wrap m-2 mb-6">
                 <div className="w-full px-3">
                 <label className="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="grid-module-name">
@@ -100,7 +102,7 @@ const QuestionBank = ({setLoading}) => {
                         Difficulty
                     </label>
                     <div className="relative" >
-                        <select className="w-full block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-module-difficulty" onChange={(e)=>setnewQuestionBank({...newQuestionBank,difficulty: e.target.value})}>
+                        <select className="w-full block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-module-difficulty" onChange={(e)=>setnewQuestionBank({...newQuestionBank,difficulty: 1})}>
                             <option>Basic</option>
                             <option>Easy</option>
                             <option>Medium</option>
@@ -117,8 +119,8 @@ const QuestionBank = ({setLoading}) => {
             <div className="flex flex-wrap m-2 mb-6 ">  
                 <button className="py-3 px-4 w-full uppercase font-bold mb-3 m-2 bg-blue-300 hover:bg-blue-500 rounded text-black" onClick={handleCreateQuestionBank}>Create New question Bank</button>
             </div>
-            </Grid>
-        </Grid>
+            </div>
+        </div>
     )
 }
 

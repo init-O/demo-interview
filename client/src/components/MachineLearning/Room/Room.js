@@ -384,14 +384,19 @@ export default function Room() {
                             <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>open resume</Button>
                             <input type="file" accept=".pdf" onChange={handleUploadCustomQuestion}/>
                             <button className="ml-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
-                        <Grid item sm={12} md={4}>
+                        <Grid item sm={12} md={12}>
                             <h1 className="mt-4" >Interview Questions</h1>
                             {!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
                             : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
                         </Grid>
-                        <Grid item sm={12} md={4}>
-                            {pdfHash && <iframe src={`https://ipfs.infura.io/ipfs/${pdfHash}`} height="800" width="800" frameborder="2"></iframe>}
+                        <Grid item sm={12} md={12}>
+                            {pdfHash &&
+                            <object data={`https://ipfs.infura.io/ipfs/${pdfHash}`} type="application/pdf" width="100%" height="600">
+                                <p>Your web browser doesn't have a PDF plugin.
+                                Instead you can <a href={`https://ipfs.infura.io/ipfs/${pdfHash}`}>click here to
+                                download the PDF file.</a></p>
+                            </object>}
                         </Grid>
                         </div>
                 

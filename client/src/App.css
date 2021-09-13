@@ -37,6 +37,14 @@
   background-size:auto;
   color: #fff;
 }
+.Question-Background {
+  background-image: url('https://i.imgur.com/YlwiPgI.jpeg') ;
+  background-size: cover;
+  opacity: 0.9;
+  background-repeat:round;
+  overflow: hidden;
+  color: #fff;
+}
 
 @keyframes App-logo-spin {
   from {
