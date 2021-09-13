@@ -4,7 +4,7 @@ import Room from './components/CodingRound/Room/Room'
 import MachineLearning from './components/MachineLearning/Room/Room'
 import Whiteboard from './components/CodingRound/Whiteboard/Whiteboard'
 import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
-import Home from './components/Home/Home'
+import Home from './components/Home/Home' 
 import Navbar from './components/Layouts/Navbar'
 import SignIn from './components/Auth/SignIn'
 import DashBoard from './components/User/dashboard'
@@ -61,7 +61,7 @@ function App() {
           <Route path={`/room/:id`} exact><Room/></Route>
           <Route path={`/ml/room/:id`} exact><MachineLearning/></Route>
 
-          <Route path='/signIn' exact><SignIn /></Route>
+          <Route path='/signIn' exact><SignIn /></Route> 
           <Route path='/user/dashboard' exact><DashBoard setLoading={setLoading}/></Route>
           <Route path='/questionBanks' exact><QuestionBank setLoading={setLoading} /></Route>
           <Route path='/questionBanks/:id' exact><SingleQuestionBank setLoading={setLoading} /></Route>
