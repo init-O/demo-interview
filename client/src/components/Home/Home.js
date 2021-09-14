@@ -345,7 +345,7 @@ export default function Home() {
                 <div className="px-6">
                   <img
                     alt="..."
-                    src={require("./assets/img/saheb.JPG").default}
+                    src={require("./assets/img/saheb.jpg").default}
                     className="shadow-lg rounded-full max-w-full mx-auto"
                     style={{ maxWidth: "120px" }}
                   />
