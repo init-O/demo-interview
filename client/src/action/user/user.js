@@ -50,6 +50,17 @@ export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
     }
 }
 
+export const deleteQuestion = (id,setLoading) => async (dispatch) => {
+    try {
+        const {data} = await api.deleteQuestion(id)
+        setLoading(false)
+        NotificationManager.error("","Question Deleted!")
+        dispatch({type:'DELETE_QUESTION_BANK', payload:id})
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
+}
+
 export const changeUsername = async  (sendData, setLoading) => {
     try {
         const {data} = await api.changeUsername(sendData)

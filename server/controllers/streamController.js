@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 
 const getCurrentStreams = async (req, res) => {
     try {
-        const streams = await Stream.find()
+        const streams = await Stream.find().populate('created_by')
         res.status(200).json(streams)
     } catch (error) {
         console.log(error)
@@ -14,11 +14,13 @@ const getCurrentStreams = async (req, res) => {
 const addNewStream = async (req, res) => {
     try {
         const {streamId, type, name} = req.body
-        const stream = await Stream.create({
+        const newStream = await Stream.create({
             streamId: streamId,
             type: type,
-            name: name
+            name: name,
+            created_by: req.body.created_by
         })
+        const stream = await Stream.findById(newStream).populate('created_by')
         res.status(200).send(stream)
     } catch (error) {
         console.log(error)
