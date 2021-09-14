@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoomIcon from "@material-ui/icons/RoomOutlined";
 import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import {NotificationManager} from 'react-notifications'
+
+import logo from "../Home/assets/img/interviewhubplainlogo.jpg"
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = JSON.parse(localStorage.getItem("profile"));
-
+  const user = JSON.parse(localStorage.getItem('profile'))
+  
   const handleLogin = () => {
     history.push("/signIn");
   };
 
   const handleLogout = () => {
     dispatch({type:"LOGOUT"});
-    history.push("/");
+    NotificationManager.error("logging Out")
+    history.go(0);
   };
+
+  const hanldeOpenAllStreams = ()=>{
+    history.push("/stream");
+  }
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
 
@@ -31,7 +40,12 @@ const Navbar = (props) => {
       }
     >
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-        <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+      {user && <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={()=>history.goBack()}>Back</button>}
+
+        <div className="w-full relative flex justify-between lg:w-auto lg:static   lg:justify-start">
+          
+           
+          <img src={logo} className="w-10 h-10 mr-2"/>
           <a
             className={
               (props.transparent ? "text-white" : "text-gray-800") +
@@ -39,7 +53,7 @@ const Navbar = (props) => {
             }
             href="/"
           >
-            Demo-Interview
+            Interview hub
           </a>
           <button
             className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
@@ -63,8 +77,14 @@ const Navbar = (props) => {
         >
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mr-8 text-lg">
             <li className="flex items-center">
+            <button className="px-2 py-1 mr-2 bg-blue-300 text-indigo-800 hover:bg-blue-500 hover:text-white rounded" onClick={()=>window.open('https://www.buymeacoffee.com/interviewhub')}>Donate</button>
+              {
+                user?(<button className="px-2 py-1 mr-2 bg-green-300 text-indigo-800 hover:bg-green-500 hover:text-white rounded" onClick={()=>history.push('/user/dashboard')}>Dashboard</button>):<span></span>
+              }
+              {user && <button className="px-2 py-1 mr-2 bg-yellow-300 text-indigo-800 hover:bg-yellow-500 hover:text-white rounded" onClick={hanldeOpenAllStreams}>Streams</button>}
               <Grid item xs={12} md={4}>
-                {user ? (
+                {user ? (<span>
+                  
                   <Button
                     variant="outlined"
                     color="secondary"
@@ -72,6 +92,8 @@ const Navbar = (props) => {
                   >
                     Logout
                   </Button>
+                  </span>
+                  
                 ) : (
                   <Button
                     variant="outlined"

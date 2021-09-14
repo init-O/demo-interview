@@ -3,7 +3,8 @@ import Peer from 'peerjs'
 import {io} from 'socket.io-client'
 import { useHistory, useParams } from 'react-router-dom'
 
-const socket=io("http://localhost:5000")
+const socket=io("https://dragonapp10.herokuapp.com")
+
 const Stream = () => {
     const history = useHistory()
     const streamVideo = useRef()

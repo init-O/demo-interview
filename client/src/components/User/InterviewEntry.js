@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import {deleteRoom} from '../../action/user/user'
 
-const URL = 'http://localhost:5000'
+const URL = 'https://dragonapp10.herokuapp.com'
 
 const useStyles=makeStyles((theme) => ({
     paper: {
@@ -37,7 +37,7 @@ const useStyles=makeStyles((theme) => ({
     }
   }))
 
-export default function InterviewEntry({interview}) {
+export default function InterviewEntry({interview, setLoading}) {
     const history=useHistory()
     const classes=useStyles()
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -74,7 +74,8 @@ export default function InterviewEntry({interview}) {
     }
 
     const handleSearch=(e)=>
-    {
+    {   
+        setLoading(true)
         e.preventDefault()
         console.log(searchText)
         const data={
@@ -90,14 +91,16 @@ export default function InterviewEntry({interview}) {
         .then(res=>res.json())
         .then(json=>{
             console.log(json)
+            setLoading(false)
             setSearchResults(json)
         })
     }
 
     const sendInvite=(id)=>
     {
+        setLoading(true)
         const data={
-            sentBy: user.result._id,
+            sentBy: user?.result._id,
             sentTo: id
         }
         fetch(`${URL}/invite/${interview._id}`, {
@@ -109,12 +112,14 @@ export default function InterviewEntry({interview}) {
         })
         .then(res=>res.json())
         .then(json=>{
+            setLoading(false)
             console.log(json)
         })
     }
 
     const handleDeleteRoom = (id)=>{
-        dispatch(deleteRoom(id))
+        setLoading(true)
+        dispatch(deleteRoom(id,setLoading))
     }
 
     function getRandomInt(min, max) {

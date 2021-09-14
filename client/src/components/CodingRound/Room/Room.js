@@ -19,9 +19,14 @@ import VideoOpenIcon from '@material-ui/icons/VideoCallTwoTone'
 import VideoCloseIcon from '@material-ui/icons/VideocamOffTwoTone'
 import VideoEndIcon from '@material-ui/icons/MissedVideoCallTwoTone'
 
+import {addNewStream, deleteStream} from '../../../action/user/user'
+import { useDispatch } from 'react-redux'
+import { NotificationManager } from 'react-notifications'
 
+const {create} = require('ipfs-http-client')
+const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
-const socket=io("http://localhost:5000")
+const socket=io("https://dragonapp10.herokuapp.com")
 
 const useStyles=makeStyles((theme)=>({
 
@@ -70,7 +75,7 @@ const useStyles=makeStyles((theme)=>({
 
 
 export default function Room() {
-
+    const dispatch = useDispatch()
     const history = useHistory()
     const classes=useStyles()
     const [myPeer,setMyPeer] = useState();
@@ -86,6 +91,11 @@ export default function Room() {
     const [resume,setResume] = useState(true)
     const [startStream,setStartStream] = useState(false)
     const [streamVideo,setStreamVideo]  = useState(null)
+    const [streamName,setStreamName] = useState()
+
+    const [insideMeeting,setInsideMeeting] = useState(false)
+    const [meetingClosed,setMeetingClosed] = useState(false)
+    const [pdfHash,setPdfHash] = useState()
 
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -110,7 +120,7 @@ export default function Room() {
             setUserId(id)
             socket.emit('join-room', roomId,id)
         })
-
+        NotificationManager.success("Starting Interview....","Created Room")
         navigator.mediaDevices.getUserMedia({
             video:true,
             audio:true
@@ -118,18 +128,32 @@ export default function Room() {
             setStream(currentStream)
             myVideo.current.srcObject = currentStream
 
+            socket.on("meeting-closed-exit",()=>{
+                console.log("meeting is closed")
+                if(!userVideo.current?.srcObject){
+                    const tracks = currentStream.getTracks()
+                    tracks.forEach(track => track.stop())
+                    history.replace('/user/dashboard')
+                }
+            })
+
             socket.on("user-connected",  (id)=>{
-                console.log('new user',id)
-                if(id!==userId){
-                const call = newPeer.call(id, currentStream)
-                console.log('this is call',call)
-                console.log('chal raha hai yeh...')
-                call.on('stream', userVideoStream =>{
-                    console.log('getting new user', userVideoStream)
-                    userVideo.current.srcObject = userVideoStream
-                })
-    
-                peers[id] = call;}
+                if(userVideo.current?.srcObject){
+                    socket.emit("meeting-closed")
+                }else{
+                    setInsideMeeting(true)
+                    console.log('new user',id)
+                    if(id!==userId){
+                    const call = newPeer.call(id, currentStream)
+                    console.log('this is call',call)
+                    console.log('chal raha hai yeh...')
+                    call.on('stream', userVideoStream =>{
+                        console.log('getting new user', userVideoStream)
+                        userVideo.current.srcObject = userVideoStream
+                    })
+        
+                    peers[id] = call;}
+                }
             })
         
         
@@ -144,13 +168,21 @@ export default function Room() {
 
         socket.on("user-disconnected",id=>{
             console.log('user disconnected...',id)
-            if(peers[id]) peers[id].close()
+            if(peers[id]) {
+                userVideo.current.srcObject = null
+                peers[id].close()
+            }
             
         })
 
         socket.on('user-change-editor',value=>{
             setOpenCodeEditor(value)
             setOpenWhiteboard(!value)
+        })
+
+        socket.on("upload-question-pdf-hash",hash=>{
+            console.log('naya hash aaya hau///', hash)
+            setPdfHash(hash)
         })
     },[])
 
@@ -186,6 +218,9 @@ export default function Room() {
     }
 
     const handleLeaveCall=() =>{
+        const tracks = stream.getTracks()
+        tracks.forEach(track => track.stop())
+        NotificationManager.error("","Ending Interview")
         // stream.getaudioTracks.forEach(track =>{
         //     track.stop()
         // })
@@ -212,31 +247,41 @@ export default function Room() {
 
     const handleStartStream = ()=>{
         if(!startStream){
-            try {           
-                navigator.mediaDevices.getDisplayMedia({
-                    video: {
-                        cursor: "always"
+            try {
+                if(streamName && roomId){
+                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Coding Interview"}
+                    console.log('Stream Data',sendData)
+                    dispatch(addNewStream(sendData))        
+                    navigator.mediaDevices.getDisplayMedia({
+                        video: {
+                            cursor: "always"
                     },
                     audio: {
-                    echoCancellation: true,
-                    noiseSuppression: true,
-                    sampleRate: 44100
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        sampleRate: 44100
                     }
-                }).then(displayMedia =>{
-                    setStreamVideo(displayMedia)
-                    socket.on("user-join-stream",userId=>{
-    
-                        console.log('stream dekhne aaya hai log....')
-                        const call = myPeer.call(userId, displayMedia)
-    
+                    }).then(displayMedia =>{
+                        NotificationManager.warning("","Stating Live stream")
+                        setStreamVideo(displayMedia)
+                        socket.on("user-join-stream",userId=>{
+                            
+                            console.log('stream dekhne aaya hai log....')
+                            const call = myPeer.call(userId, displayMedia)
+                            
+                        })
                     })
-                })
-                setStartStream(!startStream)
+                    setStartStream(!startStream)
+                }else if(!streamName){
+                    NotificationManager.info("","Enter the Name of Live Stream")
+                }
             } catch (error) {
                 console.log(error)
             }
         }else{
             if(streamVideo){
+                NotificationManager.error("","Ending Live Stream")
+                dispatch(deleteStream(`${id.id}`))
                 const tracks = streamVideo.getTracks()
 
                 tracks.forEach(track => track.stop())
@@ -244,6 +289,26 @@ export default function Room() {
                 setStartStream(!startStream)
             }
         }
+    }
+
+    const handleUploadCustomQuestion = (e) =>{
+        e.preventDefault()
+        const file = e.target.files[0]
+        const reader = new window.FileReader()
+        reader.readAsArrayBuffer(file)
+
+        reader.onloadend =async ()=>{
+            const buffer = new Buffer(reader.result)
+            const result =await ipfs.add(buffer)
+            setPdfHash(result.path)
+        }
+    }
+
+    const handleUploadPdf = (e) =>{
+        e.preventDefault()
+        const link=`https://ipfs.infura.io/ipfs/${pdfHash}`
+    
+        socket.emit('upload-question-pdf',pdfHash)
     }
 
     return (
@@ -289,9 +354,21 @@ export default function Room() {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Button variant="contained" onClick={handleEditorChange} color={openCodeEditor?"secondary":"primary"}>{openCodeEditor?"Close Editor":"Open Editor"}</Button>
-                    <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
-                    <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <Button variant="contained" onClick={handleEditorChange} color={openCodeEditor?"secondary":"primary"}>{openCodeEditor?"Close Editor":"Open Editor"}</Button>
+                    </div>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <Button variant="contained" onClick={handleWhiteboardChange} color={openWhiteboard?"secondary":"primary"}>{openWhiteboard?"Close Whiteboard":"Open Whiteboard"}</Button>
+                    </div>
+                    <div class="mb-4 mr-2">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                            Stream Name
+                        </label>
+                        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Stream Name" onChange={(e)=>{setStreamName(e.target.value)}}/>
+                    </div>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <Button variant="contained" onClick={handleStartStream} color={startStream?"secondary":"primary"}>{!startStream?"start stream":"stop stream"}</Button>
+                    </div>
                 </Grid>
                 <Grid item sm={12} md={12} >
                     {
@@ -300,13 +377,20 @@ export default function Room() {
                             <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>Interview Questions</Button>
                             <iframe src={user.result.resume} height="800" width="800" frameborder="2"></iframe>
                         </div>:
-                        <Grid>
+                        <div>
                             <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>open resume</Button>
+                            <input type="file" accept=".pdf" onChange={handleUploadCustomQuestion}/>
+                            <button className="ml-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
+                        <Grid sm={12} md={4}>
                             <h1 className="mt-4" >Interview Questions</h1>
                             {!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
                             : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
                         </Grid>
+                        <Grid sm={12} md={4}>
+                        {pdfHash && <iframe src={`https://ipfs.infura.io/ipfs/${pdfHash}`} height="800" width="800" frameborder="2"></iframe>}
+                        </Grid>
+                        </div>
                 
                     } 
                 </Grid>

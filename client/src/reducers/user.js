@@ -5,8 +5,11 @@ const user = (state={authData:null},action) => {
             return {...state, authData:action.payload}
 
         case 'LOGOUT':
-            localStorage.clear()
+            window.localStorage.removeItem('profile')
             return {...state, authData:null}
+
+        case 'SET_AUTH_DATA':
+            return {...state, authData:action.payload}
       
         default:
             return state

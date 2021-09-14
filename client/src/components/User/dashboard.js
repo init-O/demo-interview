@@ -1,28 +1,42 @@
 import React, {useState,useEffect} from 'react'
 import {MenuItem, Select, FormControl, InputLabel, TextField} from '@material-ui/core'
 import { useHistory } from 'react-router'
-import {useDispatch} from 'react-redux'
-import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews} from '../../action/user/user'
+import {useDispatch, useSelector} from 'react-redux'
+import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews, uploadResume} from '../../action/user/user'
+import {getAuthData} from '../../action/auth/auth'
 import DateTimePicker from 'react-datetime-picker';
 import Schedule from './Schedule'
 import InviteList from './InviteList'
+import { NotificationManager } from 'react-notifications'
+
+const {create} = require('ipfs-http-client')
+const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
 
 
-const Dashboard = () => {
+const Dashboard = ({setLoading}) => {
+
     const history = useHistory()
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'))
-    console.log(user)
+    const userPres = useSelector(state=>state.User.authData)
+    console.log("ayth user", userPres)
     const [currentUsername,setCurrentUsername] = useState()
     const [roomId,setRoomId] = useState('')
     const roomTypes = ["Coding Round", "Machine Learning", "Viva"]
     const [currentRoomType,setCurrentRoomType] = useState("Coding Round")
     const [dateValue, onChange] = useState(new Date());
     const [changeDetector, setChangeDetector]=useState(false)
+    const [resumeHash, setResumeHash] = useState()
 
     useEffect(() => {
-        dispatch(getQuestionBank())
-        dispatch(getscheduledInterviews(user.result._id))
+        if(!user){
+            NotificationManager.error("login To continue using")
+            history.replace('/')
+        }
+        else{
+            dispatch(getQuestionBank())
+            dispatch(getscheduledInterviews(user.result._id))
+        }
     }, [])
 
     
@@ -46,7 +60,11 @@ const Dashboard = () => {
 
     const handleJoinRoom = (e) => {
         e.preventDefault()
-        history.push(`/room/${roomId}`)
+        if(roomId){
+            history.push(`/room/${roomId}`)
+        }else{
+            NotificationManager.warning("","Enter the room Id")
+        }
     }
 
     const handleContribute = (e) => {
@@ -59,24 +77,49 @@ const Dashboard = () => {
     }
 
     const handleUsernameChage = (e) => {
-        if(currentUsername!==user.result.username){
-            changeUsername({email:user.result.email, username:currentUsername})
+        if(currentUsername!==user?.result.username){
+            setLoading(true)
+            changeUsername({email:user.result.email, username:currentUsername},setLoading)
+            dispatch(getAuthData(user))
         }
+    }
+
+    const handleCaptureResume = (e)=>{
+        NotificationManager.warning("","Loading Resume", 3000)
+        setLoading(true)
+        e.preventDefault()
+        const file = e.target.files[0]
+        const reader = new window.FileReader()
+        reader.readAsArrayBuffer(file)
+
+        reader.onloadend =async ()=>{
+            const buffer = new Buffer(reader.result)
+            const result =await ipfs.add(buffer)
+            setResumeHash(result.path)
+            setLoading(false)
+        }
+    
     }
 
     const handleUploadResume = (e) => {
         //update the resume link to user.resume
+        setLoading(true)
+        NotificationManager.info("","Uploading ")
+        e.preventDefault()
+        const sendData = {id:user?.result._id,resume:`https://ipfs.infura.io/ipfs/${resumeHash}`}
+        uploadResume(sendData,setLoading)
+        
     }
 
     const handleSchedule = (e)=>
-    {
+    {   setLoading(true)
         console.log("Schedule should change")
         const interviewData={
-            createdBy: user.result._id,
+            createdBy: user?.result._id,
             scheduledDate: dateValue,
             type: currentRoomType
         }
-        dispatch(scheduleInterview(interviewData))
+        dispatch(scheduleInterview(interviewData,setLoading))
 
     }
 
@@ -86,10 +129,10 @@ const Dashboard = () => {
        <div className="relative min-h-screen grid grid-cols-1 sm:grid-cols-4  ">
         <div className="bg-blue-500  col-span-1  items-strech">
         <div className="m-3 p-3 flex">
-        <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white "src={user.result.profilePic} alt="" /> 
+        <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white "src={user?.result.profilePic} alt="" /> 
         <div >
-        <span className="text-2xl   m-2 font-extrabold ">{user.result.name.split(" ")[0]}</span> <br></br>
-        <span className="italic"> @{user.result.username}</span>
+        <span className="text-2xl   m-2 font-extrabold ">{user?.result.name.split(" ")[0]}</span> <br></br>
+        <span className="italic"> @{userPres?.result.username}</span>
         </div>
         </div>
         <div className="m-3">
@@ -98,6 +141,7 @@ const Dashboard = () => {
         <button  href="#" className="text-white font-bold px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-yellow-500 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUsernameChage}>
         Update User Name
         </button>
+        <input type="file" accept="image/*,.pdf" className="ml-4 mt-3 mb-2 px-2" onChange={handleCaptureResume}/>
         <button  href="#" className="text-white font-bold mt-3 px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadResume}>
         Upload Resume
         </button>
@@ -165,7 +209,7 @@ const Dashboard = () => {
                 </button>
             </div>
             
-            <Schedule changeDetector={changeDetector}/>
+            <Schedule changeDetector={changeDetector} setLoading={setLoading}/>
             <InviteList changeDetector={changeDetector} setChangeDetector={setChangeDetector} />
 
 

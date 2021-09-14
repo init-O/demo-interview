@@ -2,7 +2,7 @@ import React from 'react'
 import CheckIcon from '@material-ui/icons/Check';
 import CancelIcon from '@material-ui/icons/Cancel';
 
-const URL = 'http://localhost:5000'
+const URL = 'https://dragonapp10.herokuapp.com'
 
 export default function InviteEntry({invite, setChangeDetector, changeDetector}) {
     const colors=['bg-red-400', 'bg-green-400', 'bg-yellow-400', 'bg-blue-400', 'bg-pink-400']
