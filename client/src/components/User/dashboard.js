@@ -200,7 +200,7 @@ const Dashboard = ({setLoading}) => {
             </div> 
             <div className="mt-10">
             <p className="text-xl font-semibold">To Schedule an Inteview </p>
-                    <div className="mt-4 mb-4">
+                    <div className="mt-4 mb-4 text-blue-300">
                         <DateTimePicker
                             onChange={onChange}
                             value={dateValue}

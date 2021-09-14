@@ -111,6 +111,12 @@ export default function Room() {
 
     const [stream, setStream] = useState()
 
+    window.onbeforeunload = confirmExit;
+    function confirmExit() {
+        if(streamVideo)
+            return "You have attempted to leave this page while the stream is running.";
+    }
+
 
     //Getting user Media permissons
     useEffect(()=>{

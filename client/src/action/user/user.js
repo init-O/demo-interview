@@ -50,12 +50,12 @@ export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
     }
 }
 
-export const deleteQuestion = (id,setLoading) => async (dispatch) => {
+export const deleteQuestion = (id,setLoading, setDeletedQuestion, deletedQuestion) => async (dispatch) => {
     try {
         const {data} = await api.deleteQuestion(id)
         setLoading(false)
+        setDeletedQuestion(!deletedQuestion)
         NotificationManager.error("","Question Deleted!")
-        dispatch({type:'DELETE_QUESTION_BANK', payload:id})
     } catch (error) {
         NotificationManager.error(error.response.data.error)
     }

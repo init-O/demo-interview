@@ -11,6 +11,7 @@ const SingleQuestionBank = ({setLoading}) => {
     const {id} = useParams()
     const dispatch = useDispatch()
     const [questions,setQuestions] = useState([])
+    const [deletedQuestion,setDeletedQuestion] = useState(false)
     const [addQuestion,setAddQuestion] = useState({name:'', statement:'',example:'', created_by:user.result._id})
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const SingleQuestionBank = ({setLoading}) => {
             setQuestions(newQuestions)
         }
         getQuestions()
-    },[])
+    },[deletedQuestion])
 
     const handleCreateQuestion = () => {
         if(addQuestion.name && addQuestion.statement){
@@ -41,7 +42,7 @@ const SingleQuestionBank = ({setLoading}) => {
             <div className="col-span-1 xl:col-span-3">
             <div className="grid grid-cols-1 px-4 py-2 lg:grid-cols-2 gap-6">
                 {questions.map(questionPackName=>{
-                    return <Questions question={questionPackName}/>
+                    return <Questions question={questionPackName} setDeletedQuestion={setDeletedQuestion} deletedQuestion={deletedQuestion} setLoading={setLoading}/>
                 })}
             </div>
             </div>
