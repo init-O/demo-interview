@@ -110,7 +110,7 @@ export default function Room() {
     window.onbeforeunload = confirmExit;
     function confirmExit() {
         if(streamVideo)
-            return "You have attempted to leave this page while the stream is running.";
+            return window.confirm("You have attempted to leave this page while the stream is running.");
     }
 
 
@@ -238,7 +238,7 @@ export default function Room() {
             try {
                 if(streamName && roomId){
 
-                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Machine Learning"}
+                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Machine Learning", created_by:user.result._id}
                     console.log('Stream Data',sendData)
                     navigator.mediaDevices.getDisplayMedia({
                         video: {
@@ -305,12 +305,14 @@ export default function Room() {
 
                 <Grid container >
                     {openWhiteboard && <Grid item sm={12} md={9}>
-                      <Whiteboard />
+                        <div className="bg-white w-full h-full">
+                            <Whiteboard />
+                        </div>
                     </Grid>}
                     <Grid item sm={12} md={openWhiteboard?3:12} className={classes.webCam}>
                         <Grid container align="center">
                             <Grid item sm={12} md={openWhiteboard?12:6}>
-                                <h1 className={classes.headingText}>Webcam 1</h1>
+                                <h1 className={classes.headingText}>YOU</h1>
                                 <Grid item sm={12} md={12}>
                                 <video className={openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
                                 </Grid>
@@ -335,7 +337,7 @@ export default function Room() {
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} md={openWhiteboard?12:6} >
-                                <h1 className={classes.headingText}>Webcam 2</h1>
+                                <h1 className={classes.headingText}>PEER</h1>
                                 <video className={openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline  ref={userVideo} autoPlay ></video>
                             </Grid>
                         </Grid>

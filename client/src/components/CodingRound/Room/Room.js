@@ -249,7 +249,7 @@ export default function Room() {
         if(!startStream){
             try {
                 if(streamName && roomId){
-                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Coding Interview"}
+                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Coding Interview", created_by:user.result._id}
                     console.log('Stream Data',sendData)
                     navigator.mediaDevices.getDisplayMedia({
                         video: {
@@ -319,7 +319,9 @@ export default function Room() {
                       <CodeEditor id={id}/>
                     </Grid>}
                     {openWhiteboard && <Grid item sm={12} md={9}>
-                      <Whiteboard />
+                        <div className="bg-white w-full h-full">
+                            <Whiteboard />
+                        </div>
                     </Grid>}
                     <Grid item sm={12} md={openCodeEditor||openWhiteboard?3:12} className={classes.webCam}>
                         <Grid container align="center">
