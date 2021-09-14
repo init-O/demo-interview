@@ -12,7 +12,7 @@ const questionPackSchema=new mongoose.Schema({
         required: true
     },
     difficulty: {
-        type: Number,
+        type: String,
         required: true
     },
     questions: [{type: mongoose.Schema.Types.ObjectId, ref: 'Question'}],

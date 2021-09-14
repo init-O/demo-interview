@@ -37,7 +37,7 @@ const streamRoutes = require('./routes/streamRoutes')
 const server=http.createServer(app);
 const io=socketio(server, {
     cors: {
-        origin: "https://demointerview01.herokuapp.com/",
+        origin: "https://interview-hub.netlify.app",
         methods: ["GET", "POST"]
       }
 });

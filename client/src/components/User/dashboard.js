@@ -127,24 +127,43 @@ const Dashboard = ({setLoading}) => {
     return (
     <div>
        <div className="relative min-h-screen grid grid-cols-1 sm:grid-cols-4  ">
-        <div className="bg-blue-500  col-span-1  items-strech">
+        <div className="col-span-1  items-strech">
         <div className="m-3 p-3 flex">
         <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white "src={user?.result.profilePic} alt="" /> 
         <div >
-        <span className="text-2xl   m-2 font-extrabold ">{user?.result.name.split(" ")[0]}</span> <br></br>
+        <span className="text-2xl uppercase  m-2 font-extrabold ">{user?.result.name.split(" ")[0]}</span> <br></br>
         <span className="italic"> @{userPres?.result.username}</span>
         </div>
         </div>
         <div className="m-3">
-        <TextField label="username" className="mx-2" onChange={(e)=>setCurrentUsername(e.target.value)}/>
+
+        <div className="flex flex-wrap m-1 mb-6 content-evenly">
+            <div className="w-half px-3">
+            <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" onChange={(e)=>setCurrentUsername(e.target.value)} placeholder="Username"/>
+            </div>
+            <div className="w-half px-3">
+            <button className="text-white w-full font-bold px-4 py-3 rounded outline-none focus:outline-none mb-1 bg-yellow-500 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUsernameChage}>
+            Update User Name
+            </button>  
+            </div>
         </div>
-        <button  href="#" className="text-white font-bold px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-yellow-500 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUsernameChage}>
-        Update User Name
-        </button>
-        <input type="file" accept="image/*,.pdf" className="ml-4 mt-3 mb-2 px-2" onChange={handleCaptureResume}/>
-        <button  href="#" className="text-white font-bold mt-3 px-6 py-4 rounded outline-none focus:outline-none ml-6 mr-1 mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadResume}>
-        Upload Resume
-        </button>
+
+
+        <div className="flex flex-wrap m-1 mb-6 content-evenly">
+            <div className="w-half px-3 overflow-hidden">
+                <input type="file" accept="image/*,.pdf" className="mb-2 w-full " onChange={handleCaptureResume}/>
+            </div>
+            <div className="w-half px-3">
+                <button   className="text-white mt-2 font-bold px-4 py-2 rounded outline-none focus:outline-none mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadResume}>
+                    Upload Resume
+                </button> 
+            </div>
+        </div>
+
+
+
+        </div>
+        
         </div>
 
         <div className="p-10 text-2x1 font-bold col-span-3 grid sm:grid-cols-1 md:grid-cols-2">
@@ -152,15 +171,17 @@ const Dashboard = ({setLoading}) => {
                 <p className="text-xl font-semibold">To create an instant interview.</p>
                 
                 <FormControl>
-                    <InputLabel>Room Type</InputLabel>
-                    <Select
-                    defaultValue={currentRoomType}
-                    onChange={handleRoomTypeChange}
-                    >
-                    {roomTypes.map((theme)=>(
-                        <MenuItem value={theme}>{theme}</MenuItem>
+
+                    <div className="relative" >
+                        <select onChange={handleRoomTypeChange} className="w-full block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-2 mt-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-module-difficulty" >
+                        {roomTypes.map((theme)=>(
+                            <option value={theme}>{theme}</option>
                         ))}
-                    </Select>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
                 </FormControl>
     
                 <button className="bg-blue-500 mt-3 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-4 rounded-full" onClick={handleCreateRoom}>
@@ -187,17 +208,20 @@ const Dashboard = ({setLoading}) => {
                     </div>
                     
                     <FormControl>
-                    <InputLabel>Room Type</InputLabel>
-                    <Select
-                    defaultValue={currentRoomType}
-                    onChange={handleRoomTypeChange}
-                    >
-                    {roomTypes.map((theme)=>(
-                        <MenuItem value={theme}>{theme}</MenuItem>
+
+                    <div className="relative" >
+                        <select onChange={handleRoomTypeChange} className="w-full block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-2 mt-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-module-difficulty" >
+                        {roomTypes.map((theme)=>(
+                            <option value={theme}>{theme}</option>
                         ))}
-                    </Select>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        </div>
+                    </div>
+
                 </FormControl>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded-full" onClick={handleSchedule}>
+                <button className="bg-blue-500 ml-2 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded-full" onClick={handleSchedule}>
                     Schedule Interview
                 </button>
             </div>

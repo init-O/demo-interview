@@ -9,19 +9,29 @@ import {NotificationManager} from 'react-notifications'
 
 const useStyles=makeStyles((theme) => ({
     paper: {
-      position: 'absolute',
-      width: 400,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
-      width: "30%",
-      height: '300px',
-      left: '37.5%',
-      top: "25%",
-      position: 'absolute',
-      fontSize: '1.25vw',
+      [theme.breakpoints.up('md')]:{
+          position: 'absolute',
+          width: "30%",
+          height: '300px',
+          left: '37.5%',
+          top: "25%",
+          fontSize: '1.25vw',
+      },
+      [theme.breakpoints.down('sm')]:{
+        fontSize: '32px',
+          width: "100%",
+          height: '100%',
+      },
+
+      
       textAlign: 'center'
+    },
+    paper_mobile:{
+
     },
     baseContainer: {
 
@@ -66,6 +76,7 @@ const SignIn = ({setNotification}) => {
                     onFailure={googleFailure}
                     cookiePolicy="single_host_origin"
                 />
+                
         </div>
     )
 
