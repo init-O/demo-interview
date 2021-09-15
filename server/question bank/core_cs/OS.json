@@ -1,0 +1,161 @@
+  
+{
+    "OS":[
+    {
+    "sno":"1.",
+    "question":"What is a microprocessor?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":" How does compiler compiles the interlinked libraries?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Explain the implementation of virtual methods?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Explain the implementation of Dynamic Binding? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Explain Virtual table or vtable? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is Multithreading? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"  Explain FCFS Scheduling? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"Explain Shortest Job First (or SJF) Scheduling? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"  Explain Priority CPU Scheduling? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Explain Round Robin scheduling? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"What are Semaphores?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":" Explain Mutex? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":" What is TLB? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"What is a Page Table?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"What is Paging and Why do we need Paging? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"What is Segmentation?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":" What is Deadlock? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"Explain Shortest Remaining Time First (SRTF) Scheduling? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":" Explain Longest Remaining Time First (LRTF) CPU Scheduling? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":" What is the difference between a thread and a process?  ",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"What are the differences between Mutex and Semaphore?  ",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":" Explain Producer Consumer Problem? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"What is Critical Section? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"Explain the Banker’s Algorithm.  ",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"How will you analyze Out of memory exceptions in your application? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"26.",
+    "question":"Explain spin lock ",
+    "level":"Senior"
+    },
+    {
+    "sno":"27.",
+    "question":"What is Cache? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"28.",
+    "question":"Explain Demand paging  ",
+    "level":"Senior"
+    },
+    {
+    "sno":"29.",
+    "question":" Explain Thrashing. ",
+    "level":"Senior"
+    },
+    {
+    "sno":"30.",
+    "question":"Explain internal fragmentation and external fragmentation. ",
+    "level":"Senior"
+    }, 
+    {
+    "sno":"31.",
+    "question":"Difference between the associative mapping and direct mapping in a cache. ",
+    "level":"Senior"
+    }
+    ]
+    } 
+    

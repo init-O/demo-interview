@@ -1,0 +1,121 @@
+   
+{
+    "Networking":[
+    {
+    "sno":"1.",
+    "question":"What is Access Point? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is the significance of Data Link Layer ",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What does the network layer do ",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Name layers of the OSI Model with protocols belonging to the layers ",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Explain TCP model ",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"In which layer are the Routers?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What does transport layer do?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"What are the different types of delays? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":" Difference between Private and Public IP addresses ",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Differentiate between IPv4 and IPv6 ",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Explain Firewalls?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":" What are the different types of firewall? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":" Explain DNS  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":" Explain server-side load balancer  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"What is FTP? How is FTP different from Secure FTP?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"What are the Application layer protocols?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":" What is SMTP",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"What is Cryptography and what are the Encryption Methods? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"Explain in detail 3 way Handshaking ",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"What happens when you type URL in your browser?  ",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"Where are ports? What are the Port numbers of some common protocols? ",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"Explain the Working of HTTP and HTTPs ",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"How to prevent SYN DDoS attack? ",
+    "level":"Senior"
+    } 
+    ]
+    } 
+    

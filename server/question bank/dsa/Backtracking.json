@@ -1,0 +1,45 @@
+ 
+{
+    "Backtracking":[
+    {
+    "sno":"1.",
+    "question":"What is Backtracking?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Why is this called Backtracking?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is Exhaustive Search?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is the difference between Backtracking and Recursion?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Explain what is DFS (Depth First Search) algorithm for a Graph and how does it work?",
+    "level":"Middle"
+    },
+    {
+    "sno":"6.",
+    "question":"What is the difference between Backtracking and Exhaustive Search techniques?",
+    "level":"Middle"
+    },
+    {
+    "sno":"7.",
+    "question":"Find all the Permutations of a String",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"Explain what is Explicit and Implicit Backtracking Constrains?",
+    "level":"Senior"
+    }
+    ]
+    }

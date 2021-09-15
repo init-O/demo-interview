@@ -1,0 +1,255 @@
+ 
+{
+    "CSS":[
+    {
+    "sno":"1.",
+    "question":"Explain the three main ways to apply CSS styles to a web page",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is CSS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"How to use variables in Sass?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Explain CSS sprites, and how you would implement them on a page or site.",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Explain the CSS “box model” and the layout components that it consists of",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is a CSS rule?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Explain what is a @extend directive used for in Sass?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"Have you played around with the new CSS Flexbox or Grid specs?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"What is DOM (Document Object Model) and how is it linked to CSS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"What is Sass?",
+    "level":"Junior"
+    },
+    {
+    "sno":"11.",
+    "question":"What existing CSS frameworks have you used locally, or in production? How would you change/improve them?",
+    "level":"Junior"
+    },
+    {
+    "sno":"12.",
+    "question":"Describe floats and how they work",
+    "level":"Junior"
+    },
+    {
+    "sno":"13.",
+    "question":"What Selector Nesting in Sass is used for?",
+    "level":"Junior"
+    },
+    {
+    "sno":"14.",
+    "question":"List out the key features for Sass?",
+    "level":"Junior"
+    },
+    {
+    "sno":"15.",
+    "question":"What is the difference between classes and IDs in CSS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"16.",
+    "question":"List out the data types that Sass supports",
+    "level":"Junior"
+    },
+    {
+    "sno":"17.",
+    "question":"What is variable interpolation in Sass? Provide some examples.",
+    "level":"Junior"
+    },
+    {
+    "sno":"18.",
+    "question":"What's the difference between SCSS and Sass?",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"Explain the usage of \"table-layout\" property",
+    "level":"Middle"
+    },
+    {
+    "sno":"20.",
+    "question":"What's the difference between a relative, fixed, absolute and statically positioned element?",
+    "level":"Middle"
+    },
+    {
+    "sno":"21.",
+    "question":"Have you ever worked with retina graphics? If so, when and what techniques did you use?",
+    "level":"Middle"
+    },
+    {
+    "sno":"22.",
+    "question":"What are the advantages/disadvantages of using CSS preprocessors?",
+    "level":"Middle"
+    },
+    {
+    "sno":"23.",
+    "question":"How is responsive design different from adaptive design?",
+    "level":"Middle"
+    },
+    {
+    "sno":"24.",
+    "question":"What is CSS selectors? Name some.",
+    "level":"Middle"
+    },
+    {
+    "sno":"25.",
+    "question":"What does Accessibility (a11y) mean?",
+    "level":"Middle"
+    },
+    {
+    "sno":"26.",
+    "question":"What is CSS preprocessor and why to user one?",
+    "level":"Middle"
+    },
+    {
+    "sno":"27.",
+    "question":"How would you approach fixing browser-specific styling issues?",
+    "level":"Middle"
+    },
+    {
+    "sno":"28.",
+    "question":"What’s the difference between “resetting” and “normalizing” CSS? Which would you choose, and why?",
+    "level":"Middle"
+    },
+    {
+    "sno":"29.",
+    "question":"Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.",
+    "level":"Middle"
+    },
+    {
+    "sno":"30.",
+    "question":"Describe pseudo-elements and discuss what they are used for.",
+    "level":"Middle"
+    },
+    {
+    "sno":"31.",
+    "question":"How does CSS actually work (under the hood of browser)?",
+    "level":"Middle"
+    },
+    {
+    "sno":"32.",
+    "question":"What is a Grid System in CSS?",
+    "level":"Middle"
+    },
+    {
+    "sno":"33.",
+    "question":"What is a Mixin and how to use on?",
+    "level":"Middle"
+    },
+    {
+    "sno":"34.",
+    "question":"How to create a zebra striped table with CSS?",
+    "level":"Middle"
+    },
+    {
+    "sno":"35.",
+    "question":"Explain the purpose of clearing floats in CSS",
+    "level":"Senior"
+    },
+    {
+    "sno":"36.",
+    "question":"What does * { box-sizing: border-box; } do? What are its advantages?",
+    "level":"Senior"
+    },
+    {
+    "sno":"37.",
+    "question":"Can you explain the difference between coding a website to be responsive versus using a mobile-first strategy?",
+    "level":"Senior"
+    },
+    {
+    "sno":"38.",
+    "question":"Explain the basic rules of CSS Specificity",
+    "level":"Senior"
+    },
+    {
+    "sno":"39.",
+    "question":"How do you optimize your webpages for print?",
+    "level":"Senior"
+    },
+    {
+    "sno":"40.",
+    "question":"Have you ever used a grid system, and if so, what do you prefer?",
+    "level":"Senior"
+    },
+    {
+    "sno":"41.",
+    "question":"What are the different ways to visually hide content (and make it available only for screen readers)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"42.",
+    "question":"Describe z-index and how a stacking context is formed",
+    "level":"Senior"
+    },
+    {
+    "sno":"43.",
+    "question":"Is there any reason you'd want to use translate() instead of absolute positioning, or vice-versa? And why?",
+    "level":"Senior"
+    },
+    {
+    "sno":"44.",
+    "question":"What the code fragment has the greater CSS specificity?",
+    "level":"Senior"
+    },
+    {
+    "sno":"45.",
+    "question":"What will be the CSS output for the following Sass code?",
+    "level":"Senior"
+    },
+    {
+    "sno":"46.",
+    "question":"What is the @content directive used for?",
+    "level":"Senior"
+    },
+    {
+    "sno":"47.",
+    "question":"Write down a selector that will match any links end in .zip, .ZIP, .Zip etc...",
+    "level":"Senior"
+    },
+    {
+    "sno":"48.",
+    "question":"How to style every element which has an adjacent item right before it?",
+    "level":"Senior"
+    },
+    {
+    "sno":"49.",
+    "question":"What’s wrong with Sass nesting? Provide some example.",
+    "level":"Senior"
+    },
+    {
+    "sno":"50.",
+    "question":"What clearfix methods do you know? Provide some examples.",
+    "level":"Senior"
+    }
+    ]
+    } 

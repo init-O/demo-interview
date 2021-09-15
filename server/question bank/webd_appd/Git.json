@@ -1,0 +1,186 @@
+ 
+{
+    "Git":[
+    {
+    "sno":"1.",
+    "question":"What is the command to write a commit message in Git?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is difference between Git vs SVN?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is Git?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is the difference between git pull and git fetch?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What's the difference between a pull request and a branch?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is Git fork? What is difference between fork, branch and clone?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"How does the Centralized Workflow work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"How to undo the most recent commits in Git?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"You need to update your local repos. What git commands will you use?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Tell me the difference between HEAD, working tree and index, in Git?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Could you explain the Gitflow workflow?",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"How to revert previous commit in git?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"Explain the advantages of Forking Workflow",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"What is git cherry-pick?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"What is a \"bare git\" repository?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"When should I use git stash?",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"You need to rollback to a previous commit and don't care about recent changes. What commands should you use?",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"What is difference between git stash pop and git stash apply?",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"What is the HEAD in Git?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"How do you make an existing repository bare?",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"Can you explain what git reset does in plain English?",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"When would you use git clone over git clone --mirror?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"When would you use git clone over git clone --bare?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"When would you use git clone --bare over git clone --mirror?",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"What is the difference between git clone, git clone --bare and git clone --mirror?",
+    "level":"Senior"
+    },
+    {
+    "sno":"26.",
+    "question":"What is git bisect? How can you use it to determine the source of a (regression) bug?",
+    "level":"Senior"
+    },
+    {
+    "sno":"27.",
+    "question":"How can you use git bisect to determine the source of a (regression) bug?",
+    "level":"Senior"
+    },
+    {
+    "sno":"28.",
+    "question":"What are the type of git hooks?",
+    "level":"Senior"
+    },
+    {
+    "sno":"29.",
+    "question":"Do you know how to easily undo a git rebase?",
+    "level":"Senior"
+    },
+    {
+    "sno":"30.",
+    "question":"What are \"git hooks\"?",
+    "level":"Senior"
+    },
+    {
+    "sno":"31.",
+    "question":"When do you use git rebase instead of git merge?",
+    "level":"Senior"
+    },
+    {
+    "sno":"32.",
+    "question":"Write down a sequence of git commands for a \"Rebase Workflow\"",
+    "level":"Senior"
+    },
+    {
+    "sno":"33.",
+    "question":"How to remove a file from git without removing it from your file system?",
+    "level":"Senior"
+    },
+    {
+    "sno":"34.",
+    "question":"How to amend older Git commit?",
+    "level":"Senior"
+    },
+    {
+    "sno":"35.",
+    "question":"Write down a git command to check difference between two commits",
+    "level":"Senior"
+    },
+    {
+    "sno":"36.",
+    "question":"What git command do you need to use to know who changed certain lines in a specific file?",
+    "level":"Senior"
+    }
+    ]
+    } 
+    
