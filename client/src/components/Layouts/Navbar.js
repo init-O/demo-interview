@@ -21,6 +21,7 @@ const Navbar = (props) => {
   const handleLogout = () => {
     dispatch({type:"LOGOUT"});
     NotificationManager.error("logging Out")
+    history.push('/');
     history.go(0);
   };
 

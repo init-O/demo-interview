@@ -31,6 +31,7 @@ function App() {
   const userPres = useSelector(state=>state.User.authData);
 
   const [loading,setLoading] = useState(false);
+  const [navbarOpen,setNavbarOpen] = useState(true);
 
 
   useEffect(() => {
@@ -44,7 +45,7 @@ function App() {
   return (
     <Router>
       <div>
-      <Navbar userPres={userPres} />
+      {navbarOpen && <Navbar userPres={userPres} />}
       <NotificationContainer />
       {loading && <LoadingScreen /> }
       <Switch>
@@ -58,8 +59,8 @@ function App() {
             <Redirect to={`/ml/room/${uuidv4()}`} />
           </Route>
 
-          <Route path={`/room/:id`} exact><Room/></Route>
-          <Route path={`/ml/room/:id`} exact><MachineLearning/></Route>
+          <Route path={`/room/:id`} exact><Room setNavbarOpen={setNavbarOpen}/></Route>
+          <Route path={`/ml/room/:id`} exact><MachineLearning setNavbarOpen={setNavbarOpen}/></Route>
 
           <Route path='/signIn' exact><SignIn /></Route> 
           <Route path='/user/dashboard' exact><DashBoard setLoading={setLoading}/></Route>

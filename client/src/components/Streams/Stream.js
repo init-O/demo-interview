@@ -154,7 +154,7 @@ const Stream = () => {
             {!streamVideo.current?.srcObject && <h1 className="block text-xl text-red-500 ">Stream has ended</h1> }
             <div className="flex justify-center h-full">
             {/* ref={streamVideo} */}
-                    <video playsInline autoPlay ref={streamVideo} controls></video>
+                    <video className="w-full h-screen lg:w-3/4" playsInline autoPlay ref={streamVideo} controls></video>
             </div>
             <Container className={classes.baseContainer}>
             <Modal

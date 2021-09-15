@@ -35,9 +35,9 @@ const Questions = ({question, setLoading, setDeletedQuestion, deletedQuestion}) 
                         <button className="bg-yellow-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>setFullView(!fullView)} type="button">
                             Collapse
                         </button>
-                        <button className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>{handleDeleteQuestion(question._id)}} type="button">
+                        {(user.result._id === question.created_by._id) && <button className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>{handleDeleteQuestion(question._id)}} type="button">
                             Delete
-                        </button>
+                        </button>}
                     </div>
                 </div>
         )
@@ -64,9 +64,9 @@ const Questions = ({question, setLoading, setDeletedQuestion, deletedQuestion}) 
                         <button className="bg-blue-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>setFullView(!fullView)} type="button">
                             View Full
                         </button>
-                        <button className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>{handleDeleteQuestion(question._id)}} type="button">
+                        {(user.result._id === question.created_by._id) && <button className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>{handleDeleteQuestion(question._id)}} type="button">
                             Delete
-                        </button>
+                        </button>}
                     </div>
                 </div>
             </div>

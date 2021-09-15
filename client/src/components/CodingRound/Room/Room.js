@@ -26,6 +26,8 @@ import { NotificationManager } from 'react-notifications'
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
+import { useBeforeunload } from 'react-beforeunload';
+
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
@@ -77,7 +79,7 @@ const useStyles=makeStyles((theme)=>({
 }))
 
 
-export default function Room() {
+export default function Room({setNavbarOpen}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const classes=useStyles()
@@ -111,18 +113,19 @@ export default function Room() {
 
     const [stream, setStream] = useState()
 
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        if(streamVideo)
-            return "You have attempted to leave this page while the stream is running.";
-    }
+    useBeforeunload((event) => {
+        if (streamVideo) {
+          event.preventDefault();
+          return "Stream still running..."
+        }
+    });
 
 
     //Getting user Media permissons
     useEffect(()=>{
 
         const newPeer = new Peer()
-
+        setNavbarOpen(false)
         setMyPeer(newPeer)
         newPeer.on('open', id=>{
             console.log('user connected...',id)
@@ -218,14 +221,19 @@ export default function Room() {
     }
 
     const handleLeaveCall=() =>{
-        const tracks = stream.getTracks()
-        tracks.forEach(track => track.stop())
-        NotificationManager.error("","Ending Interview")
-        // stream.getaudioTracks.forEach(track =>{
-        //     track.stop()
-        // })
-        socket.disconnect();
-        history.replace('/user/dashboard')
+        if(streamVideo){
+            NotificationManager.warning("please close before leaving", "Stream Running")
+        }else{
+            setNavbarOpen(true)
+            const tracks = stream.getTracks()
+            tracks.forEach(track => track.stop())
+            NotificationManager.error("","Ending Interview")
+            // stream.getaudioTracks.forEach(track =>{
+            //     track.stop()
+            // })
+            socket.disconnect();
+            history.replace('/user/dashboard')
+        }
     }
 
 
