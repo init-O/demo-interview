@@ -12,6 +12,7 @@ import QuestionBank from './components/QuestionBank/QuestionBank'
 import SingleQuestionBank from './components/QuestionBank/SingleQuestionBank'
 import SingleQuestionBankView from './components/QuestionBankView/SingleQuestionBankView'
 import InterviewQuestionBank from './components/QuestionBankView/Main'
+import InterviewScoreForm from './components/Forms/InterviewScore'
 import { v4 as uuidv4 } from 'uuid';
 import Peer from 'peerjs';
 import {useDispatch, useSelector} from 'react-redux'
@@ -66,7 +67,7 @@ function App() {
           <Route path='/user/dashboard' exact><DashBoard setLoading={setLoading}/></Route>
           <Route path='/questionBanks' exact><QuestionBank setLoading={setLoading} /></Route>
           <Route path='/questionBanks/:id' exact><SingleQuestionBank setLoading={setLoading} /></Route>
-
+          <Route path='/interviewscore' exact> <InterviewScoreForm /></Route>
           <Route path='/stream/:id' exact><Stream /></Route>
           <Route path='/stream' exact><StreamList /></Route>
           <Route component={PageNotFound}/>

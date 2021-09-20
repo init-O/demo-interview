@@ -30,6 +30,7 @@ const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 const socket=io("https://dragonapp10.herokuapp.com")
+// const socket=io("http://localhost:5000")
 
 const useStyles=makeStyles((theme)=>({
 
@@ -81,6 +82,10 @@ export default function Room({setNavbarOpen}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const classes=useStyles()
+
+    const [currentPeerDbId,setcurrentPeerDbId] = useState()
+    const [currentPeerDbName,setcurrentPeerDbName] = useState()
+
     const [myPeer,setMyPeer] = useState();
     const [openCodeEditor,setOpenCodeEditor]=useState(false)
     const [openWhiteboard, setOpenWhiteboard]=useState(false)
@@ -128,7 +133,7 @@ export default function Room({setNavbarOpen}) {
         newPeer.on('open', id=>{
             console.log('user connected...',id)
             setUserId(id)
-            socket.emit('join-room', roomId,id)
+            socket.emit('join-room', roomId,id,user?.result?._id,user?.result?.name)
         })
         NotificationManager.success("starting Interview","Creating Room")
         navigator.mediaDevices.getUserMedia({
@@ -147,11 +152,15 @@ export default function Room({setNavbarOpen}) {
                 }
             })
 
-            socket.on("user-connected",  (id)=>{
+            socket.on("user-connected",  (id, peerId, peerName)=>{
                 if(userVideo.current?.srcObject){
                     socket.emit("meeting-closed")
                 }else{
                     setInsideMeeting(true)
+                    setcurrentPeerDbId(peerId)
+                    setcurrentPeerDbName(peerName)
+                    socket.emit("giving-back-id",user?.result._id, user?.result.name)
+
                     console.log('new user',id)
                     if(id!==userId){
                     const call = newPeer.call(id, currentStream)
@@ -175,6 +184,10 @@ export default function Room({setNavbarOpen}) {
             })
         })
 
+        socket.on("get-back-id",(peerId,peerName)=>{
+            setcurrentPeerDbId(peerId)
+            setcurrentPeerDbName(peerName)
+        })
 
         socket.on("user-disconnected",id=>{
             console.log('user disconnected...',id)
@@ -230,7 +243,13 @@ export default function Room({setNavbarOpen}) {
             // })
             userVideo.current.srcObject = null
             socket.disconnect();
-            history.replace('/user/dashboard')
+            history.replace({
+                pathname: '/interviewscore',
+                state: {  // location state
+                  userId:currentPeerDbId,
+                  userName:currentPeerDbName
+                },
+              }); 
         }
     }
 
@@ -322,7 +341,7 @@ export default function Room({setNavbarOpen}) {
                     <Grid item sm={12} md={openWhiteboard?3:12} className={classes.webCam}>
                         <Grid container align="center">
                             <Grid item sm={12} md={openWhiteboard?12:6}>
-                                <h1 className={classes.headingText}>YOU</h1>
+                                <h1 className={classes.headingText}>{user?.result?.name}</h1>
                                 <Grid item sm={12} md={12}>
                                 <video className={openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
                                 </Grid>
@@ -347,7 +366,7 @@ export default function Room({setNavbarOpen}) {
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} md={openWhiteboard?12:6} >
-                                <h1 className={classes.headingText}>PEER</h1>
+                                {currentPeerDbName && <h1 className={classes.headingText}>{currentPeerDbName}</h1>}
                                 <video className={openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline  ref={userVideo} autoPlay ></video>
                             </Grid>
                         </Grid>

@@ -8,6 +8,7 @@ import DateTimePicker from 'react-datetime-picker';
 import Schedule from './Schedule'
 import InviteList from './InviteList'
 import { NotificationManager } from 'react-notifications'
+import MarksGraph from './MarksGraph'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
@@ -202,6 +203,7 @@ const Dashboard = ({setLoading}) => {
             <p className="text-xl font-semibold">To Schedule an Inteview </p>
                     <div className="mt-4 mb-4 text-blue-300">
                         <DateTimePicker
+                            className="react-datetime-schedule-graph"
                             onChange={onChange}
                             value={dateValue}
                         />
@@ -236,6 +238,9 @@ const Dashboard = ({setLoading}) => {
             <Schedule changeDetector={changeDetector} setLoading={setLoading}/>
             <InviteList changeDetector={changeDetector} setChangeDetector={setChangeDetector} />
 
+            <div className="md:col-span-2 col-span-1">
+                <MarksGraph />
+            </div>
 
         </div>
         
