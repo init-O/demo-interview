@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { createActiveInterview } from '../../../action/user/user'
 import CodeEditor from '../CodeEditor/CodeEditor'
 import Whiteboard from '../Whiteboard/Whiteboard'
+import SahebQuestionBankView from  '../../QuestionBankView/sahebmap' 
 import ViewIntreViewQuestion from '../../QuestionBankView/Main'
 import SingleQuestionBankView from '../../QuestionBankView/SingleQuestionBankView'
 //Material UI imports 
@@ -395,7 +396,7 @@ export default function Room() {
                         resume?
                         <div className="justify-center">
                             <button  className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>Interview Questions</button>
-                                {/* <iframe src={user.result.resume} height="100%" width="" frameborder="2"></iframe> */}
+                                //  <iframe src={user.result.resume} height="100%" width="" frameborder="2"></iframe> 
                             <object data={user.result.resume} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
                                 Instead you can <a href={user.result.resume}>click here to
@@ -423,8 +424,22 @@ export default function Room() {
                 
                     } 
                 </Grid>
-            
+                 
+                
+                        {/* 
+                        
+                        deleted code 
+                        
+                        +
+                        
+                         <SahebQuestionBankView/>  
+                        
+                        */}
+
+                     
         </Container>
+
+         
         
     )
 }

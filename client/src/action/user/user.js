@@ -146,3 +146,12 @@ export const uploadResume = async (sendData,setLoading) =>{
         NotificationManager.error(error.response.data.error)
     }
 }
+
+export const getsahebquestion = async (id) => {
+    try {
+        const {data} = await api.getsahebquestion(id)
+        return data 
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
+}
