@@ -11,8 +11,8 @@ import SahebQuestionBankView from  '../../QuestionBankView/sahebmap'
 import ViewIntreViewQuestion from '../../QuestionBankView/Main'
 import SingleQuestionBankView from '../../QuestionBankView/SingleQuestionBankView'
 //Material UI imports 
-import { Button, Container, Grid} from '@material-ui/core'
-import { makeStyles, } from '@material-ui/core'
+import { Button, Container, Grid, Switch} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 
 import MicOpenIcon from '@material-ui/icons/MicTwoTone'
 import MicCloseIcon from '@material-ui/icons/MicOffTwoTone'
@@ -26,6 +26,7 @@ import { NotificationManager } from 'react-notifications'
 
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import Jumbotron from '../../altQuestionBank/Jumbotron'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
@@ -92,7 +93,7 @@ export default function Room() {
     const [videoOpen,setVideoOpen] = useState(true)
     const [singleQuestionview,setSingleQuestionview] = useState(false)
     const [questionBankId,setQuestionBankId] = useState()
-    const [resume,setResume] = useState(true)
+    const [resume,setResume] = useState(false)
     const [startStream,setStartStream] = useState(false)
     const [streamVideo,setStreamVideo]  = useState(null)
     const [streamName,setStreamName] = useState()
@@ -100,6 +101,7 @@ export default function Room() {
     const [insideMeeting,setInsideMeeting] = useState(false)
     const [meetingClosed,setMeetingClosed] = useState(false)
     const [pdfHash,setPdfHash] = useState()
+    const [switcher, setSwitcher]=useState(true)
 
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -244,6 +246,11 @@ export default function Room() {
         socket.emit('change-editor',!openCodeEditor)
         setOpenWhiteboard(!openWhiteboard)
         setOpenCodeEditor(false)
+    }
+
+    const handleSwitch=()=>
+    {
+        setSwitcher(!switcher);
     }
 
     const handleStartStream = ()=>{
@@ -408,10 +415,14 @@ export default function Room() {
                             <input type="file" className="m-3 px-2 py-2" accept=".pdf" onChange={handleUploadCustomQuestion}/>
                             <button className="m-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
                         <Grid sm={12} md={12}>
-                            <h1 className="mt-4" >Interview Questions</h1>
-                            {!singleQuestionview ? 
+                            <div className="Question-Background2">
+                                <Switch checked={switcher} onChange={handleSwitch} name="checkedA" inputProps={{ 'aria-label': 'secondary checkbox' }} />
+                            </div>
+                            {switcher?<Jumbotron />:<div><h1 className="mt-4" >Interview Questions</h1>{!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
-                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
+                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>}</div>}
+                            
+                             
                         </Grid>
                         <Grid sm={12} md={12}>
                         {pdfHash && <object data={`https://ipfs.infura.io/ipfs/${pdfHash}`} type="application/pdf" width="100%" height="600">

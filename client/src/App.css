@@ -44,6 +44,13 @@
   overflow: hidden;
   color: #fff;
 }
+.Question-Background2 {
+  background-color: #528ab4;
+  opacity: 0.9;
+  background-repeat:round;
+  overflow: hidden;
+  color: #fff;
+}
 
 @keyframes App-logo-spin {
   from {

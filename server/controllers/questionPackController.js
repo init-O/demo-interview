@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const questionPack=require('../models/questionPackModel')
 const Question=require('../models/questionModel')
-
+const fs=require('fs')
 const getQuestionPacks=async (req, res)=>
 {
     const questionPacks=await questionPack.find().populate('created_by')
@@ -130,6 +130,56 @@ const deleteQuestion=async (req, res)=>
     
 }
 
+const getCoreCSQuestion=(req, res)=>
+{
+    fs.readFile('./question_bank/core_cs/'+req.params.topic+'.json', "utf8", (err, jsonString)=>
+    {
+        if (err)
+        {
+            console.log(err)
+            return res.status(404).json({message:"error Not found"})
+        }
+        else
+        {
+            console.log(jsonString)
+            return res.json(jsonString)
+        }
+    })
+}
+
+const getDSAQuestion=(req, res)=>
+{
+    fs.readFile('./question_bank/dsa/'+req.params.topic+'.json', "utf8", (err, jsonString)=>
+    {
+        if (err)
+        {
+            console.log(err)
+            return res.status(404).json({message:"error Not found"})
+        }
+        else
+        {
+            console.log(jsonString)
+            return res.json(jsonString)
+        }
+    })
+}
+
+const getWebDevQuestion=(req, res)=>
+{
+    fs.readFile('./question_bank/webd/'+req.params.topic+'.json', "utf8", (err, jsonString)=>
+    {
+        if (err)
+        {
+            console.log(err)
+            return res.status(404).json({message:"error Not found"})
+        }
+        else
+        {
+            console.log(jsonString)
+            return res.json(jsonString)
+        }
+    })
+}
 
 
-module.exports={getQuestionPacks, getQuestions, postQuestionPack, addQuestion, deleteQuestionPack, editQuestion, getQuestionPack, deleteQuestion}
+module.exports={getQuestionPacks, getQuestions, postQuestionPack, addQuestion, deleteQuestionPack, editQuestion, getQuestionPack, deleteQuestion, getCoreCSQuestion, getDSAQuestion, getWebDevQuestion}
