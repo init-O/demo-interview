@@ -147,6 +147,15 @@ export const uploadResume = async (sendData,setLoading) =>{
     }
 }
 
+export const getsahebquestion = async (id) => {
+    try {
+        const {data} = await api.getsahebquestion(id)
+        return data 
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
+}
+
 export const addInterviewScore = async (sendData) =>{
     try {
         await api.addInterviewScore(sendData)
@@ -154,3 +163,4 @@ export const addInterviewScore = async (sendData) =>{
         NotificationManager.error(error.response.data.error)
     }
 }
+

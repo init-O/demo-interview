@@ -1,0 +1,110 @@
+ 
+{
+    "Arrays":[
+    {
+    "sno":"1.",
+    "question":"Explain what is an Array?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Name some characteristics of Array Data Structure",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"How do Dynamic Arrays work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What are Dynamic Arrays?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is a main difference between an Array and a Dictionary?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Name some advantages and disadvantages of Arrays",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What is time complexity of basic Array operations?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"What does Sparse Array mean?",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"How exactly indexing works in Arrays?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"When to use a Linked List over an Array/Array List?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Compare Array based vs Linked List stack implementations",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What is an Associative Array?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"What are advantages of Sorted Arrays?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"What are time complexities of sorted array operations?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"What is the advantage of Heaps over Sorted Arrays?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"How to merge two sorted Arrays into a Sorted Array?",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"Why is the complexity of fetching from an Array be O(1)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"18.",
+    "question":"What defines the dimensionality of an Array?",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"How would you compare Dynamic Arrays with Linked Lists and vice versa?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"Check for balanced parentheses in linear time using constant space",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"How to implement 3 Stacks with one Array?",
+    "level":"Senior"
+    }
+    ]
+    } 

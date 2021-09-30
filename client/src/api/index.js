@@ -47,3 +47,8 @@ export const addNewStream = (data) => axios.post(`${URL}/stream/newStream`,data)
 
 export const deleteStream = (id) => axios.delete(`${URL}/stream/deleteStream/${id}`)
 
+
+export const uploadResume = (data) => axios.post(`${URL}/user/uploadResume`, data)
+
+export const getsahebquestion = (id) => axios.get(`${URL}/getsahebquestion/${id}`)
+

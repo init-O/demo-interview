@@ -7,11 +7,12 @@ import { useParams } from 'react-router-dom'
 import { createActiveInterview } from '../../../action/user/user'
 import CodeEditor from '../CodeEditor/CodeEditor'
 import Whiteboard from '../Whiteboard/Whiteboard'
+import SahebQuestionBankView from  '../../QuestionBankView/sahebmap' 
 import ViewIntreViewQuestion from '../../QuestionBankView/Main'
 import SingleQuestionBankView from '../../QuestionBankView/SingleQuestionBankView'
 //Material UI imports 
-import { Button, Container, Grid} from '@material-ui/core'
-import { makeStyles, } from '@material-ui/core'
+import { Button, Container, Grid, Switch} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core'
 
 import MicOpenIcon from '@material-ui/icons/MicTwoTone'
 import MicCloseIcon from '@material-ui/icons/MicOffTwoTone'
@@ -25,6 +26,7 @@ import { NotificationManager } from 'react-notifications'
 
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import Jumbotron from '../../altQuestionBank/Jumbotron'
 
 import { useBeforeunload } from 'react-beforeunload';
 
@@ -97,7 +99,7 @@ export default function Room({setNavbarOpen}) {
     const [videoOpen,setVideoOpen] = useState(true)
     const [singleQuestionview,setSingleQuestionview] = useState(false)
     const [questionBankId,setQuestionBankId] = useState()
-    const [resume,setResume] = useState(true)
+    const [resume,setResume] = useState(false)
     const [startStream,setStartStream] = useState(false)
     const [streamVideo,setStreamVideo]  = useState(null)
     const [streamName,setStreamName] = useState()
@@ -105,6 +107,7 @@ export default function Room({setNavbarOpen}) {
     const [insideMeeting,setInsideMeeting] = useState(false)
     const [meetingClosed,setMeetingClosed] = useState(false)
     const [pdfHash,setPdfHash] = useState()
+    const [switcher, setSwitcher]=useState(true)
 
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -272,6 +275,11 @@ export default function Room({setNavbarOpen}) {
         setOpenCodeEditor(false)
     }
 
+    const handleSwitch=()=>
+    {
+        setSwitcher(!switcher);
+    }
+
     const handleStartStream = ()=>{
         if(!startStream){
             try {
@@ -424,7 +432,7 @@ export default function Room({setNavbarOpen}) {
                         resume?
                         <div className="justify-center">
                             <button  className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>Interview Questions</button>
-                                {/* <iframe src={user.result.resume} height="100%" width="" frameborder="2"></iframe> */}
+                                //  <iframe src={user.result.resume} height="100%" width="" frameborder="2"></iframe> 
                             <object data={user.result.resume} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
                                 Instead you can <a href={user.result.resume}>click here to
@@ -436,10 +444,14 @@ export default function Room({setNavbarOpen}) {
                             <input type="file" className="m-3 px-2 py-2" accept=".pdf" onChange={handleUploadCustomQuestion}/>
                             <button className="m-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
                         <Grid sm={12} md={12}>
-                            <h1 className="mt-4" >Interview Questions</h1>
-                            {!singleQuestionview ? 
+                            <div className="Question-Background2">
+                                <Switch checked={switcher} onChange={handleSwitch} name="checkedA" inputProps={{ 'aria-label': 'secondary checkbox' }} />
+                            </div>
+                            {switcher?<Jumbotron />:<div><h1 className="mt-4" >Interview Questions</h1>{!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
-                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
+                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>}</div>}
+                            
+                             
                         </Grid>
                         <Grid sm={12} md={12}>
                         {pdfHash && <object data={`https://ipfs.infura.io/ipfs/${pdfHash}`} type="application/pdf" width="100%" height="600">
@@ -452,8 +464,22 @@ export default function Room({setNavbarOpen}) {
                 
                     } 
                 </Grid>
-            
+                 
+                
+                        {/* 
+                        
+                        deleted code 
+                        
+                        +
+                        
+                         <SahebQuestionBankView/>  
+                        
+                        */}
+
+                     
         </Container>
+
+         
         
     )
 }

@@ -1,0 +1,101 @@
+   
+{
+    "DBMS":[
+    {
+    "sno":"1.",
+    "question":"What are the Properties of RDBMS?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Describe ACID Properties  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What are Keys in DBMS?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Difference between Vertical and Horizontal Scaling  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is Sharding?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What are SQL Commands? Explain types of SQL Commands  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What is Indexing in DBMS?  ",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"Explain Normal Forms in DBMS ",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"What are normalization and denormalization and why do we need them? ",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"What do you mean by Conflict Serializability in DBMS? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Can Primary key contain two entities? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What are the Concurrency Control Protocols? ",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"What are Nested Queries in SQL?  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"Explain types of JOINs in DBMS.  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Difference between INNER and OUTER JOIN. ",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"Write a SQL query to retrieve furniture from database whose dimensions(Width, Height, Length) match with the given dimension. ",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"Write a SQL query to find the 4th maximum element from a table  ",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"Explain 3-Tier Architecture in DBMS ",
+    "level":"Senior"
+    }, 
+    {
+    "sno":"19.",
+    "question":"Explain Two tier architecture ",
+    "level":"Senior"
+    }
+    ]
+    } 
+    

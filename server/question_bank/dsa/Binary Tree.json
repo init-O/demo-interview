@@ -1,0 +1,139 @@
+{
+    "Binary Tree":[
+    {
+    "sno":"1.",
+    "question":"Define Binary Tree",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"How is Binary Heap usually implemented?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is Binary Heap?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is Binary Search Tree?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"How to implement a tree data-structure? Provide some code.",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Implement Pre-order traversal of Binary Tree using Recursion",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Name some ways to implement Priority Queue",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"Why do we want to use Binary Search Tree?",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"What is Balanced Tree and why is that important?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"What are advantages and disadvantages of BST?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Explain the difference between Binary Tree and Binary Search Tree with an example?",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What is AVL Tree?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"Classify Tree Traversal Algorithms. Provide some visual explanation.",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"Convert a Binary Tree to a Doubly Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Can you do Iterative Pre-oprder Traversal of a Binary Tree without Recursion?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"What is the difference between Heap and Red-Black Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"17.",
+    "question":"How does inserting or deleting nodes affect a Red-Black tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"18.",
+    "question":"What is the time complexity for insert into Red-Black Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"What is Red-Black tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"Explain how to balance AVL Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"What are main advantages of Tries over Binary Search Trees (BSTs)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"Explain what the main differences between red-black (RB) trees and AVL trees",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"Is there any reason anyone should use BSTs instead of AVLs in the first place?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"What's the main reason for choosing Red Black (RB) trees instead of AVL trees?",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"How is an AVL tree different from a B-tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"26.",
+    "question":"Build a Binary Expression Tree for this expression",
+    "level":"Senior"
+    },
+    {
+    "sno":"27.",
+    "question":"What is Morris Traversal for a Tree and how to implement one?",
+    "level":"Senior"
+    }
+    ]
+    }

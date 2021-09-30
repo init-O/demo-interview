@@ -1,0 +1,810 @@
+ 
+{
+    "React":[
+    {
+    "sno":"1.",
+    "question":"How does React work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is context?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is virtual DOM?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is props in ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is the use of refs?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is JEST?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What are the advantages of ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"What is ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"How to write comments in ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"How would you write an inline style in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"11.",
+    "question":"What are the major features of ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"12.",
+    "question":"What are props in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"13.",
+    "question":"What are the differences between a class component and functional component?",
+    "level":"Junior"
+    },
+    {
+    "sno":"14.",
+    "question":"Where in a React component should you make an AJAX request?",
+    "level":"Junior"
+    },
+    {
+    "sno":"15.",
+    "question":"What is the difference between state and props?",
+    "level":"Junior"
+    },
+    {
+    "sno":"16.",
+    "question":"What is the difference between a Presentational component and a Container component?",
+    "level":"Junior"
+    },
+    {
+    "sno":"17.",
+    "question":"What are refs used for in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"18.",
+    "question":"What's the difference between a controlled component and an uncontrolled one in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"19.",
+    "question":"What are controlled components?",
+    "level":"Junior"
+    },
+    {
+    "sno":"20.",
+    "question":"What is state in ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"21.",
+    "question":"When to use a Class Component over a Functional Component?",
+    "level":"Junior"
+    },
+    {
+    "sno":"22.",
+    "question":"What does it mean for a component to be mounted in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"23.",
+    "question":"How do we pass a property from a parent component props to a child component?",
+    "level":"Junior"
+    },
+    {
+    "sno":"24.",
+    "question":"What are fragments?",
+    "level":"Junior"
+    },
+    {
+    "sno":"25.",
+    "question":"When rendering a list what is a key and what is it's purpose?",
+    "level":"Junior"
+    },
+    {
+    "sno":"26.",
+    "question":"How to create refs?",
+    "level":"Junior"
+    },
+    {
+    "sno":"27.",
+    "question":"What happens when you call setState?",
+    "level":"Junior"
+    },
+    {
+    "sno":"28.",
+    "question":"What are stateful components?",
+    "level":"Junior"
+    },
+    {
+    "sno":"29.",
+    "question":"How would you prevent a component from rendering in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"30.",
+    "question":"What is JSX?",
+    "level":"Junior"
+    },
+    {
+    "sno":"31.",
+    "question":"How error boundaries handled in React (15)?",
+    "level":"Junior"
+    },
+    {
+    "sno":"32.",
+    "question":"Where is the state kept in a React + Redux application?",
+    "level":"Junior"
+    },
+    {
+    "sno":"33.",
+    "question":"What are the limitations of ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"34.",
+    "question":"What is the difference between React Native and React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"35.",
+    "question":"What are stateless components?",
+    "level":"Junior"
+    },
+    {
+    "sno":"36.",
+    "question":"How is React different from AngularJS (1.x)?",
+    "level":"Junior"
+    },
+    {
+    "sno":"37.",
+    "question":"What is the point of Redux?",
+    "level":"Junior"
+    },
+    {
+    "sno":"38.",
+    "question":"Why is it necessary to capitalize the components?",
+    "level":"Junior"
+    },
+    {
+    "sno":"39.",
+    "question":"What is the difference between state and props?",
+    "level":"Junior"
+    },
+    {
+    "sno":"40.",
+    "question":"What is Flow?",
+    "level":"Junior"
+    },
+    {
+    "sno":"41.",
+    "question":"How to create components in ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"42.",
+    "question":"What is the purpose of callback function as an argument of setState?",
+    "level":"Junior"
+    },
+    {
+    "sno":"43.",
+    "question":"What are portals in ReactJS?",
+    "level":"Junior"
+    },
+    {
+    "sno":"44.",
+    "question":"How to pass a parameter to an event handler or callback?",
+    "level":"Junior"
+    },
+    {
+    "sno":"45.",
+    "question":"What’s the difference between an \"Element\" and a \"Component\" in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"46.",
+    "question":"What happens during the lifecycle of a React component?",
+    "level":"Junior"
+    },
+    {
+    "sno":"47.",
+    "question":"What is Flux?",
+    "level":"Junior"
+    },
+    {
+    "sno":"48.",
+    "question":"What is the difference between component and container in react Redux?",
+    "level":"Junior"
+    },
+    {
+    "sno":"49.",
+    "question":"What is inline conditional expressions?",
+    "level":"Junior"
+    },
+    {
+    "sno":"50.",
+    "question":"How do you prevent the default behavior in an event callback in React?",
+    "level":"Junior"
+    },
+    {
+    "sno":"51.",
+    "question":"What is reconciliation?",
+    "level":"Junior"
+    },
+    {
+    "sno":"52.",
+    "question":"What is the purpose of using super constructor with props argument?",
+    "level":"Junior"
+    },
+    {
+    "sno":"53.",
+    "question":"What happens when you call \"setState\"?",
+    "level":"Junior"
+    },
+    {
+    "sno":"54.",
+    "question":"Describe how events are handled in React.",
+    "level":"Junior"
+    },
+    {
+    "sno":"55.",
+    "question":"What is the difference between Element and Component?",
+    "level":"Junior"
+    },
+    {
+    "sno":"56.",
+    "question":"What are Higher-Order components?",
+    "level":"Junior"
+    },
+    {
+    "sno":"57.",
+    "question":"Name the different lifecycle methods.",
+    "level":"Middle"
+    },
+    {
+    "sno":"58.",
+    "question":"What is a higher order component?",
+    "level":"Middle"
+    },
+    {
+    "sno":"59.",
+    "question":"What is JSX?",
+    "level":"Middle"
+    },
+    {
+    "sno":"60.",
+    "question":"What is state in react?",
+    "level":"Middle"
+    },
+    {
+    "sno":"61.",
+    "question":"What are controlled components?",
+    "level":"Middle"
+    },
+    {
+    "sno":"62.",
+    "question":"What is a store in redux?",
+    "level":"Middle"
+    },
+    {
+    "sno":"63.",
+    "question":"How would you prevent a component from rendering?",
+    "level":"Middle"
+    },
+    {
+    "sno":"64.",
+    "question":"What don't you like about React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"65.",
+    "question":"What advantages are using arrow functions?",
+    "level":"Middle"
+    },
+    {
+    "sno":"66.",
+    "question":"Why is it advised to pass a callback function to setState as opposed to an object?",
+    "level":"Middle"
+    },
+    {
+    "sno":"67.",
+    "question":"What's the typical pattern for rendering a list of components from an array of data?",
+    "level":"Middle"
+    },
+    {
+    "sno":"68.",
+    "question":"What are PropTypes in React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"69.",
+    "question":"What are Pure Components?",
+    "level":"Middle"
+    },
+    {
+    "sno":"70.",
+    "question":"What are the advantages of React over VueJS?",
+    "level":"Middle"
+    },
+    {
+    "sno":"71.",
+    "question":"Name some popular Flux Libraries",
+    "level":"Middle"
+    },
+    {
+    "sno":"72.",
+    "question":"What's the typical flow of data like in a React + Redux app?",
+    "level":"Middle"
+    },
+    {
+    "sno":"73.",
+    "question":"What are synthetic events in ReactJS?",
+    "level":"Middle"
+    },
+    {
+    "sno":"74.",
+    "question":"What's an alternative way to avoid having to bind to this in event callback methods?",
+    "level":"Middle"
+    },
+    {
+    "sno":"75.",
+    "question":"What are some limitations of things you shouldn't do in the component's render method?",
+    "level":"Middle"
+    },
+    {
+    "sno":"76.",
+    "question":"How to bind methods or event handlers in JSX callbacks?",
+    "level":"Middle"
+    },
+    {
+    "sno":"77.",
+    "question":"What is useState() in React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"78.",
+    "question":"What is the difference between createElement and cloneElement?",
+    "level":"Middle"
+    },
+    {
+    "sno":"79.",
+    "question":"Why fragments are better than container divs?",
+    "level":"Middle"
+    },
+    {
+    "sno":"80.",
+    "question":"What is prop drilling and how can you avoid it?",
+    "level":"Middle"
+    },
+    {
+    "sno":"81.",
+    "question":"What is an action?",
+    "level":"Middle"
+    },
+    {
+    "sno":"82.",
+    "question":"What is the point of shouldComponentUpdate() method?",
+    "level":"Middle"
+    },
+    {
+    "sno":"83.",
+    "question":"What are forward refs?",
+    "level":"Middle"
+    },
+    {
+    "sno":"84.",
+    "question":"What do these three dots (...) in React do?",
+    "level":"Middle"
+    },
+    {
+    "sno":"85.",
+    "question":"How do you tell React to build in Production mode and what will that do?",
+    "level":"Middle"
+    },
+    {
+    "sno":"86.",
+    "question":"What are typical middleware choices for handling asynchronous calls in Redux?",
+    "level":"Middle"
+    },
+    {
+    "sno":"87.",
+    "question":"What are the lifecycle methods of ReactJS?",
+    "level":"Middle"
+    },
+    {
+    "sno":"88.",
+    "question":"What are the different phases of ReactJS component lifecycle?",
+    "level":"Middle"
+    },
+    {
+    "sno":"89.",
+    "question":"What is Key and benefit of using it in lists?",
+    "level":"Middle"
+    },
+    {
+    "sno":"90.",
+    "question":"What's the difference between an Element and a Component in React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"91.",
+    "question":"What is the difference between ShadowDOM and VirtualDOM?",
+    "level":"Middle"
+    },
+    {
+    "sno":"92.",
+    "question":"Why do class methods need to be bound to a class instance?",
+    "level":"Middle"
+    },
+    {
+    "sno":"93.",
+    "question":"What are stateless components?",
+    "level":"Middle"
+    },
+    {
+    "sno":"94.",
+    "question":"What is ReactDOM?",
+    "level":"Middle"
+    },
+    {
+    "sno":"95.",
+    "question":"What is children prop?",
+    "level":"Middle"
+    },
+    {
+    "sno":"96.",
+    "question":"Why ReactJS uses className over class attribute?",
+    "level":"Middle"
+    },
+    {
+    "sno":"97.",
+    "question":"What are React Hooks?",
+    "level":"Middle"
+    },
+    {
+    "sno":"98.",
+    "question":"What does \"shouldComponentUpdate\" do and why is it important?",
+    "level":"Middle"
+    },
+    {
+    "sno":"99.",
+    "question":"What's the difference between a \"smart\" component and a \"dumb\" component?",
+    "level":"Middle"
+    },
+    {
+    "sno":"100.",
+    "question":"What is the render method for?",
+    "level":"Middle"
+    },
+    {
+    "sno":"101.",
+    "question":"What is Lifting State Up in ReactJS?",
+    "level":"Middle"
+    },
+    {
+    "sno":"102.",
+    "question":"Why should not we update the state directly?",
+    "level":"Middle"
+    },
+    {
+    "sno":"103.",
+    "question":"How to set state with a dynamic key name?",
+    "level":"Middle"
+    },
+    {
+    "sno":"104.",
+    "question":"What's the difference between useRef and createRef?",
+    "level":"Middle"
+    },
+    {
+    "sno":"105.",
+    "question":"What is StrictMode in React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"106.",
+    "question":"What is the alternative of binding this in the constructor?",
+    "level":"Middle"
+    },
+    {
+    "sno":"107.",
+    "question":"What is the difference between createElement and cloneElement?",
+    "level":"Middle"
+    },
+    {
+    "sno":"108.",
+    "question":"What is the point of using keys in React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"109.",
+    "question":"What would be the common mistake of function being called every time the component renders?",
+    "level":"Middle"
+    },
+    {
+    "sno":"110.",
+    "question":"What are advantages of using React Hooks?",
+    "level":"Middle"
+    },
+    {
+    "sno":"111.",
+    "question":"What can you tell me about JSX?",
+    "level":"Middle"
+    },
+    {
+    "sno":"112.",
+    "question":"What is the difference between HTML and React event handling?",
+    "level":"Middle"
+    },
+    {
+    "sno":"113.",
+    "question":"What are error boundaries in ReactJS (16)?",
+    "level":"Middle"
+    },
+    {
+    "sno":"114.",
+    "question":"What is reconciliation in React?",
+    "level":"Middle"
+    },
+    {
+    "sno":"115.",
+    "question":"What are uncontrolled components?",
+    "level":"Middle"
+    },
+    {
+    "sno":"116.",
+    "question":"What is equivalent of the following using React.createElement?",
+    "level":"Middle"
+    },
+    {
+    "sno":"117.",
+    "question":"Given the code defined above, can you identify two problems?",
+    "level":"Middle"
+    },
+    {
+    "sno":"118.",
+    "question":"What is a reducer?",
+    "level":"Senior"
+    },
+    {
+    "sno":"119.",
+    "question":"What is the purpose of super(props)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"120.",
+    "question":"What is \"Children\"?",
+    "level":"Senior"
+    },
+    {
+    "sno":"121.",
+    "question":"Why would you eject from create-react-app?",
+    "level":"Senior"
+    },
+    {
+    "sno":"122.",
+    "question":"What is the difference between ReactJS and Angular?",
+    "level":"Senior"
+    },
+    {
+    "sno":"123.",
+    "question":"Explain the Virtual DOM concept in React.",
+    "level":"Senior"
+    },
+    {
+    "sno":"124.",
+    "question":"What is the difference between a controlled component and an uncontrolled component?",
+    "level":"Senior"
+    },
+    {
+    "sno":"125.",
+    "question":"Which is preferred option with in callback refs and findDOMNode()?",
+    "level":"Senior"
+    },
+    {
+    "sno":"126.",
+    "question":"What are the recommended ways for static type checking?",
+    "level":"Senior"
+    },
+    {
+    "sno":"127.",
+    "question":"Describe Flux vs MVC?",
+    "level":"Senior"
+    },
+    {
+    "sno":"128.",
+    "question":"Why would you use forceUpdate in a React component?",
+    "level":"Senior"
+    },
+    {
+    "sno":"129.",
+    "question":"What is React Fiber?",
+    "level":"Senior"
+    },
+    {
+    "sno":"130.",
+    "question":"What are some recent changes in the React library (e.g. in version 14, 15)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"131.",
+    "question":"Why does React use SyntheticEvents?",
+    "level":"Senior"
+    },
+    {
+    "sno":"132.",
+    "question":"How would you go about investigating slow React application rendering?",
+    "level":"Senior"
+    },
+    {
+    "sno":"133.",
+    "question":"What's a pure functional component in React?",
+    "level":"Senior"
+    },
+    {
+    "sno":"134.",
+    "question":"What is the second argument that can optionally be passed to setState and what is its purpose?",
+    "level":"Senior"
+    },
+    {
+    "sno":"135.",
+    "question":"When is it important to pass props to super(), and why?",
+    "level":"Senior"
+    },
+    {
+    "sno":"136.",
+    "question":"Do Hooks replace render props and higher-order components?",
+    "level":"Senior"
+    },
+    {
+    "sno":"137.",
+    "question":"Why would you need to bind event handlers to \"this\"?",
+    "level":"Senior"
+    },
+    {
+    "sno":"138.",
+    "question":"What is the difference between Flow and PropTypes?",
+    "level":"Senior"
+    },
+    {
+    "sno":"139.",
+    "question":"What is the difference between using constructor vs getInitialState in React?",
+    "level":"Senior"
+    },
+    {
+    "sno":"140.",
+    "question":"Why are String Refs legacy?",
+    "level":"Senior"
+    },
+    {
+    "sno":"141.",
+    "question":"Are you familiar with Flux?",
+    "level":"Senior"
+    },
+    {
+    "sno":"142.",
+    "question":"What is the React context?",
+    "level":"Senior"
+    },
+    {
+    "sno":"143.",
+    "question":"Why would you use React.Children.map(props.children, () => ) instead of props.children.map(() => )?",
+    "level":"Senior"
+    },
+    {
+    "sno":"144.",
+    "question":"What is mapStateToProps and mapDispatchToProps?",
+    "level":"Senior"
+    },
+    {
+    "sno":"145.",
+    "question":"How to create props proxy for HOC component?",
+    "level":"Senior"
+    },
+    {
+    "sno":"146.",
+    "question":"How to conditionally add attributes to React components?",
+    "level":"Senior"
+    },
+    {
+    "sno":"147.",
+    "question":"Does React re-render all components and sub components every time setState is called?",
+    "level":"Senior"
+    },
+    {
+    "sno":"148.",
+    "question":"If you need to access the underlying DOM node for a React component, what's the typical way to do this in React?",
+    "level":"Senior"
+    },
+    {
+    "sno":"149.",
+    "question":"How to apply validation on Props in ReactJS?",
+    "level":"Senior"
+    },
+    {
+    "sno":"150.",
+    "question":"When would you use StrictMode component in React?",
+    "level":"Senior"
+    },
+    {
+    "sno":"151.",
+    "question":"What is a Pure Function?",
+    "level":"Senior"
+    },
+    {
+    "sno":"152.",
+    "question":"Explain some difference between Flux and AngularJS (1.x) approach",
+    "level":"Senior"
+    },
+    {
+    "sno":"153.",
+    "question":"What is reselect and how it works?",
+    "level":"Senior"
+    },
+    {
+    "sno":"154.",
+    "question":"What is the key architectural difference between a JavaScript library such as React and a JavaScript framework such as Angular?",
+    "level":"Senior"
+    },
+    {
+    "sno":"155.",
+    "question":"What is Redux Thunk used for?",
+    "level":"Senior"
+    },
+    {
+    "sno":"156.",
+    "question":"What is React Fiber?",
+    "level":"Senior"
+    },
+    {
+    "sno":"157.",
+    "question":"How to use Polymer in ReactJS?",
+    "level":"Senior"
+    },
+    {
+    "sno":"158.",
+    "question":"How to avoid the need for binding in React?",
+    "level":"Senior"
+    },
+    {
+    "sno":"159.",
+    "question":"How does React renderer work exactly when we call setState?",
+    "level":"Senior"
+    },
+    {
+    "sno":"160.",
+    "question":"If you created a React element like Twitter below, what would the component definition of Twitter look like?",
+    "level":"Senior"
+    },
+    {
+    "sno":"161.",
+    "question":"What is wrong with this code?",
+    "level":"Senior"
+    }
+    ]
+    } 

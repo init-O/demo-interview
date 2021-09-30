@@ -1,0 +1,235 @@
+ 
+{
+    "API Design":[
+    {
+    "sno":"1.",
+    "question":"What REST stands for?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What are the core components of a HTTP Request?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Define what is SOA",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What are advantages of REST web services?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Mention some key characteristics of REST?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Mention whether you can use GET request instead of PUT to create a resource?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What is cached response?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"What are different types of Web Services?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"Mention what are resources in a REST architecture?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Explain the architectural style for creating web API?",
+    "level":"Junior"
+    },
+    {
+    "sno":"11.",
+    "question":"What are the advantages of Web Services?",
+    "level":"Junior"
+    },
+    {
+    "sno":"12.",
+    "question":"What is SOAP?",
+    "level":"Junior"
+    },
+    {
+    "sno":"13.",
+    "question":"What's the difference between REST & RESTful?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"WebSockets vs Rest API for real time data? Which to choose?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Mention what is the difference between PUT and POST?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"What are the best practices to create a standard URI for a web service?",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"What is the use of Accept and Content-Type Headers in HTTP Request?",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"What is statelessness in RESTful Webservices?",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"What is Payload?",
+    "level":"Middle"
+    },
+    {
+    "sno":"20.",
+    "question":"Mention what is the difference between RPC or document style web services? How you determine to which one to choose?",
+    "level":"Middle"
+    },
+    {
+    "sno":"21.",
+    "question":"What are the best practices for caching?",
+    "level":"Middle"
+    },
+    {
+    "sno":"22.",
+    "question":"What are different ways to test web services?",
+    "level":"Middle"
+    },
+    {
+    "sno":"23.",
+    "question":"What are the best practices to design a resource representation?",
+    "level":"Middle"
+    },
+    {
+    "sno":"24.",
+    "question":"What is the purpose of HTTP Status Code?",
+    "level":"Middle"
+    },
+    {
+    "sno":"25.",
+    "question":"What are disadvantages of SOAP Web Services?",
+    "level":"Middle"
+    },
+    {
+    "sno":"26.",
+    "question":"What is UDDI?",
+    "level":"Middle"
+    },
+    {
+    "sno":"27.",
+    "question":"What are the disadvantages of statelessness in RESTful Webservices?",
+    "level":"Middle"
+    },
+    {
+    "sno":"28.",
+    "question":"Mention what are the different application integration styles?",
+    "level":"Middle"
+    },
+    {
+    "sno":"29.",
+    "question":"How would you choose between SOAP and REST web services?",
+    "level":"Middle"
+    },
+    {
+    "sno":"30.",
+    "question":"What are the primary security issues of web service?",
+    "level":"Middle"
+    },
+    {
+    "sno":"31.",
+    "question":"What are the core components of a HTTP response?",
+    "level":"Middle"
+    },
+    {
+    "sno":"32.",
+    "question":"What are disadvantages of REST web services?",
+    "level":"Middle"
+    },
+    {
+    "sno":"33.",
+    "question":"Explain what is the API Gateway pattern",
+    "level":"Senior"
+    },
+    {
+    "sno":"34.",
+    "question":"Which header of HTTP response provides control over caching?",
+    "level":"Senior"
+    },
+    {
+    "sno":"35.",
+    "question":"What do you mean by idempotent operation?",
+    "level":"Senior"
+    },
+    {
+    "sno":"36.",
+    "question":"Explain element?",
+    "level":"Senior"
+    },
+    {
+    "sno":"37.",
+    "question":"What are the advantages of statelessness in RESTful Webservices?",
+    "level":"Senior"
+    },
+    {
+    "sno":"38.",
+    "question":"What is difference between SOA and Web Services?",
+    "level":"Senior"
+    },
+    {
+    "sno":"39.",
+    "question":"Explain Cache-control header",
+    "level":"Senior"
+    },
+    {
+    "sno":"40.",
+    "question":"Which type of Webservices methods are to be idempotent?",
+    "level":"Senior"
+    },
+    {
+    "sno":"41.",
+    "question":"What is difference between OData and REST web services?",
+    "level":"Senior"
+    },
+    {
+    "sno":"42.",
+    "question":"Explain the difference between WCF, Web API, WCF REST and Web Service?",
+    "level":"Senior"
+    },
+    {
+    "sno":"43.",
+    "question":"What are the best practices to be followed while designing a secure RESTful web service?",
+    "level":"Senior"
+    },
+    {
+    "sno":"44.",
+    "question":"Enlist some important constraints for RESTful web services",
+    "level":"Senior"
+    },
+    {
+    "sno":"45.",
+    "question":"What is Open API Initiative?",
+    "level":"Senior"
+    },
+    {
+    "sno":"46.",
+    "question":"Name some best practices for better RESTful API design",
+    "level":"Senior"
+    }
+    ]
+    } 
