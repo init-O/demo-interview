@@ -4,7 +4,7 @@ import { Grid, Button, Typography } from "@material-ui/core";
 import CreateRoomIcon from "@material-ui/icons/RoomOutlined";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-
+import { Link } from 'react-router-dom';
 import {NotificationManager} from 'react-notifications'
 
 import logo from "../Home/assets/img/interviewhubplainlogo.jpg"
@@ -47,15 +47,18 @@ const Navbar = (props) => {
           
            
           <img src={logo} className="w-10 h-10 mr-2"/>
-          <a
+
+           
+
+          <Link
             className={
               (props.transparent ? "text-white" : "text-gray-800") +
               " text-lg font-bold leading-relaxed inline-block mr-4  py-1 whitespace-nowrap uppercase"
             }
-            href="/"
+            to="/"
           >
             Interview hub
-          </a>
+          </Link>
           <button
             className="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
             type="button"
