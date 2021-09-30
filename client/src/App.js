@@ -99,7 +99,6 @@ function App() {
       <div>
       {navbarOpen && <Navbar userPres={userPres} />}
       <NotificationContainer />
-      {loading && <LoadingScreen /> }
       <Switch>
           <Route path="/" exact><Home /></Route>
 
