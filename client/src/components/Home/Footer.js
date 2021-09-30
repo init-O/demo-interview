@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
+import logo from "./assets/img/interviewhubplainlogo.jpg"
 
 export default function Footer() {
   return (
@@ -25,111 +28,119 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
           <div className="w-full lg:w-6/12 px-4">
-            <h4 className="text-3xl font-semibold">
-              Let's keep in touch!
-            </h4>
+          
+
+           
+
+<Link
+  className= "flex text-gray-800  text-lg font-bold leading-relaxed inline-block mr-4  py-1 whitespace-nowrap uppercase"
+  
+  to="/"
+>
+<img src={logo} className="w-10 h-10 mr-2"/> Interview hub
+</Link>
             <h5 className="text-lg mt-0 mb-2 text-gray-700">
-              Find us on any of these platforms, we respond 1-2 business days.
+            Interviewhub is a first of its kind interview platform offering totally free services.
             </h5>
-            <div className="mt-6">
+            <div className=" ">
+              <button 
+              // onClick={() => window.open("")  }
+                className="bg-white text-red-500 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none  m-1"
+                type="button"
+              >
+                <i className="flex fab fa-youtube"></i>
+              </button>
               <button
-                className="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+              // onClick={() => window.open("")  }
+                className="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none  m-1"
+                type="button"
+              >
+                <i className="flex fab fa-linkedin "></i>
+              </button>
+              <button
+              // onClick={() => window.open("")  }
+                className="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none  m-1"
                 type="button"
               >
                 <i className="flex fab fa-twitter"></i>
               </button>
               <button
-                className="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
+              // onClick={() => window.open("")  }
+                className="bg-white text-pink-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none  m-1"
                 type="button"
               >
-                <i className="flex fab fa-facebook-square"></i>
-              </button>
-              <button
-                className="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i className="flex fab fa-dribbble"></i>
-              </button>
-              <button
-                className="bg-white text-gray-900 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 p-3"
-                type="button"
-              >
-                <i className="flex fab fa-github"></i>
+                <i className="flex fab fa-instagram"></i>
               </button>
             </div>
           </div>
-          <div className="w-full lg:w-6/12 px-4">
+          <div className="w-full lg:w-6/12 px-4  ">
             <div className="flex flex-wrap items-top mb-6">
               <div className="w-full lg:w-4/12 px-4 ml-auto">
-                <span className="block uppercase text-gray-600 text-sm font-semibold mb-2">
+                <span className="block uppercase text-black text-bold font-bold underline mb-2">
                   Useful Links
                 </span>
-                <ul className="list-unstyled">
+                <ul className="list-unstyled flex flex-wrap ">
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">About Us
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block px-2 py-1 text-sm"
+                        to="/our-team">Our Team
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">Blog
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block px-2 py-1 text-sm"
+                        to="/contact">Contact Us
+                    </Link>
                   </li>
-                  <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">Github
-                    </a>
-                  </li>
-                  <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">Free Products
-                    </a>
-                  </li>
+                   
+                     
 
                 </ul>
               </div>
               <div className="w-full lg:w-4/12 px-4">
-                <span className="block uppercase text-gray-600 text-sm font-semibold mb-2">
+                <span className="block uppercase text-black text-bold font-bold underline mb-2">
                   Other Resources
                 </span>
-                <ul className="list-unstyled">
-                  <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="/">MIT License
-                  </a>
+                <ul className="list-unstyled flex flex-wrap">
+                <li>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block px-2 py-1 text-sm"
+                        to="/disclaimer">Disclaimer
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">Terms & Conditions
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block px-2 py-1 text-sm"
+                    to="/mit-license">MIT License
+                  </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">Privacy Policy
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block px-2 py-1 text-sm"
+                        to="/tnc">Terms & Conditions
+                    </Link>
                   </li>
                   <li>
-                    <a className="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                        href="/">Contact Us
-                    </a>
+                    <Link className="text-gray-700 hover:text-gray-900 font-semibold block px-2 py-1  text-sm"
+                        to="/privacy-policy">Privacy Policy
+                    </Link>
                   </li>
+                  
+                   
                 </ul>
 
               </div>
             </div>
           </div>
         </div>
-        <hr className="my-6 border-gray-400" />
+        <hr className="  border-gray-400" />
         <div className="flex flex-wrap items-center md:justify-between justify-center">
           <div className="w-full md:w-4/12 px-4 mx-auto text-center">
             <div className="text-sm text-gray-600 font-semibold py-1">
-              Copyright © {new Date().getFullYear()}{" "} Demo-Interview by{" "}
-              <a
-                href="/"
+              Copyright © {new Date().getFullYear()}{" "} Made with{" "}  
+              <i class="fa fa-heart text-red-600" aria-hidden="true"></i>
+              {" "}by{" "}
+              <Link
+                to="/our-team"
                 className="text-gray-600 hover:text-gray-900"
               >
-                Team Demo-Interview
-              </a>.
+                Team-InterviewHub
+              </Link>.
             </div>
           </div>
         </div>

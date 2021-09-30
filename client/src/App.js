@@ -5,6 +5,15 @@ import MachineLearning from './components/MachineLearning/Room/Room'
 import Whiteboard from './components/CodingRound/Whiteboard/Whiteboard'
 import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home' 
+
+import Contact from './components/Home/Contact' 
+import Disclaimer from './components/Home/Disclaimer' 
+import Footer from './components/Home/Footer' 
+import MitLiscense from './components/Home/MitLiscense'  
+import PrivacyPoilicy from './components/Home/PrivacyPoilicy' 
+import Team from './components/Home/Team' 
+import Tnc from './components/Home/Tnc'  
+
 import Navbar from './components/Layouts/Navbar'
 import SignIn from './components/Auth/SignIn'
 import DashBoard from './components/User/dashboard'
@@ -25,23 +34,64 @@ import LoadingScreen from './components/Layouts/LoadingScreen';
 
 import {NotificationContainer, NotificationManager} from 'react-notifications'
 
+import { css } from "@emotion/react";
+import PropagateLoader from "react-spinners/PropagateLoader";
+
+import logo from "./components/Home/assets/img/interviewhubplainlogo.jpg"
+
+const override = css`
+  display: block;
+  text-color: purple;
+  margin: 0 auto;
+  border-color: red;
+  background-color: #282c34;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+`;
+
 function App() {
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('profile'))
   const userPres = useSelector(state=>state.User.authData);
 
-  const [loading,setLoading] = useState(false);
-
+  let [loading, setLoading] = useState(true);
+  let [color, setColor] = useState("#934DCE");
 
   useEffect(() => {
     dispatch(getQuestionBank())
     dispatch(getAllStreams())
     if(user)
     dispatch(getAuthData(user))
+
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    },4000)
 }, [])
 
 
   return (
+
+    loading ?
+      
+    <div className="loader">
+    <div className="loader-content">
+    {/* <img src={logo} className="  "/> Interview hub */}
+       
+       <PropagateLoader color={color} loading={loading} css={override} size={30} >
+        
+ 
+         </PropagateLoader>
+    
+        {/* <div className="loader-message text-white">Interview hub </div> */}
+    </div>
+</div>
+      
+
+    :
     <Router>
       <div>
       <Navbar userPres={userPres} />
@@ -68,6 +118,18 @@ function App() {
 
           <Route path='/stream/:id' exact><Stream /></Route>
           <Route path='/stream' exact><StreamList /></Route>
+
+          <Route path='/contact' exact><Contact /></Route>
+          <Route path='/disclaimer' exact><Disclaimer /></Route>
+          <Route path='/Footer' exact><Footer /></Route>
+          <Route path='/mit-license' exact><MitLiscense /></Route>
+          <Route path='/privacy-policy' exact><PrivacyPoilicy /></Route>
+          <Route path='/our-team' exact><Team /></Route>
+          <Route path='/tnc' exact><Tnc /></Route> 
+
+
+
+
           <Route component={PageNotFound}/>
       </Switch>
     </div>
