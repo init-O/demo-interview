@@ -155,3 +155,12 @@ export const getsahebquestion = async (id) => {
         NotificationManager.error(error.response.data.error)
     }
 }
+
+export const addInterviewScore = async (sendData) =>{
+    try {
+        await api.addInterviewScore(sendData)
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
+}
+

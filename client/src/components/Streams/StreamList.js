@@ -31,9 +31,11 @@ const StreamList = () => {
                 <button className="ml-3 px-4 py-3 mb-3 bg-yellow-500 hover:bg-yellow-700 text-white font-bold border border-blue-700 rounded" onClick={handleStreamWithId}>Go</button>
             </div>
             <div>
+                <div className="grid grid-cols-1 px-4 py-2 lg:grid-cols-2 gap-6">
                 {allStreams.map(stream=>{
                     return <SingleStream  key={stream._id} stream={stream}/>
                 })}
+                </div>
             </div>
         </Container>
     )

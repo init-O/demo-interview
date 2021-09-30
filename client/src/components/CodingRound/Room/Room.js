@@ -28,6 +28,8 @@ import {CopyToClipboard} from 'react-copy-to-clipboard'
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import Jumbotron from '../../altQuestionBank/Jumbotron'
 
+import { useBeforeunload } from 'react-beforeunload';
+
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
@@ -79,10 +81,14 @@ const useStyles=makeStyles((theme)=>({
 }))
 
 
-export default function Room() {
+export default function Room({setNavbarOpen}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const classes=useStyles()
+
+    const [currentPeerDbId,setcurrentPeerDbId] = useState()
+    const [currentPeerDbName,setcurrentPeerDbName] = useState()
+
     const [myPeer,setMyPeer] = useState();
     const [openCodeEditor,setOpenCodeEditor]=useState(false)
     const [openWhiteboard, setOpenWhiteboard]=useState(false)
@@ -114,23 +120,24 @@ export default function Room() {
 
     const [stream, setStream] = useState()
 
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        if(streamVideo)
-            return "You have attempted to leave this page while the stream is running.";
-    }
+    useBeforeunload((event) => {
+        if (streamVideo) {
+          event.preventDefault();
+          return "Stream still running..."
+        }
+    });
 
 
     //Getting user Media permissons
     useEffect(()=>{
 
         const newPeer = new Peer()
-
+        setNavbarOpen(false)
         setMyPeer(newPeer)
         newPeer.on('open', id=>{
             console.log('user connected...',id)
             setUserId(id)
-            socket.emit('join-room', roomId,id)
+            socket.emit('join-room', roomId,id,user?.result?._id,user?.result?.name)
         })
         NotificationManager.success("Starting Interview....","Created Room")
         navigator.mediaDevices.getUserMedia({
@@ -149,11 +156,15 @@ export default function Room() {
                 }
             })
 
-            socket.on("user-connected",  (id)=>{
+            socket.on("user-connected",  (id,peerId, peerName)=>{
                 if(userVideo.current?.srcObject){
                     socket.emit("meeting-closed")
                 }else{
                     setInsideMeeting(true)
+                    setcurrentPeerDbId(peerId)
+                    setcurrentPeerDbName(peerName)
+                    socket.emit("giving-back-id",user?.result._id, user?.result.name)
+
                     console.log('new user',id)
                     if(id!==userId){
                     const call = newPeer.call(id, currentStream)
@@ -176,6 +187,11 @@ export default function Room() {
                     if(userVideo.current) userVideo.current.srcObject = userVideoStream
                 })
             })
+        })
+
+        socket.on("get-back-id",(peerId,peerName)=>{
+            setcurrentPeerDbId(peerId)
+            setcurrentPeerDbName(peerName)
         })
 
         socket.on("user-disconnected",id=>{
@@ -221,14 +237,25 @@ export default function Room() {
     }
 
     const handleLeaveCall=() =>{
-        const tracks = stream.getTracks()
-        tracks.forEach(track => track.stop())
-        NotificationManager.error("","Ending Interview")
-        // stream.getaudioTracks.forEach(track =>{
-        //     track.stop()
-        // })
-        socket.disconnect();
-        history.replace('/user/dashboard')
+        if(streamVideo){
+            NotificationManager.warning("please close before leaving", "Stream Running")
+        }else{
+            setNavbarOpen(true)
+            const tracks = stream.getTracks()
+            tracks.forEach(track => track.stop())
+            NotificationManager.error("","Ending Interview")
+            // stream.getaudioTracks.forEach(track =>{
+            //     track.stop()
+            // })
+            socket.disconnect();
+            history.replace({
+                pathname: '/interviewscore',
+                state: {  // location state
+                  userId:currentPeerDbId,
+                  userName:currentPeerDbName,
+                },
+              }); 
+        }
     }
 
 
@@ -257,7 +284,7 @@ export default function Room() {
         if(!startStream){
             try {
                 if(streamName && roomId){
-                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Coding Interview"}
+                    const sendData = {streamId:`${id.id}`, name:streamName, type: "Coding Interview", created_by:user.result._id}
                     console.log('Stream Data',sendData)
                     navigator.mediaDevices.getDisplayMedia({
                         video: {
@@ -327,12 +354,14 @@ export default function Room() {
                       <CodeEditor id={id}/>
                     </Grid>}
                     {openWhiteboard && <Grid item sm={12} md={9}>
-                      <Whiteboard />
+                        <div className="bg-white w-full h-full">
+                            <Whiteboard />
+                        </div>
                     </Grid>}
                     <Grid item sm={12} md={openCodeEditor||openWhiteboard?3:12} className={classes.webCam}>
                         <Grid container align="center">
                             <Grid item sm={12} md={openCodeEditor||openWhiteboard?12:6}>
-                                <h1 className={classes.headingText}>Webcam 1</h1>
+                                <h1 className={classes.headingText}>{user?.result?.name}</h1>
                                 <Grid item sm={12} md={12}>
                                 <video className={openCodeEditor||openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline muted ref={myVideo} autoPlay ></video>
                                 </Grid>
@@ -357,7 +386,7 @@ export default function Room() {
                                 </Grid>
                             </Grid>
                             <Grid item sm={12} md={openCodeEditor||openWhiteboard?12:6} >
-                                <h1 className={classes.headingText}>Webcam 2</h1>
+                                {currentPeerDbName && <h1 className={classes.headingText}>{currentPeerDbName}</h1>}
                                 <video className={openCodeEditor||openWhiteboard?classes.videoRefCollapsed:classes.videoRef} playsInline  ref={userVideo} autoPlay ></video>
                             </Grid>
                         </Grid>

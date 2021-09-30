@@ -92,4 +92,42 @@ const uploadResume = async (req, res) => {
     }
 }
 
-module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers, uploadResume}
+const addInterviewScore = async (req, res) => {
+    try {
+        const {userId,score} = req.body
+        const scoreObj = {score:score, date:Date.now()}
+        const user = await User.findById(userId)
+        user.marks.push(scoreObj)
+        await user.save()
+        res.status(200).json(user)
+    } catch (error) {
+        res.status(404).json({message:"failed to upldate scores"})
+    }
+}
+
+const getInterviewScores = async (req, res) => {
+    try {
+        const {userId,start,end} = req.body
+        const startDate = new Date(start).getTime()
+        const endDate = new Date(end).getTime()
+        const user = await User.findById(userId)
+        const scoreList = user.marks
+        console.log(userId,startDate,endDate,scoreList)
+
+        var parsedMarks=[]
+        scoreList.map(sc=>{
+            // const newDate = new Date(sc.date)
+            if(sc.date-startDate>=0 && sc.date-endDate<=0){
+                const ke = parseInt(new Date(sc.date).toISOString().slice(8, 10))-1
+                const obj = {marks:sc.score, date:ke}
+                parsedMarks.push(obj)
+            }
+        })
+        console.log(parsedMarks)
+        res.status(200).json(parsedMarks);
+    } catch (error) {
+        res.status(404).json({message:"failed to get Marks"})
+    }
+}
+
+module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers, uploadResume, addInterviewScore, getInterviewScores}

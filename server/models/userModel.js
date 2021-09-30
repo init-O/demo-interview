@@ -23,9 +23,9 @@ const userSchema=new Schema({
     },
     googleId: String,
     resume:{
-        type:String,
-        default:"https://drive.google.com/file/d/1jl59zhajODpEuyAfn1esANluoVxN0fVC/preview?usp=drivesdk"
-    }
+        type:String
+    },
+    marks:[Object]
 })
 
 const User=mongoose.model('User', userSchema)

@@ -434,7 +434,7 @@ export default function Home() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">Ishan Madhav</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Web Developer
+                      Full Stack Developer
                     </p>
                     <div className="mt-6">
                       <button
@@ -477,7 +477,7 @@ export default function Home() {
                   <div className="pt-6 text-center">
                     <h5 className="text-xl font-bold">Anurag Tiwari</h5>
                     <p className="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                      Web Developer
+                      Full Stack Developer
                     </p>
                     <div className="mt-6">
                       <button
