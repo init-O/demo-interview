@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {getUser, loginUser, changeUsername, getAllUsers, searchByName, uploadResume} = require('../controllers/userController')
+const {getUser, loginUser, changeUsername, getAllUsers, searchByName, uploadResume, addInterviewScore, getInterviewScores} = require('../controllers/userController')
 
 router.get('/', getUser)
 
@@ -13,5 +13,9 @@ router.post('/search', searchByName)
 router.get('/getAllUsers', getAllUsers)
 
 router.post('/uploadResume', uploadResume)
+
+router.post('/addInterviewScore', addInterviewScore)
+
+router.post('/interviewScores', getInterviewScores)
 
 module.exports = router

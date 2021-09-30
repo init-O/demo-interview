@@ -11,7 +11,7 @@ const QuestionBank = ({setLoading}) => {
     const history = useHistory()
     const questionPack = useSelector((state)=>state.QuestionBank)
 
-    const questionBank = {name :'', category:'', difficulty:null, created_by:user?.result._id}
+    const questionBank = {name :'', category:'', difficulty:'Basic', created_by:user?.result._id}
     const [newQuestionBank,setnewQuestionBank] = useState(questionBank)
 
     const handleCreateQuestionBank = () => {
@@ -55,13 +55,27 @@ const QuestionBank = ({setLoading}) => {
                                     </div>
                                 </div>
                                 <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-green-200">
-                                    <div style={{ width: "60%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                                    {(questionPackName.difficulty==="Basic") &&
+                                        <div style={{ width: "20%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                                    }
+                                    {(questionPackName.difficulty==="Easy") &&
+                                        <div style={{ width: "40%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                                    }
+                                    {(questionPackName.difficulty==="Medium") &&
+                                        <div style={{ width: "60%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                                    }
+                                    {(questionPackName.difficulty==="Hard") &&
+                                        <div style={{ width: "80%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                                    }
+                                    {(questionPackName.difficulty==="Advanced") &&
+                                        <div style={{ width: "100%" }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-600"></div>
+                                    }
                                 </div>
                                 </div>
                                 <div className="flex items-center">
-                                    <img className="w-11 h-11 p-0.5 rounded-full bg-pink-200 mr-4" src="https://coolbackgrounds.io/images/backgrounds/index/compute-ea4c57a4.png" alt="Avatar of Jonathan Reinink"/>
+                                    <img className="w-11 h-11 p-0.5 rounded-full bg-pink-200 mr-4" src={questionPackName.created_by?.profilePic?`${questionPackName.created_by.profilePic}`:user.result.profilePic} alt="Avatar of Jonathan Reinink"/>
                                 <div className="text-sm text-pink-400">
-                                    <p className="text-whiteleading-none">questionPackName.created_by.name.toUppercase()</p>
+                                    <p className="text-whiteleading-none">{questionPackName.created_by?.name?`${questionPackName.created_by.name}`.toUpperCase():`${user.result.name}`.toUpperCase()}</p>
                                     
                                     <p >{new Date(questionPackName.modified_on).toDateString()}</p>
                                 </div>
@@ -70,9 +84,9 @@ const QuestionBank = ({setLoading}) => {
                                     <button className="bg-blue-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>handleOpenQuestionBank(questionPackName._id)} type="button">
                                      Open
                                     </button>
-                                    <button className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>handleDeleteQuestionBank(questionPackName._id)} type="button">
+                                    {(user.result._id === questionPackName.created_by._id) && <button className="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" onClick={()=>handleDeleteQuestionBank(questionPackName._id)} type="button">
                                      Delete
-                                    </button>
+                                    </button>}
                                 </div>
                             </div>
                         </div>
@@ -102,7 +116,7 @@ const QuestionBank = ({setLoading}) => {
                         Difficulty
                     </label>
                     <div className="relative" >
-                        <select className="w-full block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-module-difficulty" onChange={(e)=>setnewQuestionBank({...newQuestionBank,difficulty: 1})}>
+                        <select className="w-full block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-module-difficulty" onChange={(e)=>setnewQuestionBank({...newQuestionBank,difficulty: e.target.value})}>
                             <option>Basic</option>
                             <option>Easy</option>
                             <option>Medium</option>

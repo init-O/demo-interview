@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core";
 import "./style.css"
 
  
-const soc = io("http://localhost:5000");
+const soc = io("https://dragonapp10.herokuapp.com");
 
 /////yaar material ui reallyyyyy sucks     :(
 

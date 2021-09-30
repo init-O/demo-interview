@@ -89,10 +89,10 @@ module.exports=(io, socket)=>
           })
       })
 
-      socket.on('join-room',(roomId, userId)=>{
+      socket.on('join-room',(roomId, userId, userIdDatabase,userName)=>{
         console.log(`inside room on server ${roomId} ${userId}`)
         socket.join(roomId)
-        socket.broadcast.to(roomId).emit('user-connected', userId);
+        socket.broadcast.to(roomId).emit('user-connected', userId, userIdDatabase, userName);
 
         socket.on('disconnect', ()=>{
             console.log('This user disconnected')
@@ -109,6 +109,10 @@ module.exports=(io, socket)=>
 
         socket.on("upload-question-pdf",(hash)=>{
             socket.broadcast.to(roomId).emit("upload-question-pdf-hash", hash)
+        })
+
+        socket.on("giving-back-id",(peerId, peerName)=>{
+            socket.broadcast.to(roomId).emit("get-back-id", peerId, peerName)
         })
 
     })

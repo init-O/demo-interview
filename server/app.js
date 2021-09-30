@@ -5,6 +5,10 @@ const http=require('http');
 const cors=require('cors');
 const mongoose=require('mongoose')
 
+const CONNECTION_URL= "https://interview-hub.netlify.app"
+// const CONNECTION_URL= "http://localhost:3000"
+
+
 //Mongoose setup
 mongoose.connect("mongodb+srv://jacksapera:muhmeinlele69!@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority", {
   useNewUrlParser: true,
@@ -37,7 +41,7 @@ const streamRoutes = require('./routes/streamRoutes')
 const server=http.createServer(app);
 const io=socketio(server, {
     cors: {
-        origin: "https://interview-hub.netlify.app",
+        origin: CONNECTION_URL,
         methods: ["GET", "POST"]
       }
 });

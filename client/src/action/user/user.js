@@ -50,6 +50,17 @@ export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
     }
 }
 
+export const deleteQuestion = (id,setLoading, setDeletedQuestion, deletedQuestion) => async (dispatch) => {
+    try {
+        const {data} = await api.deleteQuestion(id)
+        setLoading(false)
+        setDeletedQuestion(!deletedQuestion)
+        NotificationManager.error("","Question Deleted!")
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
+}
+
 export const changeUsername = async  (sendData, setLoading) => {
     try {
         const {data} = await api.changeUsername(sendData)
@@ -131,6 +142,14 @@ export const uploadResume = async (sendData,setLoading) =>{
         await api.uploadResume(sendData)
         setLoading(false)
         NotificationManager.success("","Uploaded resume successfully")
+    } catch (error) {
+        NotificationManager.error(error.response.data.error)
+    }
+}
+
+export const addInterviewScore = async (sendData) =>{
+    try {
+        await api.addInterviewScore(sendData)
     } catch (error) {
         NotificationManager.error(error.response.data.error)
     }

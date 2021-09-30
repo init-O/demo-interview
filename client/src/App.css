@@ -34,15 +34,21 @@
   background-image: url('https://i.imgur.com/lJtVaJl.jpeg') ;
   background-repeat: no-repeat;
   background-attachment:fixed;
-  background-size:auto;
+  background-size:cover;
   color: #fff;
 }
 .Question-Background {
-  background-image: url('https://i.imgur.com/YlwiPgI.jpeg') ;
-  background-size: cover;
+  background-color: #082032;
   opacity: 0.9;
   background-repeat:round;
   overflow: hidden;
+  color: #fff;
+}
+.stream-list-box {
+  background-image: url('https://i.imgur.com/aG4ccet.jpeg') ;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-size:cover;
   color: #fff;
 }
 

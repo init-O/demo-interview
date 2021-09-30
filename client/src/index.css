@@ -27,3 +27,8 @@ code {
   background-color: red;
   border: "10px"
 } 
+
+.react-datetime-schedule-graph{
+  color: #176087;
+  background-color: #B8DFD8
+}

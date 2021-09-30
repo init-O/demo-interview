@@ -12,7 +12,7 @@ const getQuestionPack=async (req, res)=>
 {
     const packId=req.params.packId
     try{
-        const result=await questionPack.findById(packId).populate('questions').populate({path:'question',model:"Question", populate:{path:'created_by', model:'User'} })
+        const result=await questionPack.findById(packId).populate('questions').populate({path:'questions',model:"Question", populate:{path:'created_by', model:'User'} })
         return res.json(result)
     }
     catch (err)
@@ -115,5 +115,21 @@ const editQuestion=(req, res)=>
 }
 
 
+const deleteQuestion=async (req, res)=>
+{
+    const packId=req.params.questionId
+    try {
+        await Question.findByIdAndDelete(packId)
+        return res.json({message: "Success"})
+    }
+    catch (error)
+    {
+        console.log(error)
+        return res.json({message: "Error!"})
+    }
+    
+}
 
-module.exports={getQuestionPacks, getQuestions, postQuestionPack, addQuestion, deleteQuestionPack, editQuestion, getQuestionPack}
+
+
+module.exports={getQuestionPacks, getQuestions, postQuestionPack, addQuestion, deleteQuestionPack, editQuestion, getQuestionPack, deleteQuestion}
