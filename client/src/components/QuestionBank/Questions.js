@@ -3,13 +3,13 @@ import {useDispatch} from 'react-redux'
 import {Grid, Typography, Button} from '@material-ui/core'
 import {deleteQuestion} from '../../action/user/user'
 
-const Questions = ({question, setLoading, setDeletedQuestion, deletedQuestion}) => {
+const Questions = ({question, setLoading, getQuestions}) => {
     const [fullView, setFullView] = useState(false) 
     const dispatch =  useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'))
     const handleDeleteQuestion = (id) =>{
         console.log('delete question ', id)
-        dispatch(deleteQuestion(id,setLoading, setDeletedQuestion, deletedQuestion));
+        dispatch(deleteQuestion(id,setLoading, getQuestions));
     }
 
     if(fullView){

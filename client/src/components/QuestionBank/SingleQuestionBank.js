@@ -14,16 +14,15 @@ const SingleQuestionBank = ({setLoading}) => {
     const [deletedQuestion,setDeletedQuestion] = useState(false)
     const [addQuestion,setAddQuestion] = useState({name:'', statement:'',example:'', created_by:user.result._id})
 
-    useEffect(() => {
-        const getQuestions = async ()=>{
-            setLoading(true)
-            const newQuestions = await getSingleQuestionBank(id)
-            setLoading(false)
-            console.log(newQuestions)
-            setQuestions(newQuestions)
-        }
+    const getQuestions = async ()=>{
+        console.log("runninh again")
+        const newQuestions = await getSingleQuestionBank(id,setLoading)
+        console.log(newQuestions)
+        setQuestions(newQuestions)
+    }
+    useEffect(()=>{
         getQuestions()
-    },[deletedQuestion])
+    },[])
 
     const handleCreateQuestion = () => {
         if(addQuestion.name && addQuestion.statement){
@@ -42,7 +41,7 @@ const SingleQuestionBank = ({setLoading}) => {
             <div className="col-span-1 xl:col-span-3">
             <div className="grid grid-cols-1 px-4 py-2 lg:grid-cols-2 gap-6">
                 {questions.map(questionPackName=>{
-                    return <Questions question={questionPackName} setDeletedQuestion={setDeletedQuestion} deletedQuestion={deletedQuestion} setLoading={setLoading}/>
+                    return <Questions question={questionPackName} getQuestions={getQuestions} setLoading={setLoading}/>
                 })}
             </div>
             </div>

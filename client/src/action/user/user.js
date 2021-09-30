@@ -21,9 +21,11 @@ export const getQuestionBank = () => async (dispatch) => {
     }
 }
 
-export const getSingleQuestionBank = async (id) => {
+export const getSingleQuestionBank = async (id,setLoading) => {
     try {
+        // setLoading(true)
         const {data} = await api.getSingleQuestionBank(id)
+        // setLoading(false)
         return data.questions
     } catch (error) {
         NotificationManager.error(error.response.data.error)
@@ -50,11 +52,11 @@ export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
     }
 }
 
-export const deleteQuestion = (id,setLoading, setDeletedQuestion, deletedQuestion) => async (dispatch) => {
+export const deleteQuestion = (id,setLoading, getQuestions) => async (dispatch) => {
     try {
         const {data} = await api.deleteQuestion(id)
         setLoading(false)
-        setDeletedQuestion(!deletedQuestion)
+        getQuestions()
         NotificationManager.error("","Question Deleted!")
     } catch (error) {
         NotificationManager.error(error.response.data.error)

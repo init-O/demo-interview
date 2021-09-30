@@ -11,7 +11,7 @@ import SahebQuestionBankView from  '../../QuestionBankView/sahebmap'
 import ViewIntreViewQuestion from '../../QuestionBankView/Main'
 import SingleQuestionBankView from '../../QuestionBankView/SingleQuestionBankView'
 //Material UI imports 
-import { Button, Container, Grid, Switch} from '@material-ui/core'
+import { Button, Container, Grid, Switch, FormControlLabel} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 
 import MicOpenIcon from '@material-ui/icons/MicTwoTone'
@@ -108,6 +108,8 @@ export default function Room({setNavbarOpen}) {
     const [meetingClosed,setMeetingClosed] = useState(false)
     const [pdfHash,setPdfHash] = useState()
     const [switcher, setSwitcher]=useState(true)
+    const [InterviewQuestionLabel, setInterviewQuestionLabel]=useState("Coding Questions")
+    const [uploadCustomInterviewQuestions,setuploadCustomInterviewQuestions]=useState(false)
 
     const user = JSON.parse(localStorage.getItem('profile'))
 
@@ -123,6 +125,7 @@ export default function Room({setNavbarOpen}) {
     useBeforeunload((event) => {
         if (streamVideo) {
           event.preventDefault();
+          handleStartStream()
           return "Stream still running..."
         }
     });
@@ -277,6 +280,11 @@ export default function Room({setNavbarOpen}) {
 
     const handleSwitch=()=>
     {
+        if(switcher){
+            setInterviewQuestionLabel("Theory Questions")
+        }else{
+            setInterviewQuestionLabel("Coding Questions")
+        }
         setSwitcher(!switcher);
     }
 
@@ -328,6 +336,7 @@ export default function Room({setNavbarOpen}) {
 
     const handleUploadCustomQuestion = (e) =>{
         e.preventDefault()
+        setuploadCustomInterviewQuestions(false)
         const file = e.target.files[0]
         const reader = new window.FileReader()
         reader.readAsArrayBuffer(file)
@@ -336,6 +345,7 @@ export default function Room({setNavbarOpen}) {
             const buffer = new Buffer(reader.result)
             const result =await ipfs.add(buffer)
             setPdfHash(result.path)
+            setuploadCustomInterviewQuestions(true)
         }
     }
 
@@ -432,7 +442,6 @@ export default function Room({setNavbarOpen}) {
                         resume?
                         <div className="justify-center">
                             <button  className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>Interview Questions</button>
-                                //  <iframe src={user.result.resume} height="100%" width="" frameborder="2"></iframe> 
                             <object data={user.result.resume} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
                                 Instead you can <a href={user.result.resume}>click here to
@@ -442,10 +451,11 @@ export default function Room({setNavbarOpen}) {
                         <div>
                             <button className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>open resume</button>
                             <input type="file" className="m-3 px-2 py-2" accept=".pdf" onChange={handleUploadCustomQuestion}/>
-                            <button className="m-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
+                            {!uploadCustomInterviewQuestions? <button className="m-3 px-3 py-2 bg-gray-400 text-black font-bold hover:bg-gray-400 rounded disabled" onClick={handleUploadPdf}>UPLOAD PDF QUESTIONS</button>:
+                            <button className="m-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>}
                         <Grid sm={12} md={12}>
                             <div className="Question-Background2">
-                                <Switch checked={switcher} onChange={handleSwitch} name="checkedA" inputProps={{ 'aria-label': 'secondary checkbox' }} />
+                                <FormControlLabel control={<Switch checked={switcher} onChange={handleSwitch} name="checkedA" inputProps={{ 'aria-label': 'secondary checkbox' }} />} label={`${InterviewQuestionLabel}`} />
                             </div>
                             {switcher?<Jumbotron />:<div><h1 className="mt-4" >Interview Questions</h1>{!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 

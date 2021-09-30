@@ -52,10 +52,10 @@ const InterviewScore = () => {
 
     return (
         <div className="w-full h-full">
-            <div  className="flex justify-center m-3 px-4 py-4">
-                <div className="border w-full h-full md:w-1/2 md:h-1/2">
+            <div  className="flex justify-center m-3 px-4 py-4 ">
+                <div className="border w-full h-full md:w-1/2 md:h-1/2  interviewscore-container">
                     <div className="flex flex-wrap justify-center">
-                        <h1 className="text-pink-400 md:text-4xl text-2xl m-2 uppercase">GRADE {`${intervieweeName}`.toUpperCase()}</h1>
+                        <h1 className="text-pink-400 md:text-4xl text-2xl m-2 uppercase">{intervieweeName? `GRADE ${intervieweeName}`.toUpperCase(): 'No Interviewee'}</h1>
                     </div>
                     <div>
                         <div className="w-full md:w-3/4 m-2 px-4 py-4">

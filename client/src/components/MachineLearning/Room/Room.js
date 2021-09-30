@@ -10,7 +10,7 @@ import Whiteboard from '../Whiteboard/Whiteboard'
 import ViewIntreViewQuestion from '../../QuestionBankView/Main'
 import SingleQuestionBankView from '../../QuestionBankView/SingleQuestionBankView'
 //Material UI imports 
-import { Button, Container, Grid} from '@material-ui/core'
+import { Button, Container, Grid,Switch, FormControlLabel} from '@material-ui/core'
 import { makeStyles, } from '@material-ui/core'
 
 import MicOpenIcon from '@material-ui/icons/MicTwoTone'
@@ -23,6 +23,7 @@ import {NotificationManager} from 'react-notifications'
 
 import {CopyToClipboard} from 'react-copy-to-clipboard'
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import Jumbotron from '../../altQuestionBank/Jumbotron'
 
 import { useBeforeunload } from 'react-beforeunload';
 
@@ -104,6 +105,10 @@ export default function Room({setNavbarOpen}) {
     const [insideMeeting,setInsideMeeting] = useState(false)
     const [meetingClosed,setMeetingClosed] = useState(false)
     const [pdfHash,setPdfHash] = useState()
+    const [switcher, setSwitcher]=useState(true)
+    const [InterviewQuestionLabel, setInterviewQuestionLabel]=useState("Coding Questions")
+    
+    const [uploadCustomInterviewQuestions,setuploadCustomInterviewQuestions]=useState(false)
     
     const peers = {}
     const user = JSON.parse(localStorage.getItem('profile'))
@@ -253,6 +258,16 @@ export default function Room({setNavbarOpen}) {
         }
     }
 
+    const handleSwitch=()=>
+    {
+        if(switcher){
+            setInterviewQuestionLabel("Theory Questions")
+        }else{
+            setInterviewQuestionLabel("Coding Questions")
+        }
+        setSwitcher(!switcher);
+    }
+
 
     //----> All the code for Video Stream <-----
 
@@ -311,6 +326,7 @@ export default function Room({setNavbarOpen}) {
 
     const handleUploadCustomQuestion = (e) =>{
         e.preventDefault()
+        setuploadCustomInterviewQuestions(false)
         const file = e.target.files[0]
         const reader = new window.FileReader()
         reader.readAsArrayBuffer(file)
@@ -318,6 +334,7 @@ export default function Room({setNavbarOpen}) {
         reader.onloadend =async ()=>{
             const buffer = new Buffer(reader.result)
             const result =await ipfs.add(buffer)
+            setuploadCustomInterviewQuestions(true)
             setPdfHash(result.path)
         }
     }
@@ -405,11 +422,10 @@ export default function Room({setNavbarOpen}) {
                     </div>
                 </Grid>
                 <Grid item sm={12} md={12} >
-                    {
+                {
                         resume?
-                        <div className="justify-around">
-                            <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>Interview Questions</Button>
-                            {/* <iframe src={user.result.resume} height="800" width="800" frameborder="2"></iframe> */}
+                        <div className="justify-center">
+                            <button  className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>Interview Questions</button>
                             <object data={user.result.resume} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
                                 Instead you can <a href={user.result.resume}>click here to
@@ -417,19 +433,22 @@ export default function Room({setNavbarOpen}) {
                             </object>
                         </div>:
                         <div>
-
-                            <Button variant="contained" color="secondary" onClick={()=>setResume(!resume)}>open resume</Button>
-                            <input type="file" accept=".pdf" onChange={handleUploadCustomQuestion}/>
-                            <button className="ml-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUEsTIONS</button>
-                        <Grid item sm={12} md={12}>
-                            <h1 className="mt-4" >Interview Questions</h1>
-                            {!singleQuestionview ? 
+                            <button className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>open resume</button>
+                            <input type="file" className="m-3 px-2 py-2" accept=".pdf" onChange={handleUploadCustomQuestion}/>
+                            {!uploadCustomInterviewQuestions? <button className="m-3 px-3 py-2 bg-gray-400 text-black font-bold hover:bg-gray-400 rounded disabled" onClick={handleUploadPdf}>UPLOAD PDF QUESTIONS</button>:
+                            <button className="m-3 px-3 py-2 bg-yellow-400 text-red-500 hover:bg-yellow-500 rounded" onClick={handleUploadPdf}>UPLOAD PDF QUESTIONS</button>}
+                        <Grid sm={12} md={12}>
+                            <div className="Question-Background2">
+                                <FormControlLabel control={<Switch checked={switcher} onChange={handleSwitch} name="checkedA" inputProps={{ 'aria-label': 'secondary checkbox' }} />} label={`${InterviewQuestionLabel}`} />
+                            </div>
+                            {switcher?<Jumbotron />:<div><h1 className="mt-4" >Interview Questions</h1>{!singleQuestionview ? 
                             <ViewIntreViewQuestion setQuestionBankId={setQuestionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/> 
-                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>} 
+                            : <SingleQuestionBankView questionBankId={questionBankId} setSingleQuestionview={setSingleQuestionview} singleQuestionview={singleQuestionview}/>}</div>}
+                            
+                             
                         </Grid>
-                        <Grid item sm={12} md={12}>
-                            {pdfHash &&
-                            <object data={`https://ipfs.infura.io/ipfs/${pdfHash}`} type="application/pdf" width="100%" height="600">
+                        <Grid sm={12} md={12}>
+                        {pdfHash && <object data={`https://ipfs.infura.io/ipfs/${pdfHash}`} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
                                 Instead you can <a href={`https://ipfs.infura.io/ipfs/${pdfHash}`}>click here to
                                 download the PDF file.</a></p>
