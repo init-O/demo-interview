@@ -65,6 +65,17 @@
   background-color: #120E10
 }
 
+.dashboard-headings {
+  font-size: 24px;
+  font-weight: bold;
+  background: #FF0000;
+  background: -webkit-linear-gradient(to left, #FF0000 12%, #000000 100%);
+  background: -moz-linear-gradient(to left, #FF0000 12%, #000000 100%);
+  background: linear-gradient(to left, #FF0000 12%, #000000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

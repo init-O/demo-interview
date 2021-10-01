@@ -3,7 +3,12 @@ import {NotificationManager} from 'react-notifications'
 
 export const createQuestionBank = (sendData,setLoading) => async (dispatch) => {
     try {
-        const {data} = await api.createQuestionBank(sendData)
+        const response = await api.createQuestionBank(sendData)
+        console.log("reponse check...", response.status,response.ok)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         setLoading(false)
         NotificationManager.info("","Created New Question Bank")
         dispatch({type:'CREATE_QUESTION_BANK', payload:data})
@@ -14,7 +19,12 @@ export const createQuestionBank = (sendData,setLoading) => async (dispatch) => {
 
 export const getQuestionBank = () => async (dispatch) => {
     try {
-        const {data} = await api.getQuestionBank()
+        const response = await api.getQuestionBank()
+        console.log("reponse check...", response.status,response)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         dispatch({type:'GET_QUESTION_BANK', payload:data})
     } catch (error) {
         NotificationManager.error(error.response.data.error)
@@ -24,7 +34,11 @@ export const getQuestionBank = () => async (dispatch) => {
 export const getSingleQuestionBank = async (id,setLoading) => {
     try {
         // setLoading(true)
-        const {data} = await api.getSingleQuestionBank(id)
+        const response = await api.getSingleQuestionBank(id)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         // setLoading(false)
         return data.questions
     } catch (error) {
@@ -34,7 +48,11 @@ export const getSingleQuestionBank = async (id,setLoading) => {
 
 export const addQuestionToBank = async (id,sendData,setLoading) =>{
     try {
-        const {data} = await api.addQuestionToBank(id,sendData)
+        const response = await api.addQuestionToBank(id,sendData)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         setLoading(false)
     } catch (error) {
         NotificationManager.error(error.response.data.error)
@@ -43,7 +61,11 @@ export const addQuestionToBank = async (id,sendData,setLoading) =>{
 
 export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
     try {
-        const {data} = await api.deleteQuestionBank(id)
+        const response = await api.deleteQuestionBank(id)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         setLoading(false)
         NotificationManager.error("","Question Bank Deleted!")
         dispatch({type:'DELETE_QUESTION_BANK', payload:id})
@@ -54,7 +76,11 @@ export const deleteQuestionBank = (id,setLoading) => async (dispatch) => {
 
 export const deleteQuestion = (id,setLoading, getQuestions) => async (dispatch) => {
     try {
-        const {data} = await api.deleteQuestion(id)
+        const response = await api.deleteQuestion(id)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         setLoading(false)
         getQuestions()
         NotificationManager.error("","Question Deleted!")
@@ -65,7 +91,11 @@ export const deleteQuestion = (id,setLoading, getQuestions) => async (dispatch) 
 
 export const changeUsername = async  (sendData, setLoading) => {
     try {
-        const {data} = await api.changeUsername(sendData)
+        const response = await api.changeUsername(sendData)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         setLoading(false)
         NotificationManager.success("","Username Changed")
     } catch (error) {
@@ -75,7 +105,11 @@ export const changeUsername = async  (sendData, setLoading) => {
 
 export const scheduleInterview =  (sendData, setLoading) => async (dispatch) => {
     try {
-        const {data} = await api.scheduleInterview(sendData)
+        const response = await api.scheduleInterview(sendData)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         dispatch({type:"ADD_MEETING", payload:data})
         setLoading(false)
         NotificationManager.info("","scheduled New Interview")
@@ -87,7 +121,11 @@ export const scheduleInterview =  (sendData, setLoading) => async (dispatch) => 
 export const createActiveInterview=  async (sendData) =>
 {
     try {
-        const {data}= await api.createActiveInterview(sendData)
+        const response= await api.createActiveInterview(sendData)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
     } catch (error) {
         NotificationManager.error(error.response.data.error)
     }
@@ -95,7 +133,11 @@ export const createActiveInterview=  async (sendData) =>
 
 export const deleteRoom = (id,setLoading) => async (dispatch) =>{
     try {
-        const {data} = await api.deleteRoom(id)
+        const response = await api.deleteRoom(id)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         setLoading(false)
         dispatch({type:"DELETE_MEETING", payload:id})
     } catch (error) {
@@ -105,7 +147,11 @@ export const deleteRoom = (id,setLoading) => async (dispatch) =>{
 
 export const getscheduledInterviews = (id) => async (dispatch) =>{
     try {
-        const {data} = await api.getscheduledInterviews(id)
+        const response = await api.getscheduledInterviews(id)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         dispatch({type:"GET_MEETINGS",payload:data})
     } catch (error) {
         NotificationManager.error(error.response.data.error)
@@ -114,7 +160,11 @@ export const getscheduledInterviews = (id) => async (dispatch) =>{
 
 export const getAllStreams = () => async (dispatch) =>{
     try {
-        const {data} = await api.getAllStreams()
+        const response = await api.getAllStreams()
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         dispatch({type:"GET_ALL_STREAMS",payload:data})
     } catch (error) {
         NotificationManager.error(error.response.data.error)
@@ -123,7 +173,11 @@ export const getAllStreams = () => async (dispatch) =>{
 
 export const addNewStream = (sendData) => async (dispatch) =>{
     try {
-        const {data} = await api.addNewStream(sendData)
+        const response = await api.addNewStream(sendData)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         dispatch({type:"ADD_STREAM",payload:data})
     } catch (error) {
         NotificationManager.error(error.response.data.error)
@@ -151,7 +205,11 @@ export const uploadResume = async (sendData,setLoading) =>{
 
 export const getsahebquestion = async (id) => {
     try {
-        const {data} = await api.getsahebquestion(id)
+        const response = await api.getsahebquestion(id)
+        if(response.status== 400 || response.status== 404 || response.status==500) {
+            throw new Error(response.status)
+        }
+        const {data} = response;
         return data 
     } catch (error) {
         NotificationManager.error(error.response.data.error)
