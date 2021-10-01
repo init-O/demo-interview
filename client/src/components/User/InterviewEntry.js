@@ -75,7 +75,6 @@ export default function InterviewEntry({interview, setLoading}) {
 
     const handleSearch=(e)=>
     {   
-        setLoading(true)
         e.preventDefault()
         console.log(searchText)
         const data={
@@ -91,7 +90,6 @@ export default function InterviewEntry({interview, setLoading}) {
         .then(res=>res.json())
         .then(json=>{
             console.log(json)
-            setLoading(false)
             setSearchResults(json)
         })
     }
@@ -187,7 +185,7 @@ export default function InterviewEntry({interview, setLoading}) {
         
     )
     return (
-        <div className={`max-w-md mx-auto ${interview.accepted?colors[1]:colors[0]} bg-opacity-25 mb-5 rounded-xl shadow-md overflow-hidden md:max-w-2xl`}> 
+        <div className={`max-w-md mx-auto ${interview.accepted?colors[1]:colors[0]} bg-opacity-50 mb-5 rounded-xl shadow-md overflow-hidden md:max-w-2xl`}> 
                     <Modal
                 open={open}
                 onClose={handleClose}
@@ -197,11 +195,11 @@ export default function InterviewEntry({interview, setLoading}) {
             {body}
             </Modal>
 
-                    <div className="grid justify-items-stretch ">
+                    <div className="grid justify-items-stretch px-4 py-4 text-black ">
                         <div>
                         
                             <h1 className="font-normal text-xl">{interview.type}</h1>
-                            <p className="font-light">Scheduled on: <span className="font-medium">{interview.scheduledDate}</span> by <span className="font-medium">{interview.createdBy.name}</span></p>
+                            <p className="font-light">Scheduled on: <span className="font-medium">{new Date(interview.scheduledDate).toUTCString()}</span> by <span className="font-medium">{interview.createdBy.name}</span></p>
                         </div>
                         <div>
                             <button onClick={()=>handleOpen(interview._id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-3 rounded-full">

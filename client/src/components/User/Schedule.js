@@ -10,7 +10,7 @@ export default function Schedule({changeDetector,setLoading}) {
   
     return (
         <div className="">
-            <h1 className="text-4xl mt-4 mb-4 font-light" >Scheduled Interviews</h1>
+            <h1 className="text-4xl mt-4 mb-4 font-light dashboard-headings" >Scheduled Interviews</h1>
             {allInterviews.map((interview)=>{return <InterviewEntry interview={interview} setLoading={setLoading}/>})
             }
         </div>

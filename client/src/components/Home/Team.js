@@ -109,7 +109,7 @@ const MitLiscense = () => {
                 <a href="#" class="block relative">
                   <img
                     alt="profil"
-                    src={require("./assets/img/anurag.png").default}
+                    src={require("./assets/img/anurag.jpg").default}
                     class="border-8 border-white  shadow-lg rounded-full max-w-full mx-auto object-cover   "
                     style={{ maxWidth: "120px" }}
                   />
@@ -121,7 +121,7 @@ const MitLiscense = () => {
                   Anurag Tiwari
                   </p>
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-                  Web Developer
+                  Fullstack Developer
                   </p>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
                      {/*   paste your about section from linkedin here */}
@@ -189,7 +189,7 @@ const MitLiscense = () => {
                   Ishan Madhav
                   </p>
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-                  Web Developer
+                  Fullstack Developer
                   </p>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
                      {/*   paste your about section from linkedin here */}

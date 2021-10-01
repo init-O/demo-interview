@@ -28,6 +28,7 @@ const Dashboard = ({setLoading}) => {
     const [dateValue, onChange] = useState(new Date());
     const [changeDetector, setChangeDetector]=useState(false)
     const [resumeHash, setResumeHash] = useState()
+    const [resumeLoaded,setResumeLoaded] = useState(false)
 
     useEffect(() => {
         if(!user){
@@ -78,7 +79,9 @@ const Dashboard = ({setLoading}) => {
     }
 
     const handleUsernameChage = (e) => {
-        if(currentUsername!==user?.result.username){
+        if(!currentUsername){
+            NotificationManager.error("","Invalid username")
+        }else if(currentUsername!==user?.result.username){
             setLoading(true)
             changeUsername({email:user.result.email, username:currentUsername},setLoading)
             dispatch(getAuthData(user))
@@ -87,7 +90,7 @@ const Dashboard = ({setLoading}) => {
 
     const handleCaptureResume = (e)=>{
         NotificationManager.warning("","Loading Resume", 3000)
-        setLoading(true)
+        setResumeLoaded(false)
         e.preventDefault()
         const file = e.target.files[0]
         const reader = new window.FileReader()
@@ -97,7 +100,7 @@ const Dashboard = ({setLoading}) => {
             const buffer = new Buffer(reader.result)
             const result =await ipfs.add(buffer)
             setResumeHash(result.path)
-            setLoading(false)
+            setResumeLoaded(true)
         }
     
     }
@@ -105,6 +108,7 @@ const Dashboard = ({setLoading}) => {
     const handleUploadResume = (e) => {
         //update the resume link to user.resume
         setLoading(true)
+        setResumeLoaded(false)
         NotificationManager.info("","Uploading ")
         e.preventDefault()
         const sendData = {id:user?.result._id,resume:`https://ipfs.infura.io/ipfs/${resumeHash}`}
@@ -132,8 +136,8 @@ const Dashboard = ({setLoading}) => {
         <div className="m-3 p-3 flex">
         <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white "src={user?.result.profilePic} alt="" /> 
         <div >
-        <span className="text-2xl uppercase  m-2 font-extrabold ">{user?.result.name.split(" ")[0]}</span> <br></br>
-        <span className="italic"> @{userPres?.result.username}</span>
+        <span className="text-2xl uppercase  m-2 font-extrabold dashboard-headings">{user?.result.name.split(" ")[0]}</span> <br></br>
+        <span className="italic text-black"> @{userPres?.result.username}</span>
         </div>
         </div>
         <div className="m-3">
@@ -155,9 +159,14 @@ const Dashboard = ({setLoading}) => {
                 <input type="file" accept="image/*,.pdf" className="mb-2 w-full " onChange={handleCaptureResume}/>
             </div>
             <div className="w-half px-3">
+                { resumeLoaded ? 
                 <button   className="text-white mt-2 font-bold px-4 py-2 rounded outline-none focus:outline-none mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadResume}>
                     Upload Resume
-                </button> 
+                </button>:
+                <button   className="text-white mt-2 font-bold px-4 py-2 rounded outline-none  mb-1 bg-gray-500  uppercase text-sm h transition-all duration-150 disabled" >
+                    Upload Resume
+                </button>
+                }
             </div>
         </div>
 
@@ -169,7 +178,7 @@ const Dashboard = ({setLoading}) => {
 
         <div className="p-10 text-2x1 font-bold col-span-3 grid sm:grid-cols-1 md:grid-cols-2">
             <div>
-                <p className="text-xl font-semibold">To create an instant interview.</p>
+                <p className="text-xl font-semibold dashboard-headings">To create an instant interview.</p>
                 
                 <FormControl>
 
@@ -190,7 +199,7 @@ const Dashboard = ({setLoading}) => {
                 </button>
             </div>
             <div>
-                <p className="text-xl font-semibold">To join an existing interview.</p>
+                <p className="text-xl font-semibold dashboard-headings">To join an existing interview.</p>
             <div className="flex  items-center  py-2"> 
             <input className="border-gray-400 border-solid border-2 text-gray-700 mr-3 py-1 px-2" type="text" placeholder="Room Id" aria-label="Id" onChange={(e)=>setRoomId(e.target.value)} />
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleJoinRoom}>
@@ -200,7 +209,7 @@ const Dashboard = ({setLoading}) => {
                 
             </div> 
             <div className="mt-10">
-            <p className="text-xl font-semibold">To Schedule an Inteview </p>
+            <p className="text-xl font-semibold dashboard-headings" >To Schedule an Inteview </p>
                     <div className="mt-4 mb-4 text-blue-300">
                         <DateTimePicker
                             className="react-datetime-schedule-graph"
@@ -229,7 +238,7 @@ const Dashboard = ({setLoading}) => {
             </div>
                 
             <div className="mt-10">
-                <p className="text-xl font-semibold">To Contribute and view Questions </p>
+                <p className="text-xl font-semibold dashboard-headings">To Contribute and view Questions </p>
                     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-1 rounded-full" onClick={handleContribute}>
                     Interview Questions
                 </button>

@@ -18,7 +18,7 @@ export default function InviteList({changeDetector, setChangeDetector}) {
     
     return (
         <div className="ml-5">
-            <h1 className="text-4xl mt-4 mb-4 font-light" >Pending Invites</h1>
+            <h1 className="text-4xl mt-4 mb-4 font-light dashboard-headings" >Pending Invites</h1>
             {
                 invites.map((invite)=>{
                     if (!invite.accepted)
