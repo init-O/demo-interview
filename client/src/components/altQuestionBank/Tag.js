@@ -6,7 +6,7 @@ export default function Tag({name, category, setQuestionList, icons}) {
     const handleTopicChange=()=>
     {
         console.log("theory question...")
-       fetch(`http://localhost:5000/question/${category}/${name}`)
+       fetch(`http://dragonapp10.herokuapp.com/question/${category}/${name}`)
        .then((res=>res.json()))
        .then(json=>{
            const obj=JSON.parse(json)
