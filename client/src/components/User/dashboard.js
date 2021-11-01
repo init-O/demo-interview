@@ -54,6 +54,10 @@ const Dashboard = ({setLoading}) => {
                 history.push('/ml')
                 break;
         
+            case "Viva":
+                history.push('/viva')
+                break;
+        
             default:
                 break;
         }

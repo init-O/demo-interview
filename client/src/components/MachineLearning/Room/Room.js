@@ -294,6 +294,11 @@ export default function Room({setNavbarOpen}) {
                         sampleRate: 44100
                     }
                     }).then(displayMedia =>{
+                        const track1 = userVideo?.current?.srcObject?.getAudioTracks()[0]
+                        const track2 = myVideo?.current?.srcObject?.getAudioTracks()[0]
+                        console.log("stream...",track1,track2)
+                        if(track1)displayMedia.addTrack(track1)
+                        if(track2)displayMedia.addTrack(track2)
                         NotificationManager.warning("","Starting Live Stream")
                         setStreamVideo(displayMedia)
                         setStartStream(!startStream)
