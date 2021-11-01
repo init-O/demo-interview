@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.Schema
 const faker=require('faker')
-
+const UploadedVideo = require('./uploadedVideoModel')
 const getNewUserName = () => {
     return faker.internet.userName()
 }
@@ -14,6 +14,7 @@ const userSchema=new Schema({
     },
     age: Number,
     email: String,
+    uploadedVideos:[{type: mongoose.Schema.Types.ObjectId, ref: 'UploadedVideo'}],
     isAdmin: {
         type: Boolean,
         default: true
