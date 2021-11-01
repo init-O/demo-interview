@@ -87,6 +87,7 @@ export default function Room({setNavbarOpen}) {
 
     const [currentPeerDbId,setcurrentPeerDbId] = useState()
     const [currentPeerDbName,setcurrentPeerDbName] = useState()
+    const [currentPeerDbResume,setcurrentPeerDbResume] = useState()
 
     const [myPeer,setMyPeer] = useState();
     const [openCodeEditor,setOpenCodeEditor]=useState(false)
@@ -144,7 +145,7 @@ export default function Room({setNavbarOpen}) {
         newPeer.on('open', id=>{
             console.log('user connected...',id)
             setUserId(id)
-            socket.emit('join-room', roomId,id,user?.result?._id,user?.result?.name)
+            socket.emit('join-room', roomId,id,user?.result?._id,user?.result?.name,user?.result?.resume)
         })
         NotificationManager.success("starting Interview","Creating Room")
         navigator.mediaDevices.getUserMedia({
@@ -163,14 +164,15 @@ export default function Room({setNavbarOpen}) {
                 }
             })
 
-            socket.on("user-connected",  (id, peerId, peerName)=>{
+            socket.on("user-connected",  (id, peerId, peerName, peerResume)=>{
                 if(userVideo.current?.srcObject){
                     socket.emit("meeting-closed")
                 }else{
                     setInsideMeeting(true)
                     setcurrentPeerDbId(peerId)
                     setcurrentPeerDbName(peerName)
-                    socket.emit("giving-back-id",user?.result._id, user?.result.name)
+                    setcurrentPeerDbResume(peerResume)
+                    socket.emit("giving-back-id",user?.result._id, user?.result.name, user?.result?.resume)
 
                     console.log('new user',id)
                     if(id!==userId){
@@ -195,9 +197,10 @@ export default function Room({setNavbarOpen}) {
             })
         })
 
-        socket.on("get-back-id",(peerId,peerName)=>{
+        socket.on("get-back-id",(peerId,peerName, peerResume)=>{
             setcurrentPeerDbId(peerId)
             setcurrentPeerDbName(peerName)
+            setcurrentPeerDbResume(peerResume)
         })
 
         socket.on("user-disconnected",id=>{
@@ -548,11 +551,12 @@ export default function Room({setNavbarOpen}) {
                         resume?
                         <div className="justify-center">
                             <button  className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>Interview Questions</button>
-                            <object data={user.result.resume} type="application/pdf" width="100%" height="600">
+                            {currentPeerDbResume ? <object data={currentPeerDbResume} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
-                                Instead you can <a href={user.result.resume}>click here to
+                                Instead you can <a href={currentPeerDbResume}>click here to
                                 download the PDF file.</a></p>
-                            </object>
+                            </object>:
+                            <h1>Peer resume not available</h1>}
                         </div>:
                         <div>
                             <button className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>open resume</button>
