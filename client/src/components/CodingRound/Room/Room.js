@@ -30,11 +30,14 @@ import Jumbotron from '../../altQuestionBank/Jumbotron'
 
 import { useBeforeunload } from 'react-beforeunload';
 import RecordRTC,{MediaStreamRecorder,invokeSaveAsDialog} from 'recordrtc'
+import {config} from '../../../data/Config'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
-const socket=io("https://dragonapp10.herokuapp.com")
+const URL = config.url
+
+const socket=io(URL)
 
 const useStyles=makeStyles((theme)=>({
 

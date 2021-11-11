@@ -1,13 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import { Bar,Line } from 'react-chartjs-2';
 import DatePicker from 'react-date-picker'
+import {config} from '../../data/Config'
+
+const URL = config.url
 const MarksGraph = () => {
     
     const [realScore,setRealScore] = useState()
     const [realMonth,setRealMonth] = useState()
-    const [marks,setMarks] = useState()
-    const [name,setName] = useState()
-  
     const user = JSON.parse(localStorage.getItem('profile'))
     const [selectedDate, handleDateChange] = useState(new Date());
   
@@ -26,7 +26,7 @@ const MarksGraph = () => {
         setRealMonth(monthNames)
         
         const fetchScore = async () => {
-          const response = await fetch('https://dragonapp10.herokuapp.com/user/interviewScores',{
+          const response = await fetch(`${URL}/user/interviewScores`,{
             method:'POST',
             headers: {
               'Content-Type': 'application/json',

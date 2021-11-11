@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux'
 import InterviewEntry from './InterviewEntry'
-const URL = 'https://dragonapp10.herokuapp.com'
+import {config} from '../../data/Config'
 
+const URL = config.url
 
 export default function Schedule({changeDetector,setLoading}) {
     const user = JSON.parse(localStorage.getItem('profile'))

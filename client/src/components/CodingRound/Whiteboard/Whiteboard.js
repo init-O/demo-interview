@@ -2,6 +2,9 @@ import React, { useRef, useEffect } from 'react';
 import io from 'socket.io-client';
 import { useParams } from 'react-router-dom'
 import './style.css';
+import {config} from '../../../data/Config'
+
+const URL = config.url
 
 
 const Whiteboard = () => {
@@ -128,7 +131,7 @@ const Whiteboard = () => {
       drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
     }
 
-    socketRef.current = io.connect('https://dragonapp10.herokuapp.com');
+    socketRef.current = io.connect(URL);
     socketRef.current.on('drawing', onDrawingEvent);
     socketRef.current.emit('get-drawing', id.id)
   }, []);
