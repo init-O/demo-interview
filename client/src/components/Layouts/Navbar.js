@@ -82,6 +82,7 @@ const Navbar = (props) => {
           <ul className="flex flex-col lg:flex-row list-none lg:ml-auto mr-8 text-lg">
             <li className="flex items-center">
             <button className="px-2 py-1 mr-2 bg-blue-300 text-indigo-800 hover:bg-blue-500 hover:text-white rounded" onClick={()=>window.open('https://www.buymeacoffee.com/interviewhub')}>Donate</button>
+            <button className="px-2 py-1 mr-2 bg-blue-300 text-indigo-800 hover:bg-blue-500 hover:text-white rounded" onClick={()=>history.push('/uploadedVideos')}>Content</button>
               {
                 user?(<button className="px-2 py-1 mr-2 bg-green-300 text-indigo-800 hover:bg-green-500 hover:text-white rounded" onClick={()=>history.push('/user/dashboard')}>Dashboard</button>):<span></span>
               }

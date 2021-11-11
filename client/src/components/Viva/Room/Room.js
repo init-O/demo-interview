@@ -244,7 +244,7 @@ export default function Room({setNavbarOpen}) {
         <Container>
 
                     <div >
-                        <div className="flex justify-start" id="video-grid-container" ref={videoGridContainer}></div>
+                        <div className="flex justify-start flex-wrap" id="video-grid-container" ref={videoGridContainer}></div>
                         
                         {micOpen? <Button className={classes.controlButtonAlt} variant="outlined" color="secondary" onClick={handleMicToggle}>
                             <MicCloseIcon />

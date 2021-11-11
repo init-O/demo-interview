@@ -33,6 +33,7 @@ import StreamList from './components/Streams/StreamList'
 import 'react-notifications/lib/notifications.css';
 import PageNotFound from './components/Error/PageNotFound';
 import LoadingScreen from './components/Layouts/LoadingScreen';
+import Videos from './components/Videos/Main'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications'
 
@@ -120,9 +121,7 @@ function App() {
           <Route path='/privacy-policy' exact><PrivacyPoilicy /></Route>
           <Route path='/our-team' exact><Team /></Route>
           <Route path='/tnc' exact><Tnc /></Route> 
-
-
-
+          <Route path='/uploadedVideos' exact><Videos /></Route> 
 
           <Route component={PageNotFound}/>
       </Switch>

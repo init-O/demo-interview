@@ -24,7 +24,8 @@ const uploadVideo = async (req,res) => {
         })
 
         const user = await User.findById(createdBy);
-        user.uploadedVideo.append(video._id)
+        console.log(user)
+        user.uploadedVideos.push(video._id)
 
         await user.save()
         res.status(200).json(video)

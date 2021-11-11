@@ -5,11 +5,11 @@ const http=require('http');
 const cors=require('cors');
 const mongoose=require('mongoose')
 
-const CONNECTION_URL= "https://interview-hub.netlify.app"
-// const CONNECTION_URL= "http://localhost:3000"
+// const CONNECTION_URL= "https://interview-hub.netlify.app"
+// const MONGODB_URL= "mongodb+srv://jacksapera:muhmeinlele69!@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority"
 
-// const MONGODB_URL= "mongodb://localhost/demoInterview"
-const MONGODB_URL= "mongodb+srv://jacksapera:muhmeinlele69!@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority"
+const CONNECTION_URL= "http://localhost:3000"
+const MONGODB_URL= "mongodb://localhost/demoInterview3000"
 
 
 //Mongoose setup
