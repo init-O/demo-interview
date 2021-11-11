@@ -7,7 +7,7 @@
 - [ ] download video quality reduction
 - [ ] user can view his resume (dashboard option)
 - [ ] user can view his videos and delete/update them
-- [ ] ** start increasing user
+- [ ] **start increasing user**
 
 > Secondary
 - [ ] paginating videos component for lazy loading videos 
