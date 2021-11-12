@@ -2,7 +2,7 @@ import React, {useState,useEffect} from 'react'
 import {MenuItem, Select, FormControl, InputLabel, TextField} from '@material-ui/core'
 import { useHistory } from 'react-router'
 import {useDispatch, useSelector} from 'react-redux'
-import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews, uploadResume} from '../../action/user/user'
+import {getQuestionBank, changeUsername, scheduleInterview, getscheduledInterviews, uploadResume, uploadNewVideo} from '../../action/user/user'
 import {getAuthData} from '../../action/auth/auth'
 import DateTimePicker from 'react-datetime-picker';
 import Schedule from './Schedule'
@@ -29,6 +29,11 @@ const Dashboard = ({setLoading}) => {
     const [changeDetector, setChangeDetector]=useState(false)
     const [resumeHash, setResumeHash] = useState()
     const [resumeLoaded,setResumeLoaded] = useState(false)
+    const [videoHash, setVideoHash] = useState()
+    const [videoLoaded,setVideoLoaded] = useState(false)
+
+    const [videoName,setVideoName] = useState('')
+    const [videoDescription,setVideoDescription] = useState('')
 
     useEffect(() => {
         if(!user){
@@ -52,6 +57,10 @@ const Dashboard = ({setLoading}) => {
 
             case "Machine Learning":
                 history.push('/ml')
+                break;
+        
+            case "Viva":
+                history.push('/viva')
                 break;
         
             default:
@@ -116,6 +125,34 @@ const Dashboard = ({setLoading}) => {
         
     }
 
+    const handleCaptureVideo = (e)=>{
+        NotificationManager.warning("","Loading Resume", 3000)
+        setVideoLoaded(false)
+        e.preventDefault()
+        const file = e.target.files[0]
+        const reader = new window.FileReader()
+        reader.readAsArrayBuffer(file)
+
+        reader.onloadend =async ()=>{
+            const buffer = new Buffer(reader.result)
+            const result =await ipfs.add(buffer)
+            setVideoHash(result.path)
+            setVideoLoaded(true)
+        }
+    
+    }
+
+    const handleUploadVideo = (e) => {
+        //update the resume link to user.resume
+        setLoading(true)
+        setVideoLoaded(false)
+        NotificationManager.info("","Uploading ")
+        e.preventDefault()
+        const sendData = {createdBy:user?.result._id,videoHash:`https://ipfs.infura.io/ipfs/${videoHash}`,name:videoName,description:videoDescription}
+        uploadNewVideo(sendData,setLoading)
+        
+    }
+
     const handleSchedule = (e)=>
     {   setLoading(true)
         console.log("Schedule should change")
@@ -165,6 +202,27 @@ const Dashboard = ({setLoading}) => {
                 </button>:
                 <button   className="text-white mt-2 font-bold px-4 py-2 rounded outline-none  mb-1 bg-gray-500  uppercase text-sm h transition-all duration-150 disabled" >
                     Upload Resume
+                </button>
+                }
+            </div>
+        </div>
+        <div className="flex flex-wrap m-1 mb-6 content-evenly">
+            <div className="w-half px-3 overflow-hidden">
+                <input type="file" accept=".mp4,.mov,wmv,.flv" className="mb-2 w-full " onChange={handleCaptureVideo}/>
+            </div>
+            <div className="w-half px-3 overflow-hidden">
+                <input placeholder="name" type="text"  className="mb-2 w-full " onChange={(e)=>setVideoName(e.target.value)}/>
+            </div>
+            <div className="w-half px-3 overflow-hidden">
+                <input placeholder="description"  type="text" className="mb-2 w-full " onChange={(e)=>setVideoDescription(e.target.value)}/>
+            </div>
+            <div className="w-half px-3">
+                { videoLoaded ? 
+                <button   className="text-white mt-2 font-bold px-4 py-2 rounded outline-none focus:outline-none mb-1 bg-blue-300 active:bg-red-600 uppercase text-sm shadow hover:shadow-lg ease-linear transition-all duration-150" onClick={handleUploadVideo}>
+                    Upload video
+                </button>:
+                <button   className="text-white mt-2 font-bold px-4 py-2 rounded outline-none  mb-1 bg-gray-500  uppercase text-sm h transition-all duration-150 disabled" >
+                    Upload Video
                 </button>
                 }
             </div>

@@ -37,11 +37,15 @@ import 'codemirror/theme/blackboard.css'
 import 'codemirror/theme/material-ocean.css'
 import 'codemirror/theme/yeti.css'
 
+import {config} from '../../../data/Config'
+
 //->>DO NOT ALTER<<- Altering import position breaks whole module
 window.JSHINT = require('jshint').JSHINT;
 
+const URL = config.url
 
-const soc=io("https://dragonapp10.herokuapp.com")
+
+const soc=io(URL)
 
 const useStyles=makeStyles((theme)=>({
     runButton:{

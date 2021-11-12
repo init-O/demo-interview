@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const URL = 'https://dragonapp10.herokuapp.com'
-// const URL = 'http://localhost:5000'
+import {config} from '../data/Config'
 
+const URL = config.url
 //Auth api
 
 export const login = (data) => axios.post(`${URL}/user/login`, data)
@@ -48,4 +48,10 @@ export const addNewStream = (data) => axios.post(`${URL}/stream/newStream`,data)
 export const deleteStream = (id) => axios.delete(`${URL}/stream/deleteStream/${id}`)
 
 export const getsahebquestion = (id) => axios.get(`${URL}/getsahebquestion/${id}`)
+
+//video api
+
+export const uploadNewVideo = (sendData)=>axios.post(`${URL}/videos`,sendData)
+
+export const getAllVideos = ()=>axios.get(`${URL}/videos`)
 

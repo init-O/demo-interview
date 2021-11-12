@@ -3,6 +3,7 @@ import {v4 as uuidv4} from 'uuid'
 import { useHistory } from 'react-router'
 import {addNewStream, deleteStream} from '../../../action/user/user'
 
+import RecordRTC,{MediaStreamRecorder,invokeSaveAsDialog} from 'recordrtc'
 import Peer from 'peerjs'
 import {io} from 'socket.io-client'
 import { useParams } from 'react-router-dom'
@@ -26,11 +27,14 @@ import FileCopyIcon from '@material-ui/icons/FileCopy';
 import Jumbotron from '../../altQuestionBank/Jumbotron'
 
 import { useBeforeunload } from 'react-beforeunload';
+import {config} from '../../../data/Config'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
-const socket=io("https://dragonapp10.herokuapp.com")
+
+const URL = config.url
+const socket=io(URL)
 // const socket=io("http://localhost:5000")
 
 const useStyles=makeStyles((theme)=>({
@@ -86,6 +90,7 @@ export default function Room({setNavbarOpen}) {
 
     const [currentPeerDbId,setcurrentPeerDbId] = useState()
     const [currentPeerDbName,setcurrentPeerDbName] = useState()
+    const [currentPeerDbResume,setcurrentPeerDbResume] = useState()
 
     const [myPeer,setMyPeer] = useState();
     const [openCodeEditor,setOpenCodeEditor]=useState(false)
@@ -118,6 +123,11 @@ export default function Room({setNavbarOpen}) {
     const userVideo = useRef();
 
     const [stream, setStream] = useState()
+    const [currentRecording, setCurrentRecording] = useState()
+    const [recordStream,setRecordStream] = useState(false)
+    
+    const recorderRef = useRef(null);
+    const [blob,setBlob] = useState(null)
 
 
     useBeforeunload((event) => {
@@ -138,7 +148,7 @@ export default function Room({setNavbarOpen}) {
         newPeer.on('open', id=>{
             console.log('user connected...',id)
             setUserId(id)
-            socket.emit('join-room', roomId,id,user?.result?._id,user?.result?.name)
+            socket.emit('join-room', roomId,id,user?.result?._id,user?.result?.name,user?.result?.resume)
         })
         NotificationManager.success("starting Interview","Creating Room")
         navigator.mediaDevices.getUserMedia({
@@ -157,14 +167,15 @@ export default function Room({setNavbarOpen}) {
                 }
             })
 
-            socket.on("user-connected",  (id, peerId, peerName)=>{
+            socket.on("user-connected",  (id, peerId, peerName, peerResume)=>{
                 if(userVideo.current?.srcObject){
                     socket.emit("meeting-closed")
                 }else{
                     setInsideMeeting(true)
                     setcurrentPeerDbId(peerId)
                     setcurrentPeerDbName(peerName)
-                    socket.emit("giving-back-id",user?.result._id, user?.result.name)
+                    setcurrentPeerDbResume(peerResume)
+                    socket.emit("giving-back-id",user?.result._id, user?.result.name, user?.result?.resume)
 
                     console.log('new user',id)
                     if(id!==userId){
@@ -189,9 +200,10 @@ export default function Room({setNavbarOpen}) {
             })
         })
 
-        socket.on("get-back-id",(peerId,peerName)=>{
+        socket.on("get-back-id",(peerId,peerName, peerResume)=>{
             setcurrentPeerDbId(peerId)
             setcurrentPeerDbName(peerName)
+            setcurrentPeerDbResume(peerResume)
         })
 
         socket.on("user-disconnected",id=>{
@@ -277,6 +289,8 @@ export default function Room({setNavbarOpen}) {
         setOpenWhiteboard(!openWhiteboard)
     }
 
+    //starting and closignb streams
+
     const handleStartStream = ()=>{
         if(!startStream){
             try {
@@ -294,6 +308,11 @@ export default function Room({setNavbarOpen}) {
                         sampleRate: 44100
                     }
                     }).then(displayMedia =>{
+                        const track1 = userVideo?.current?.srcObject?.getAudioTracks()[0]
+                        const track2 = myVideo?.current?.srcObject?.getAudioTracks()[0]
+                        console.log("stream...",track1,track2)
+                        if(track1)displayMedia.addTrack(track1)
+                        if(track2)displayMedia.addTrack(track2)
                         NotificationManager.warning("","Starting Live Stream")
                         setStreamVideo(displayMedia)
                         setStartStream(!startStream)
@@ -317,11 +336,115 @@ export default function Room({setNavbarOpen}) {
                 dispatch(deleteStream(`${id.id}`))
                 const tracks = streamVideo.getTracks()
 
+                if(recordStream){
+                    recorderRef.current.stopRecording(() => {
+                        const recordedVideo = recorderRef.current.getBlob();
+                        const recordedFile = new File([recordedVideo], "newVideo.mkv",{ type:"video/mp4"});
+                        invokeSaveAsDialog(recordedFile);
+                    });
+                }
                 tracks.forEach(track => track.stop())
                 setStreamVideo(null)
                 setStartStream(!startStream)
+
             }
         }
+    }
+
+    //recording video wuth and without streaming
+
+    const handleStartRecording = async ()=>{
+        if(!recordStream){
+            console.log("recording....")
+            try {
+                const sendData = {streamId:`${id.id}`, name:streamName, type: "Machine Learning", created_by:user.result._id}
+                console.log('Stream Data',sendData)
+                if(startStream){
+                    recorderRef.current = new RecordRTC(streamVideo, {
+                        type: 'video',
+                        mimeType: 'video/webm',
+                       disableLogs: true,
+                       timeSlice: 1000,
+                       bitsPerSecond: 128000,
+                       audioBitsPerSecond: 128000,
+                       videoBitsPerSecond: 128000,
+                       frameInterval: 90,
+                       canvas: {
+                           width: 640,
+                           height: 480
+                       },
+                       sampleRate: 96000,
+                       desiredSampRate: 16000,
+                       bufferSize: 16384,
+                       frameRate: 30,
+                       bitrate: 128000,
+                   });
+                   recorderRef.current.startRecording(()=>{
+                       console.log("startuing recording...",recorderRef.current)
+                   });
+                }else{
+
+                    navigator.mediaDevices.getDisplayMedia({
+                        video: {
+                            cursor: "always"
+                    },
+                    audio: {
+                        echoCancellation: true,
+                        noiseSuppression: true,
+                        sampleRate: 44100
+                    }
+                    }).then(displayMedia =>{
+                        const track1 = userVideo?.current?.srcObject?.getAudioTracks()[0]
+                        const track2 = myVideo?.current?.srcObject?.getAudioTracks()[0]
+                        console.log("recording stream...",track1,track2)
+                        if(track1)displayMedia.addTrack(track1)
+                        if(track2)displayMedia.addTrack(track2)
+                        NotificationManager.warning("","Recording Stream")
+                        setRecordStream(!recordStream)
+                        setCurrentRecording(displayMedia)
+                        recorderRef.current = new RecordRTC(displayMedia, {
+                            type: 'video',
+                            mimeType: 'video/webm',
+                           disableLogs: true,
+                           timeSlice: 1000,
+                           bitsPerSecond: 128000,
+                           audioBitsPerSecond: 128000,
+                           videoBitsPerSecond: 128000,
+                           frameInterval: 90,
+                           canvas: {
+                               width: 640,
+                               height: 480
+                           },
+                           sampleRate: 96000,
+                           desiredSampRate: 16000,
+                           bufferSize: 16384,
+                           frameRate: 30,
+                           bitrate: 128000,
+                       });
+                       recorderRef.current.startRecording(()=>{
+                           console.log("startuing recording...",recorderRef.current)
+                       });
+                    })
+                }
+                    // dispatch(addNewStream(sendData)) 
+            } catch (error) {
+                console.log(error)
+            }
+        }else{
+            if(recordStream){
+                NotificationManager.error("","Ending  Recording")
+                recorderRef.current.stopRecording(() => {
+                    const recordedVideo = recorderRef.current.getBlob();
+                    const recordedFile = new File([recordedVideo], "newVideo.mkv",{ type:"video/mp4"});
+                    invokeSaveAsDialog(recordedFile);
+                });
+                console.log("this is recording", blob)
+                const tracks = currentRecording.getTracks()
+                tracks.forEach(track => track.stop())
+                setRecordStream(!recordStream)
+            }
+        }
+
     }
 
     const handleUploadCustomQuestion = (e) =>{
@@ -420,17 +543,23 @@ export default function Room({setNavbarOpen}) {
                             </button>
                         </CopyToClipboard>
                     </div>
+                    <div className="px-2 h-20 w-25 mt-7">
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 border border-blue-700 rounded" onClick={()=>handleStartRecording()}>
+                            {recordStream?"stop Recording":"start Recording" }
+                        </button>
+                    </div>
                 </Grid>
                 <Grid item sm={12} md={12} >
                 {
                         resume?
                         <div className="justify-center">
                             <button  className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>Interview Questions</button>
-                            <object data={user.result.resume} type="application/pdf" width="100%" height="600">
+                            {currentPeerDbResume ? <object data={currentPeerDbResume} type="application/pdf" width="100%" height="600">
                                 <p>Your web browser doesn't have a PDF plugin.
-                                Instead you can <a href={user.result.resume}>click here to
+                                Instead you can <a href={currentPeerDbResume}>click here to
                                 download the PDF file.</a></p>
-                            </object>
+                            </object>:
+                            <h1>Peer resume not available</h1>}
                         </div>:
                         <div>
                             <button className="m-3 px-3 py-2 bg-red-500 text-white hover:bg-red-700 rounded" onClick={()=>setResume(!resume)}>open resume</button>

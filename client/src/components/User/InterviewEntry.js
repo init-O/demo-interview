@@ -10,8 +10,9 @@ import { EmailIcon, WhatsappIcon, TelegramIcon, LinkedinIcon, FacebookIcon } fro
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import {deleteRoom} from '../../action/user/user'
+import {config} from '../../data/Config'
 
-const URL = 'https://dragonapp10.herokuapp.com'
+const URL = config.url
 
 const useStyles=makeStyles((theme) => ({
     paper: {

@@ -5,6 +5,7 @@ import MachineLearning from './components/MachineLearning/Room/Room'
 import Whiteboard from './components/CodingRound/Whiteboard/Whiteboard'
 import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home' 
+import Viva from './components/Viva/Room/Room'
 
 import Contact from './components/Home/Contact' 
 import Disclaimer from './components/Home/Disclaimer' 
@@ -32,6 +33,7 @@ import StreamList from './components/Streams/StreamList'
 import 'react-notifications/lib/notifications.css';
 import PageNotFound from './components/Error/PageNotFound';
 import LoadingScreen from './components/Layouts/LoadingScreen';
+import Videos from './components/Videos/Main'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications'
 
@@ -77,26 +79,12 @@ function App() {
 
 
   return (
-
-    loading ?
-      
-    <div className="loader">
-    <div className="loader-content">
-    {/* <img src={logo} className="  "/> Interview hub */}
-       
-       <PropagateLoader color={color} loading={loading} css={override} size={30} >
-        
- 
-         </PropagateLoader>
-    
-        {/* <div className="loader-message text-white">Interview hub </div> */}
-    </div>
-</div>
-      
-
-    :
     <Router>
       <div>
+        
+        <PropagateLoader color={color}  loading={loading} css={override} size={30} >
+          
+        </PropagateLoader>
       {navbarOpen && <Navbar userPres={userPres} />}
       <NotificationContainer />
       <Switch>
@@ -110,8 +98,13 @@ function App() {
             <Redirect to={`/ml/room/${uuidv4()}`} />
           </Route>
 
+          <Route path='/viva' exact>
+            <Redirect to={`/viva/room/${uuidv4()}`} />
+          </Route>
+
           <Route path={`/room/:id`} exact><Room setNavbarOpen={setNavbarOpen}/></Route>
           <Route path={`/ml/room/:id`} exact><MachineLearning setNavbarOpen={setNavbarOpen}/></Route>
+          <Route path={`/viva/room/:id`} exact><Viva setNavbarOpen={setNavbarOpen}/></Route>
 
           <Route path='/signIn' exact><SignIn /></Route> 
           <Route path='/user/dashboard' exact><DashBoard setLoading={setLoading}/></Route>
@@ -128,9 +121,7 @@ function App() {
           <Route path='/privacy-policy' exact><PrivacyPoilicy /></Route>
           <Route path='/our-team' exact><Team /></Route>
           <Route path='/tnc' exact><Tnc /></Route> 
-
-
-
+          <Route path='/uploadedVideos' exact><Videos /></Route> 
 
           <Route component={PageNotFound}/>
       </Switch>

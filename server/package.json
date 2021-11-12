@@ -4,7 +4,7 @@
   "description": "Live editing of code on different clients via sockets",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "Ishan Madhav",
   "license": "ISC",
@@ -13,7 +13,7 @@
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "mongoose": "^5.12.14",
-    "nodemon": "^2.0.9",
+    "nodemon": "^2.0.14",
     "socket.io": "^4.1.2",
     "uuid": "^8.3.2"
   }

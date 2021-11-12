@@ -5,12 +5,15 @@ const http=require('http');
 const cors=require('cors');
 const mongoose=require('mongoose')
 
-const CONNECTION_URL= "https://interview-hub.netlify.app"
-// const CONNECTION_URL= "http://localhost:3000"
+// const CONNECTION_URL= "https://interview-hub.netlify.app"
+// const MONGODB_URL= "mongodb+srv://jacksapera:lsY8V3rFbSUfpr3Z@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority"
+
+const CONNECTION_URL= "http://localhost:3000"
+const MONGODB_URL= "mongodb://localhost/demoInterview3000"
 
 
 //Mongoose setup
-mongoose.connect("mongodb+srv://jacksapera:muhmeinlele69!@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority", {
+mongoose.connect(MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
@@ -35,6 +38,7 @@ const questionRoutes=require('./routes/questionRoutes')
 const userRoutes=require('./routes/userRoutes')
 const inviteRoutes=require('./routes/inviteRoutes')
 const streamRoutes = require('./routes/streamRoutes')
+const uploadVideo = require('./routes/uploadVideoRoutes')
 
 
 //Socket IO Setup
@@ -57,6 +61,7 @@ app.use('/', questionRoutes)
 app.use('/user', userRoutes)
 app.use('/', inviteRoutes)
 app.use('/stream', streamRoutes)
+app.use('/videos',uploadVideo)
 
 app.get('/', (req,res)=>
 {
