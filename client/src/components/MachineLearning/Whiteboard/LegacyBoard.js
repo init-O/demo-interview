@@ -4,9 +4,10 @@ import { io } from "socket.io-client";
 import { Button, Container, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import "./style.css"
-
+import { config } from "../../../data/Config";
  
-const soc = io("https://dragonapp10.herokuapp.com");
+const URL = config.url
+const socket=io(URL)
 
 /////yaar material ui reallyyyyy sucks     :(
 

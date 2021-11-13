@@ -121,6 +121,10 @@ export default function Room({setNavbarOpen}) {
     const recorderRef = useRef(null);
     const [blob,setBlob] = useState(null)
 
+     
+    let voiceStream;
+    let desktopStream;
+
     const user = JSON.parse(localStorage.getItem('profile'))
 
     
@@ -354,14 +358,45 @@ export default function Room({setNavbarOpen}) {
         }
     }
 
+    const mergeAudioStreams = (screenStream, voiceStream) => {
+        const context = new AudioContext();
+        const destination = context.createMediaStreamDestination();
+
+        if (screenStream && screenStream.getAudioTracks().length > 0) {
+          const source1 = context.createMediaStreamSource(desktopStream);
+          const desktopGain = context.createGain();
+          desktopGain.gain.value = 0.6;
+          source1.connect(desktopGain).connect(destination);
+        }
+        
+        if (voiceStream && voiceStream.getAudioTracks().length > 0) {
+          const source2 = context.createMediaStreamSource(voiceStream);
+          const voiceGain = context.createGain();
+          voiceGain.gain.value = 0.8;
+          source2.connect(voiceGain).connect(destination);
+        }
+          
+        return  destination.stream.getAudioTracks()
+      };
+
+
     const handleStartRecording = async ()=>{
         if(!recordStream){
             console.log("recording....")
             try {
-                const sendData = {streamId:`${id.id}`, name:streamName, type: "Machine Learning", created_by:user.result._id}
-                console.log('Stream Data',sendData)
-                if(startStream){
-                    recorderRef.current = new RecordRTC(streamVideo, {
+                    desktopStream = await navigator.mediaDevices.getDisplayMedia({ video:true, audio: true });
+                    voiceStream = await navigator.mediaDevices.getUserMedia({ video: false, audio: true });
+
+                    const tracks = [
+                        ...desktopStream.getVideoTracks(), 
+                        ...mergeAudioStreams(desktopStream, voiceStream)
+                    ];
+                    const displayMedia = new MediaStream(tracks);
+
+                    NotificationManager.warning("","Recording Stream")
+                    setRecordStream(!recordStream)
+                    setCurrentRecording(displayMedia)
+                    recorderRef.current = new RecordRTC(displayMedia, {
                         type: 'video',
                         mimeType: 'video/webm',
                        disableLogs: true,
@@ -383,50 +418,6 @@ export default function Room({setNavbarOpen}) {
                    recorderRef.current.startRecording(()=>{
                        console.log("startuing recording...",recorderRef.current)
                    });
-                }else{
-
-                    navigator.mediaDevices.getDisplayMedia({
-                        video: {
-                            cursor: "always"
-                    },
-                    audio: {
-                        echoCancellation: true,
-                        noiseSuppression: true,
-                        sampleRate: 44100
-                    }
-                    }).then(displayMedia =>{
-                        const track1 = userVideo?.current?.srcObject?.getAudioTracks()[0]
-                        const track2 = myVideo?.current?.srcObject?.getAudioTracks()[0]
-                        console.log("recording stream...",track1,track2)
-                        if(track1)displayMedia.addTrack(track1)
-                        if(track2)displayMedia.addTrack(track2)
-                        NotificationManager.warning("","Recording Stream")
-                        setRecordStream(!recordStream)
-                        setCurrentRecording(displayMedia)
-                        recorderRef.current = new RecordRTC(displayMedia, {
-                            type: 'video',
-                            mimeType: 'video/webm',
-                           disableLogs: true,
-                           timeSlice: 1000,
-                           bitsPerSecond: 128000,
-                           audioBitsPerSecond: 128000,
-                           videoBitsPerSecond: 128000,
-                           frameInterval: 90,
-                           canvas: {
-                               width: 640,
-                               height: 480
-                           },
-                           sampleRate: 96000,
-                           desiredSampRate: 16000,
-                           bufferSize: 16384,
-                           frameRate: 30,
-                           bitrate: 128000,
-                       });
-                       recorderRef.current.startRecording(()=>{
-                           console.log("startuing recording...",recorderRef.current)
-                       });
-                    })
-                }
                     // dispatch(addNewStream(sendData)) 
             } catch (error) {
                 console.log(error)
@@ -441,7 +432,10 @@ export default function Room({setNavbarOpen}) {
                 });
                 console.log("this is recording", blob)
                 const tracks = currentRecording.getTracks()
+                console.log("record tracks", tracks)
                 tracks.forEach(track => track.stop())
+                await voiceStream.getTracks().forEach(record =>record.stop())
+                await desktopStream.getTracks().forEach(record => record.stop())
                 setRecordStream(!recordStream)
             }
         }

@@ -34,6 +34,7 @@ import 'react-notifications/lib/notifications.css';
 import PageNotFound from './components/Error/PageNotFound';
 import LoadingScreen from './components/Layouts/LoadingScreen';
 import Videos from './components/Videos/Main'
+import TestRecorder from './components/Test/Room'
 
 import {NotificationContainer, NotificationManager} from 'react-notifications'
 
@@ -122,6 +123,7 @@ function App() {
           <Route path='/our-team' exact><Team /></Route>
           <Route path='/tnc' exact><Tnc /></Route> 
           <Route path='/uploadedVideos' exact><Videos /></Route> 
+          <Route path='/testRecorder' exact><TestRecorder /></Route> 
 
           <Route component={PageNotFound}/>
       </Switch>

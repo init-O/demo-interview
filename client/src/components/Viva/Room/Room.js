@@ -21,11 +21,14 @@ import {CopyToClipboard} from 'react-copy-to-clipboard'
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 
 import { useBeforeunload } from 'react-beforeunload';
+import {config} from '../../../data/Config'
 
 const {create} = require('ipfs-http-client')
 const ipfs = create({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
-const socket=io("https://dragonapp10.herokuapp.com")
+
+const URL = config.url
+const socket=io(URL)
 // const socket=io("http://localhost:5000")
 
 const useStyles=makeStyles((theme)=>({
