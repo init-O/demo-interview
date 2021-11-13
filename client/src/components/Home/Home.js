@@ -122,14 +122,13 @@ export default function Home() {
                       Support for 5+ Languages & Themes
                     </h4>
                     <p className="text-purple-800 font-bold text-center">
-                      {" "}Run code in any of the popular languages and see output in
-                    real time.It all happens in your browser, no installations
-                    needed.
-                       
+                      {" "}
+                      Run code in any of the popular languages and see output in
+                      real time.It all happens in your browser, no installations
+                      needed.
                     </p>
                   </div>
                 </div>
-             
 
                 {/* 2nd item */}
 
@@ -160,20 +159,19 @@ export default function Home() {
                       className="text-2xl font-bold leading-snug tracking-tight 
                   text-blue-700 "
                     >
-                      Effective Communication 
+                      Effective Communication
                     </h4>
                     <p className="text-purple-800 font-bold text-center">
-                      {" "}Communicate effectively with your Peer-Mates with audio and
-                    video along with code, whiteboard, resume analyser and much
-                    more!
-                       
+                      {" "}
+                      Communicate effectively with your Peer-Mates with audio
+                      and video along with code, whiteboard, resume analyser and
+                      much more!
                     </p>
                   </div>
                 </div>
-                
+
                 {/* 3rd item */}
 
-                
                 <div
                   className="relative flex flex-col items-center p-3 rounded shadow-xl
                 relative shadow-lg rounded-lg group  justify-center 
@@ -205,15 +203,14 @@ export default function Home() {
                     </h4>
                     <p className="text-purple-800 font-bold text-center">
                       {" "}
-                      Check our curated list of 3000+ full-stack, DSA, Core CS interview questions for
-                      developers to be asked during interview
+                      Check our curated list of 3000+ full-stack, DSA, Core CS
+                      interview questions for developers to be asked during
+                      interview
                     </p>
                   </div>
                 </div>
 
                 {/* 4th item */}
-
-
 
                 <div
                   className="relative flex flex-col items-center p-3 rounded shadow-xl
@@ -241,20 +238,18 @@ export default function Home() {
                     <h4
                       className="text-2xl font-bold leading-snug tracking-tight 
                   text-blue-700 "
-                    >Watch , Support and Learn
+                    >
+                      Watch , Support and Learn
                     </h4>
                     <p className="text-purple-800 font-bold text-center">
-                      {" "}Watch Live Streams of Mock Interview of other Candidates to analyse and learn from it.
-                       
+                      {" "}
+                      Watch Live Streams of Mock Interview of other Candidates
+                      to analyse and learn from it.
                     </p>
                   </div>
                 </div>
 
- 
                 {/* 5th item */}
-
-
-
 
                 <div
                   className="relative flex flex-col items-center p-3 rounded shadow-xl
@@ -286,24 +281,14 @@ export default function Home() {
                       See, analyse each Others Resume
                     </h4>
                     <p className="text-purple-800 font-bold text-center">
-                      {" "}Starting a live interview takes seconds . Upload resume and review it during interview.
-                 
-                       
+                      {" "}
+                      Starting a live interview takes seconds . Upload resume
+                      and review it during interview.
                     </p>
                   </div>
                 </div>
 
-
-
-
-
-
- 
-
                 {/* 6th item */}
-
-
-
 
                 <div
                   className="relative flex flex-col items-center p-3 rounded shadow-xl
@@ -331,25 +316,16 @@ export default function Home() {
                     <h4
                       className="text-2xl font-bold leading-snug tracking-tight 
                   text-blue-700 "
-                    >Get Feedback on Resume and Perfomance
+                    >
+                      Get Feedback on Resume and Perfomance
                     </h4>
                     <p className="text-purple-800 font-bold text-center">
-                      {" "}Get Personalized Feedback & fair technical evaluations post interview.
-                       
+                      {" "}
+                      Get Personalized Feedback & fair technical evaluations
+                      post interview.
                     </p>
                   </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
- 
               </div>
             </div>
           </div>
@@ -469,11 +445,14 @@ export default function Home() {
             <div class="flex flex-wrap -m-4 text-center">
               <div class="p-4 w-1/2 md:w-1/4 sm:w-1/2 w-full">
                 <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
-                  <i
-                    className="flex fas fa-crown  text-purple-500 text-6xl
+                  <div
+                    className=" flex  text-purple-500 
                 shadow-lg font-normal items-center justify-center align-center
-                 rounded-full outline-none focus:outline-none  mb-2"
-                  ></i>
+                 rounded-full outline-none focus:outline-none  mb-2   "
+                  >
+                    <i className="fas fa-crown text-6xl"></i>
+                  </div>
+
                   <h2 class="title-font font-medium text-3xl text-white">
                     2.7K
                   </h2>
@@ -482,11 +461,14 @@ export default function Home() {
               </div>
               <div class="p-4 w-1/2 md:w-1/4 sm:w-1/2 w-full">
                 <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
-                  <i
-                    className="flex fas fa-users  text-purple-500 text-6xl
+                  <div
+                    className=" flex  text-purple-500 
                 shadow-lg font-normal items-center justify-center align-center
-                 rounded-full outline-none focus:outline-none  mb-2"
-                  ></i>
+                 rounded-full outline-none focus:outline-none  mb-2   "
+                  >
+                    <i className="fas fa-users text-6xl"></i>
+                  </div>
+
                   <h2 class="title-font font-medium text-3xl text-white">
                     1.3K
                   </h2>
@@ -495,11 +477,13 @@ export default function Home() {
               </div>
               <div class="p-4 w-1/2 md:w-1/4 sm:w-1/2 w-full">
                 <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
-                  <i
-                    className="flex fas fa-user-plus  text-purple-500 text-6xl
+                  <div
+                    className=" flex  text-purple-500 
                 shadow-lg font-normal items-center justify-center align-center
-                 rounded-full outline-none focus:outline-none  mb-2"
-                  ></i>
+                 rounded-full outline-none focus:outline-none  mb-2   "
+                  >
+                    <i className="fas fa-user-plus text-6xl"></i>
+                  </div>
 
                   <h2 class="title-font font-medium text-3xl text-white">74</h2>
                   <p class="leading-relaxed">New Users(Last 30 Days)</p>
@@ -507,11 +491,14 @@ export default function Home() {
               </div>
               <div class="p-4  md:w-1/4 sm:w-1/2 w-full">
                 <div class="border-2 border-gray-800 px-4 py-6 rounded-lg">
-                  <i
-                    className="flex fas fa-chart-line  text-purple-500 text-6xl
+                  <div
+                    className=" flex  text-purple-500 
                 shadow-lg font-normal items-center justify-center align-center
-                 rounded-full outline-none focus:outline-none  mb-2"
-                  ></i>
+                 rounded-full outline-none focus:outline-none  mb-2   "
+                  >
+                    <i className="fas fa-chart-line text-6xl"></i>
+                  </div>
+
                   <h2 class="title-font font-medium text-3xl text-white">
                     467
                   </h2>
