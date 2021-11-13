@@ -8,8 +8,6 @@ const MitLiscense = () => {
   const history = useHistory();
   return (
     <div class=" pt-20 ">
-      
-
       <div class=" px-4 mx-auto max-w-6xl flex flex-col md:flex-row">
         <h2 class="mr-8 w-full md:w-1/3 text-3xl font-extrabold leading-9 text-blue-600">
           Here are our heroes :
@@ -182,13 +180,13 @@ const MitLiscense = () => {
               <div class="bg-white dark:bg-gray-800 rounded-lg shadow px-2 py-2 pt-16">
                 <div class="text-center">
                   <p class="text-2xl text-gray-800 dark:text-white">
-                  Ishan Madhav
+                    Ishan Madhav
                   </p>
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-                  Fullstack Developer
+                    Fullstack Developer
                   </p>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
-                     {/*   paste your about section from linkedin here */}
+                    {/*   paste your about section from linkedin here */}
                   </p>
                 </div>
                 <div class="flex border-t border-gray-200 w-40 mx-auto text-gray-500 items-center justify-between">
@@ -235,8 +233,8 @@ const MitLiscense = () => {
             </div>
             {/* /////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-{/* Shekhar Suman /////////////////////////////////////////////////////////////////////////////////////////////// */}
-<div class=" ">
+            {/* Shekhar Suman /////////////////////////////////////////////////////////////////////////////////////////////// */}
+            <div class=" ">
               <div class="text-center mb-4  -top-4 right-1/2 transform translate-y-1/2  ">
                 <a href="#" class="block relative">
                   <img
@@ -250,13 +248,13 @@ const MitLiscense = () => {
               <div class="bg-white dark:bg-gray-800 rounded-lg shadow px-2 py-2 pt-16">
                 <div class="text-center">
                   <p class="text-2xl text-gray-800 dark:text-white">
-                  Shekhar Suman
+                    Shekhar Suman
                   </p>
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-                  Web Developer
+                    Web Developer
                   </p>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
-                     {/*   paste your about section from linkedin here */}
+                    {/*   paste your about section from linkedin here */}
                   </p>
                 </div>
                 <div class="flex border-t border-gray-200 w-40 mx-auto text-gray-500 items-center justify-between">
@@ -303,8 +301,8 @@ const MitLiscense = () => {
             </div>
             {/* /////////////////////////////////////////////////////////////////////////////////////////////// */}
 
-{/* Sushant Kumar/////////////////////////////////////////////////////////////////////////////////////////////// */}
-<div class="mb-16 ">
+            {/* Sushant Kumar/////////////////////////////////////////////////////////////////////////////////////////////// */}
+            <div class="mb-16 ">
               <div class="text-center mb-4  -top-4 right-1/2 transform translate-y-1/2  ">
                 <a href="#" class="block relative">
                   <img
@@ -318,13 +316,13 @@ const MitLiscense = () => {
               <div class="bg-white dark:bg-gray-800 rounded-lg shadow px-2 py-2 pt-16">
                 <div class="text-center">
                   <p class="text-2xl text-gray-800 dark:text-white">
-                  Sushant Kumar
+                    Sushant Kumar
                   </p>
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-                  UI/UX Designer
+                    Web Developer
                   </p>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
-                     {/*   paste your about section from linkedin here */}
+                    {/*   paste your about section from linkedin here */}
                   </p>
                 </div>
                 <div class="flex border-t border-gray-200 w-40 mx-auto text-gray-500 items-center justify-between">
@@ -370,9 +368,7 @@ const MitLiscense = () => {
               </div>
             </div>
             {/* /////////////////////////////////////////////////////////////////////////////////////////////// */}
-
-
- </div>
+          </div>
         </dl>
       </div>
 

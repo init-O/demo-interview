@@ -7,7 +7,7 @@ import Tag from './Tag'
 
 export default function Jumbotron() {
     const webDev=['CSS', 'React', 'Git']
-    const DSA=['Arrays', 'Backtracking', 'BigO', 'Binary Tree']
+    const DSA=['Arrays', 'Backtracking', 'Big O', 'Binary Tree','Bit Manipulation','Blockchain']
     const CoreCS=['API Design', 'DBMS', 'Networking', 'OS']
     const icons=[<SearchOutlined />, <Instagram />, <List />, <GraphicEq />, <Lock />, <StorageOutlined />, <Settings />]
 
