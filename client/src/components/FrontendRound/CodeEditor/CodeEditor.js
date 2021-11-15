@@ -690,7 +690,7 @@ export default function CodeEditor({id}) {
                             <Typography variant="h6" className={classes.editorText}><span className={classes.jsicon}><Code /></span>JS:</Typography>
                             <div ref={outputRef}></div>
                         </Grid>
-                        <Button className={classes.runButton} onClick={handleCompile} variant="outlined" color="primary" >Compile and View</Button>
+                        
                             
                         <Grid className={classes.iframe} item sm={12} md={12}>
                             <iframe 
