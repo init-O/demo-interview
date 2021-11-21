@@ -1,0 +1,216 @@
+ 
+{
+    "Blockchain":[
+    {
+    "sno":"1.",
+    "question":"What is blockchain?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is blockchain transaction?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is proof-of-work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Why does Blockchain need coins or tokens?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is the blockchain data structure?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is the purpose of a blockchain node?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What is the Genesis Block?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"Explain the common structure of blockchains",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"What is deterministic behavior?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Explain why a blockchain needs tokens to operate",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Why is the blockchain immutable?",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"How Are Blockchain And Distributed Ledger Different?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"What is RSA algorithm?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"What is Merkle Trees?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Explain why there is a fixed supply of bitcoins?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"What is a smart contract?",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"What is mining difficulty?",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"How do verifiers check if a block is valid?",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"Explain what do nodes do?",
+    "level":"Middle"
+    },
+    {
+    "sno":"20.",
+    "question":"What is a hashing function?",
+    "level":"Middle"
+    },
+    {
+    "sno":"21.",
+    "question":"What are the major elements of the blockchain ecosystem?",
+    "level":"Middle"
+    },
+    {
+    "sno":"22.",
+    "question":"What is block data structure in blockchain?",
+    "level":"Middle"
+    },
+    {
+    "sno":"23.",
+    "question":"What are some advantages of using Merke Trees?",
+    "level":"Middle"
+    },
+    {
+    "sno":"24.",
+    "question":"What is DApp or Decentralised Application?",
+    "level":"Middle"
+    },
+    {
+    "sno":"25.",
+    "question":"What are the core components of blockchain architecture?",
+    "level":"Middle"
+    },
+    {
+    "sno":"26.",
+    "question":"What is a trapdoor function, and why is it needed in blockchain development?",
+    "level":"Middle"
+    },
+    {
+    "sno":"27.",
+    "question":"Name some widespread platforms for developing blockchain applications",
+    "level":"Senior"
+    },
+    {
+    "sno":"28.",
+    "question":"What determines the mining difficulty?",
+    "level":"Senior"
+    },
+    {
+    "sno":"29.",
+    "question":"Explain what is target hash?",
+    "level":"Senior"
+    },
+    {
+    "sno":"30.",
+    "question":"What is a 51% attack?",
+    "level":"Senior"
+    },
+    {
+    "sno":"31.",
+    "question":"What is nonce?",
+    "level":"Senior"
+    },
+    {
+    "sno":"32.",
+    "question":"What is the difference between PoW and PoS?",
+    "level":"Senior"
+    },
+    {
+    "sno":"33.",
+    "question":"How is hard fork different from the soft fork in blockchain?",
+    "level":"Senior"
+    },
+    {
+    "sno":"34.",
+    "question":"What Is a Proof of Stake?",
+    "level":"Senior"
+    },
+    {
+    "sno":"35.",
+    "question":"What's the difference between distributed hashtable technology and the bitcoin blockchain?",
+    "level":"Senior"
+    },
+    {
+    "sno":"36.",
+    "question":"What Is a Blockchain Consensus Algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"37.",
+    "question":"What is a stealth address?",
+    "level":"Senior"
+    },
+    {
+    "sno":"38.",
+    "question":"What is off-chain transaction?",
+    "level":"Senior"
+    },
+    {
+    "sno":"39.",
+    "question":"Is it possible to brute force bitcoin address creation in order to steal money?",
+    "level":"Senior"
+    },
+    {
+    "sno":"40.",
+    "question":"Why is Git not considered a “block chain”?",
+    "level":"Senior"
+    },
+    {
+    "sno":"41.",
+    "question":"What can an attacker with 51% of hash power do?",
+    "level":"Senior"
+    },
+    {
+    "sno":"42.",
+    "question":"What are miners really solving?",
+    "level":"Senior"
+    }
+    ]
+    } 
+    
