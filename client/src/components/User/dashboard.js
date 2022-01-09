@@ -23,7 +23,7 @@ const Dashboard = ({setLoading}) => {
     console.log("ayth user", userPres)
     const [currentUsername,setCurrentUsername] = useState()
     const [roomId,setRoomId] = useState('')
-    const roomTypes = ["Coding Round", "Machine Learning", "Viva"]
+    const roomTypes = ["Coding Round", "Machine Learning", "Viva", "Frontend"]
     const [currentRoomType,setCurrentRoomType] = useState("Coding Round")
     const [dateValue, onChange] = useState(new Date());
     const [changeDetector, setChangeDetector]=useState(false)
@@ -61,6 +61,9 @@ const Dashboard = ({setLoading}) => {
         
             case "Viva":
                 history.push('/viva')
+                break;
+            case "Frontend":
+                history.push('/frontend')
                 break;
         
             default:

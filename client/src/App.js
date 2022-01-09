@@ -6,6 +6,7 @@ import Whiteboard from './components/CodingRound/Whiteboard/Whiteboard'
 import {Route, Link, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom'
 import Home from './components/Home/Home' 
 import Viva from './components/Viva/Room/Room'
+import Frontend from './components/FrontendRound/Room/Room'
 
 import Contact from './components/Home/Contact' 
 import Disclaimer from './components/Home/Disclaimer' 
@@ -103,9 +104,14 @@ function App() {
             <Redirect to={`/viva/room/${uuidv4()}`} />
           </Route>
 
+          <Route path='/frontend' exact>
+            <Redirect to={`frontend/room/${uuidv4()}`} />
+          </Route>
+
           <Route path={`/room/:id`} exact><Room setNavbarOpen={setNavbarOpen}/></Route>
           <Route path={`/ml/room/:id`} exact><MachineLearning setNavbarOpen={setNavbarOpen}/></Route>
           <Route path={`/viva/room/:id`} exact><Viva setNavbarOpen={setNavbarOpen}/></Route>
+          <Route path={`/frontend/room/:id`} exact> <Frontend setNavbarOpen={setNavbarOpen} /> </Route>
 
           <Route path='/signIn' exact><SignIn /></Route> 
           <Route path='/user/dashboard' exact><DashBoard setLoading={setLoading}/></Route>
