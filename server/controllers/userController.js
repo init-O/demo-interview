@@ -33,8 +33,12 @@ const loginUser = async (req, res) => {
                 googleId: req.body.googleId,
                 profilePic: req.body.imageUrl
             })
+            
 
             res.status(200).json(newUser);
+            const siteInfo=await Site.findOne()
+            siteInfo.totalUsers=siteInfo.totalUsers+1
+            siteInfo.lastThirtyUsers=siteInfo.lastThirtyUsers+1
         }
     } catch (error) {
         console.log(error)

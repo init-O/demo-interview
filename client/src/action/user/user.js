@@ -245,3 +245,27 @@ export const getAllVideos = async (setVideos) =>{
     }
 }
 
+export const getSiteData= async (setSiteInfo) =>
+{
+    try{
+        const {data}= await api.getSiteInfo()
+        setSiteInfo(data)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+
+export const postHitInfo = async ()=>
+{
+    try{
+        const {data}=await api.postHit()
+
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}

@@ -19,6 +19,7 @@
     "chart.js": "^3.5.1",
     "codemirror": "^5.62.0",
     "emailjs-com": "^3.2.0",
+    "firebase": "^9.6.2",
     "github-login": "^1.0.12",
     "ipfs-http-client": "^52.0.3",
     "js-file-download": "^0.4.12",

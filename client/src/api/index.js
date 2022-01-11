@@ -55,3 +55,6 @@ export const uploadNewVideo = (sendData)=>axios.post(`${URL}/videos`,sendData)
 
 export const getAllVideos = ()=>axios.get(`${URL}/videos`)
 
+export const getSiteInfo = ()=>axios.get(`${URL}/siteInfo`)
+
+export const postHit = ()=>axios.post(`${URL}/hit`)

@@ -28,6 +28,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Peer from 'peerjs';
 import {useDispatch, useSelector} from 'react-redux'
 import {getQuestionBank, getAllStreams} from './action/user/user'
+import { postHitInfo } from './action/user/user';
 import {getAuthData} from './action/auth/auth'
 import Stream from './components/Streams/Stream'
 import StreamList from './components/Streams/StreamList'
@@ -44,6 +45,8 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 
 import logo from "./components/Home/assets/img/interviewhubplainlogo.jpg"
 
+
+
 const override = css`
   display: block;
   text-color: purple;
@@ -56,6 +59,7 @@ const override = css`
   width: 100%;
   height: 100vh;
 `;
+
 
 function App() {
   const dispatch = useDispatch()
@@ -70,6 +74,7 @@ function App() {
   useEffect(() => {
     dispatch(getQuestionBank())
     dispatch(getAllStreams())
+    postHitInfo()
     if(user)
     dispatch(getAuthData(user))
 
