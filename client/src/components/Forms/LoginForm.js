@@ -153,7 +153,7 @@ const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
             </div>
             <input
               type={showPassword ? "text" : "password"}
-              class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 bg-gray-50 border-0 h-10 border-grey-light rounded rounded-l-none px-3 self-center relative  font-roboto text-xl outline-none"
+              class="flex-shrink text-black flex-grow flex-auto leading-normal w-px flex-1 bg-gray-50 border-0 h-10 border-grey-light rounded rounded-l-none px-3 self-center relative  font-roboto text-xl outline-none"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
