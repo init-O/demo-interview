@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
 const User = require('../models/userModel')
+const Site = require('../models/siteModel')
 
 const getUser = async (req, res) => {
     try {
@@ -19,8 +20,8 @@ const getAllUsers=async (req, res)=>
 
 const loginUser = async (req, res) => {
     try {
-        console.log('indise log in')
-        const email = req.body.email
+        console.log('indise log in', req.body.user)
+        const email = req.body.user.email
         console.log(email)
         const user = await User.findOne({ email: email})
         if (user) {
@@ -28,10 +29,10 @@ const loginUser = async (req, res) => {
         } else {
 
             const newUser = await User.create({
-                email: req.body.email,
-                name: req.body.name, 
+                name: req.body.user.displayName,
+                email: req.body.user.email,
+                profilePic:req.body.user.photoURL,
                 googleId: req.body.googleId,
-                profilePic: req.body.imageUrl
             })
             
 
@@ -45,6 +46,85 @@ const loginUser = async (req, res) => {
     }
 }
 
+const customLogin  = async (req, res) => {
+    try {
+        console.log('indise log in', req.body)
+        const email = req.body.user.email
+        console.log(email)
+        const user = await User.findOne({ email: email})
+        if (user) {
+            throw Error("User Already Exist")
+        } else {
+
+            const newUser = await User.create({
+                name: req.body.user.displayName,
+                email: req.body.user.email,
+                profilePic:req.body.user.photoURL,
+                googleId: req.body.googleId,
+            })
+            
+
+            res.status(200).json(newUser);
+            const siteInfo=await Site.findOne()
+            siteInfo.totalUsers=siteInfo.totalUsers+1
+            siteInfo.lastThirtyUsers=siteInfo.lastThirtyUsers+1
+        }
+    } catch (error) {
+        console.log(error)
+        return res.status(404).json({message:error.message})
+    }
+}
+
+const customSignin = async (req, res) =>{
+    try {
+        console.log('indise log in')
+        const email = req.body.email
+        console.log(email)
+        const user = await User.findOne({ email: email})
+        if (!user) {
+            throw Error("No user Found")
+        } 
+            
+
+        res.status(200).json(user);
+        const siteInfo=await Site.findOne()
+        siteInfo.lastThirtyUsers=siteInfo.lastThirtyUsers+1
+        
+    } catch (error) {
+        console.log(error)
+        return res.status(404).json({message:error.message})
+    }
+}
+
+const googleLogin =  async (req, res) => {
+    try {
+        console.log('indise log in,', req.body)
+        const email = req.body.email
+        console.log(email)
+        const user = await User.findOne({ email: email})
+        if (user) {
+            res.status(200).json(user)
+        } else {
+
+            const newUser = await User.create({
+                name: req.body.user.displayName,
+                email: req.body.user.email,
+                profilePic:req.body.user.photoURL,
+                googleId: req.body.googleId,
+            })
+            
+
+            res.status(200).json(newUser);
+            const siteInfo=await Site.findOne()
+            siteInfo.totalUsers=siteInfo.totalUsers+1
+            siteInfo.lastThirtyUsers=siteInfo.lastThirtyUsers+1
+        }
+    } catch (error) {
+        console.log(error)
+        return res.status(404).json({message:error.message})
+    }
+}
+
 const changeUsername = async (req, res) => {
     try {
         const {email,username} = req.body
@@ -55,12 +135,11 @@ const changeUsername = async (req, res) => {
             const user2 = await User.findOne({email: email})
             user2.username = username
             await user2.save()
-            const user4  = await User.findOne({email: email})
-            console.log(user4)
             res.status(200).json(user2)
         }
     } catch (error) {
         console.log(error)
+        return res.status(404).json({message:error.message})
     }
 }
 
@@ -134,4 +213,4 @@ const getInterviewScores = async (req, res) => {
     }
 }
 
-module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers, uploadResume, addInterviewScore, getInterviewScores}
+module.exports = {getUser, loginUser, changeUsername, searchByName, getAllUsers, uploadResume, addInterviewScore, getInterviewScores, customLogin, googleLogin, customSignin}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NotificationManager } from "react-notifications";
+import {useDispatch} from 'react-redux'
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -11,6 +12,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { authentication } from "../../firebase_config";
 import { useHistory, useNavigate } from "react-router-dom";
 
+import { customLogin, googleLogin} from '../../action/auth/auth'
+
 import {CloseRounded} from "@material-ui/icons";
 
 import {config} from '../../data/Config'
@@ -18,6 +21,7 @@ const URL = config.url;
 
 const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
   const history=useHistory()
+  const dispatch = useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,33 +29,16 @@ const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   //APi and routing login
-  const loginInternAPI = (sendData) =>
-    axios.post(`${URL}/intern/signIn`, sendData);
-
-  const loginIntern = async (sendData) => {
-    try {
-      const response = await loginInternAPI(sendData);
-      if (response.status !== 200) throw Error(response.data.message);
-      const data = response.data;
-      window.localStorage.setItem("profile", JSON.stringify(data));
-      if (isModal) setOpen(false);
-      history.push("/dashboard");
-    } catch (error) {
-      setOpen(true);
-      NotificationManager.error("Register With Us", "Sign In Failed", 3000);
-      history.push("/");
-      console.log(error);
-    }
-  };
 
   const handleGoogleSignIn = () => {
+    console.log("this is it")
     const provider = new GoogleAuthProvider();
     setOpen(false);
     signInWithPopup(authentication, provider)
       .then((re) => {
-        console.log(re);
+        console.log("yahi",re);
 
-        loginIntern(re);
+        dispatch(googleLogin(re.user,  isModal, setOpen, history));
       })
       .catch((err) => {
         console.log(err);
@@ -69,7 +56,7 @@ const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
         password
       );
       if (userCred.user.emailVerified) {
-        loginIntern({ user: authentication.currentUser })
+        dispatch(customLogin({ user: authentication.currentUser }, isModal, setOpen, history));
         if (isModal) setOpen(false);
       } else {
         throw Error("Verify Your Email");

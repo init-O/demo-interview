@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { NotificationManager } from "react-notifications";
+import {useDispatch} from 'react-redux'
 import {
   signInWithPopup,
   GoogleAuthProvider,
@@ -17,12 +18,15 @@ import {
 import { authentication } from "../../firebase_config";
 import { useHistory } from "react-router-dom";
 
+import {customSignup, googleLogin} from '../../action/auth/auth'
+
 import {CloseRounded} from '@material-ui/icons'
 import {config} from '../../data/Config'
 const URL = config.url;
 
 const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
   const history= useHistory()
+  const dispatch = useDispatch()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setfullName] = useState("");
@@ -32,13 +36,6 @@ const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  //APi and routing login
-  const loginInternAPI = (sendData) =>
-    axios.post(`${URL}/intern/login`, sendData);
-
-  const CustomloginInternAPI = (sendData) =>
-    axios.post(`${URL}/intern/customlogin`, sendData);
-
   const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
@@ -47,43 +44,18 @@ const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
       );
   };
 
-  const loginIntern = async (sendData) => {
-    try {
-      const response = await loginInternAPI(sendData);
-
-      if (response.status !== 200) throw new Error(response.data.message);
-      const data = response.data;
-      window.localStorage.setItem("profile", JSON.stringify(data));
-      if (isModal) setOpen(false);
-      history.push("/dashboard");
-    } catch (error) {
-      NotificationManager.error("user already exists", "Sign Up Failed", 2000);
-      console.log(error);
-    }
-  };
-  const CustomloginIntern = async (sendData) => {
-    try {
-      const response = await CustomloginInternAPI(sendData);
-
-      if (response.status !== 200) throw new Error(response.data.message);
-      const data = response.data;
-      setIsLogin(true);
-    } catch (error) {
-      NotificationManager.error("user already exists", "Sign Up Failed", 2000);
-      console.log(error);
-    }
-  };
 
   const handleGoogleLoginIn = () => {
+    console.log("this is it")
     const provider = new GoogleAuthProvider();
     setOpen(false);
     signInWithPopup(authentication, provider)
       .then((re) => {
-        const sendData = { user: re.user };
-        loginIntern(re);
+        console.log("yahi",re);
+
+        dispatch(googleLogin(re.user,  isModal, setOpen, history));
       })
       .catch((err) => {
-        setOpen(true);
         console.log(err);
       });
   };
@@ -112,7 +84,7 @@ const SignupForm = ({ isLogin, setIsLogin, isModal, setOpen }) => {
               "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
           })
             .then(() => {
-              CustomloginIntern({ user: authentication.currentUser })
+              dispatch(customSignup({ user: authentication.currentUser }, setIsLogin))
                 .then(() => {
                   signOut(authentication);
                   setIsLogin(true);
