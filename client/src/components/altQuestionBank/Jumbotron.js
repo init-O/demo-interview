@@ -183,8 +183,8 @@ export default function Jumbotron() {
   };
 
   return (
-    <div className="bg-white text-black rounded-xl p-4 mt-4 mb-4">
-      <div className="bg-gray-200 rounded-xl p-3 mb-4">
+    <div className="bg-white text-black rounded-xl p-1  mt-4 mb-4">
+      <div className="bg-gray-200 rounded-xl p-4  ">
         <div className="grid grid-cols-3 gap-4 mt-10">
           <div
             className={`text-xl justify-self-center cursor-pointer ${color.webDev}`}
@@ -205,9 +205,9 @@ export default function Jumbotron() {
             Core CS
           </div>
         </div>
-        <div className="grid grid-cols-5 gap-3 mt-10 mb-10">
+        <div className="grid   mt-5 ">
           <div></div>
-          <div className="col-span-3 justify-self-center">
+          <div className="  justify-self-center">
             {category.map((topic) => (
               <Tag
                 icons={icons}
@@ -220,23 +220,23 @@ export default function Jumbotron() {
           <div></div>
         </div>
       </div>
-      <div className="ml-10 mr-10">
+      <div className="ml-1 mr-1">
         <div>
           <button
             onClick={() => handleFilter("Junior")}
-            className={`bg-white hover:bg-gray-100 mr-3 text-gray-800 font-semibold py-2 px-4 border border-blue-400 rounded-full shadow sm:hidden lg:inline`}
+            className={`bg-white hover:bg-gray-100  text-gray-800 font-semibold m-1 px-4 border border-blue-400 rounded-full shadow sm:hidden lg:inline`}
           >
             Junior
           </button>
           <button
             onClick={() => handleFilter("Middle")}
-            className={`bg-white hover:bg-gray-100 mr-3 text-gray-800 font-semibold py-2 px-4 border border-green-400 rounded-full shadow sm:hidden lg:inline`}
+            className={`bg-white hover:bg-gray-100  text-gray-800 font-semibold m-1 px-4 border border-green-400 rounded-full shadow sm:hidden lg:inline`}
           >
             Middle
           </button>
           <button
             onClick={() => handleFilter("Senior")}
-            className={`bg-white hover:bg-gray-100 mr-3 text-gray-800 font-semibold py-2 px-4 border border-red-400 rounded-full shadow sm:hidden lg:inline`}
+            className={`bg-white hover:bg-gray-100  text-gray-800 font-semibold m-1 px-4 border border-red-400 rounded-full shadow sm:hidden lg:inline`}
           >
             Senior
           </button>
