@@ -4,7 +4,7 @@ const socketio=require('socket.io');
 const http=require('http');
 const cors=require('cors');
 const mongoose=require('mongoose')
-
+const cron=require('node-cron')
 // const CONNECTION_URL= "https://interview-hub.netlify.app"
 // const MONGODB_URL= "mongodb+srv://jacksapera:lsY8V3rFbSUfpr3Z@cluster0.qadkz.mongodb.net/DemoInterview01?retryWrites=true&w=majority"
 
@@ -23,6 +23,7 @@ mongoose.connect(MONGODB_URL, {
 //Models
 const Code=require('./models/codeModel')
 const questionPack=require('./models/questionPackModel')
+const Site=require('./models/siteModel')
 
 //Socket Handlers
 const socketHandler=require('./controllers/socketHandler')
@@ -39,7 +40,7 @@ const userRoutes=require('./routes/userRoutes')
 const inviteRoutes=require('./routes/inviteRoutes')
 const streamRoutes = require('./routes/streamRoutes')
 const uploadVideo = require('./routes/uploadVideoRoutes')
-
+const siteRoutes=require('./routes/siteRoutes')
 
 //Socket IO Setup
 const server=http.createServer(app);
@@ -62,11 +63,13 @@ app.use('/user', userRoutes)
 app.use('/', inviteRoutes)
 app.use('/stream', streamRoutes)
 app.use('/videos',uploadVideo)
+app.use('/', siteRoutes)
 
 app.get('/', (req,res)=>
 {
     res.send('<h1>This is working</h1>')
 })
+
 
 server.listen(PORT, ()=>
 {
@@ -74,4 +77,16 @@ server.listen(PORT, ()=>
 })
 
 
+//May cause performance issues, might have to be changed later
+//Using Node cron
+
+cron.schedule('* * 1 * *', async ()=>
+{
+    console.log("This one runs every month or so")
+    const siteInfo=await Site.findOne()
+    siteInfo.lastThirtyViews=0
+    siteInfo.lastThirtyUsers=0
+    const updatedSiteInfo=await siteInfo.save()
+    console.log(updatedSiteInfo)
+})
   

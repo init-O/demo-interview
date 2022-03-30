@@ -19,8 +19,6 @@ const Dashboard = ({setLoading}) => {
     const history = useHistory()
     const dispatch = useDispatch()
     const user = JSON.parse(localStorage.getItem('profile'))
-    const userPres = useSelector(state=>state.User.authData)
-    console.log("ayth user", userPres)
     const [currentUsername,setCurrentUsername] = useState()
     const [roomId,setRoomId] = useState('')
     const roomTypes = ["Coding Round", "Machine Learning", "Viva", "Frontend"]
@@ -177,7 +175,7 @@ const Dashboard = ({setLoading}) => {
         <img class="inline-block h-12 w-12 rounded-full ring-2 ring-white "src={user?.result.profilePic} alt="" /> 
         <div >
         <span className="text-2xl uppercase  m-2 font-extrabold dashboard-headings">{user?.result.name.split(" ")[0]}</span> <br></br>
-        <span className="italic text-black"> @{userPres?.result.username}</span>
+        <span className="italic text-black"> @{user?.result.username}</span>
         </div>
         </div>
         <div className="m-3">

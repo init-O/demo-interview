@@ -7,6 +7,12 @@ const URL = config.url
 
 export const login = (data) => axios.post(`${URL}/user/login`, data)
 
+export const customLogin = (data) => axios.post(`${URL}/user/customSignin`, data)
+
+export const customSignup = (data) => axios.post(`${URL}/user/customSignup`, data)
+
+export const googleLogin = (data) => axios.post(`${URL}/user/googleLogin`, data)
+
 //Programming qustion api
 
 export const createQuestionBank = (data) => axios.post(`${URL}/questionPack`,data)
@@ -55,3 +61,6 @@ export const uploadNewVideo = (sendData)=>axios.post(`${URL}/videos`,sendData)
 
 export const getAllVideos = ()=>axios.get(`${URL}/videos`)
 
+export const getSiteInfo = ()=>axios.get(`${URL}/siteInfo`)
+
+export const postHit = ()=>axios.post(`${URL}/hit`)

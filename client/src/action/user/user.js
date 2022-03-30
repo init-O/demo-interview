@@ -96,6 +96,7 @@ export const changeUsername = async  (sendData, setLoading) => {
             throw new Error(response.status)
         }
         const {data} = response;
+        localStorage.setItem('profile', JSON.stringify({result:data}));
         setLoading(false)
         NotificationManager.success("","Username Changed")
     } catch (error) {
@@ -245,3 +246,27 @@ export const getAllVideos = async (setVideos) =>{
     }
 }
 
+export const getSiteData= async (setSiteInfo) =>
+{
+    try{
+        const {data}= await api.getSiteInfo()
+        setSiteInfo(data)
+    }
+    catch(error)
+    {
+        console.log(error)
+    }
+}
+
+
+export const postHitInfo = async ()=>
+{
+    try{
+        const {data}=await api.postHit()
+
+    }
+    catch(err)
+    {
+        console.log(err)
+    }
+}

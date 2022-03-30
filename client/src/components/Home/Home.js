@@ -1,11 +1,23 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Container, Grid, Typography } from "@material-ui/core";
 import Footer from "./Footer.js";
 import gif from "./assets/gif.gif";
+import { getSiteData } from "../../action/user/user.js";
 
 export default function Home() {
   const user = JSON.parse(localStorage.getItem("profile"));
   console.log(user);
+  const [siteInfo, setSiteInfo]=useState({
+    totalViews: 0,
+    totalUsers: 0,
+    lastThirtyUsers: 0,
+    lastThirtyViews: 0
+  })
+
+  useEffect(async ()=>
+  {
+      getSiteData(setSiteInfo)
+  }, [])
 
   return (
     <>
@@ -454,7 +466,7 @@ export default function Home() {
                   </div>
 
                   <h2 class="title-font font-medium text-3xl text-white">
-                    2.7K
+                    {siteInfo.totalViews}
                   </h2>
                   <p class="leading-relaxed">Total Page Visits</p>
                 </div>
@@ -470,7 +482,7 @@ export default function Home() {
                   </div>
 
                   <h2 class="title-font font-medium text-3xl text-white">
-                    1.3K
+                    {siteInfo.totalUsers}
                   </h2>
                   <p class="leading-relaxed">Total Users</p>
                 </div>
@@ -485,7 +497,7 @@ export default function Home() {
                     <i className="fas fa-user-plus text-6xl"></i>
                   </div>
 
-                  <h2 class="title-font font-medium text-3xl text-white">74</h2>
+                  <h2 class="title-font font-medium text-3xl text-white">{siteInfo.lastThirtyUsers}</h2>
                   <p class="leading-relaxed">New Users(Last 30 Days)</p>
                 </div>
               </div>
@@ -500,7 +512,7 @@ export default function Home() {
                   </div>
 
                   <h2 class="title-font font-medium text-3xl text-white">
-                    467
+                    {siteInfo.lastThirtyViews}
                   </h2>
                   <p class="leading-relaxed">Page Visits(Last 30 Days)</p>
                 </div>

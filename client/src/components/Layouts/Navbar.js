@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 import {NotificationManager} from 'react-notifications'
 
 import logo from "../Home/assets/img/interviewhubplainlogo.jpg"
+import AuthForm from "../Forms/AuthForm";
+
+import { Modal } from "@material-ui/core";
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
@@ -30,6 +33,10 @@ const Navbar = (props) => {
   }
 
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [open, setOpen]=useState(false)
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <nav
@@ -41,7 +48,15 @@ const Navbar = (props) => {
       }
     >
       <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-      
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        className="overflow-y-auto"
+      >
+        <AuthForm isModal={open} setOpen={setOpen} />
+      </Modal>
 
         <div className="w-full relative flex justify-between lg:w-auto lg:static   lg:justify-start">
           
@@ -103,7 +118,7 @@ const Navbar = (props) => {
                   <Button
                     variant="outlined"
                     color="primary"
-                    onClick={handleLogin}
+                    onClick={handleOpen}
                   >
                     Login
                   </Button>
