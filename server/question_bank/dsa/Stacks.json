@@ -1,0 +1,131 @@
+ 
+{
+    "Stacks":[
+    {
+    "sno":"1.",
+    "question":"Explain why Stack is a recursive data structure",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is Stack?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Why and when should I use Stack or Queue data structures instead of Arrays/Lists?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Why Are Stacks Useful?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"How to implement Linked List Using Stack?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Implement a Queue using two Stacks",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Implement Stack using Two Queues (with efficient push)",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"What is complexity of push and pop for a Stack implemented using a LinkedList?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"Design a Stack that supports retrieving the min element in O(1)",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Reverse a String using Stack",
+    "level":"Junior"
+    },
+    {
+    "sno":"11.",
+    "question":"Compare Array based vs Linked List stack implementations",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"Explain what are Infix, Prefix and Postfix Expressions?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"Implement Double Linked List from Stack with min complexity",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"Sort a Stack using another Stack",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Check if parentheses are balanced using Stack",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"How reverse Stack without using any (extra) data structure?",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"Find duplicate parenthesis in expression",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"Sort a Stack using Recursion",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"How do I convert a Queue into the Stack?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"Why do we need Prefix and Postfix notations?",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"How implement a Queue using only One (1) Stack?",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"How to implement 3 Stacks with one Array?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"Given an extremely large file that contains parenthesis, how would you say that the parenthesis are balanced?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"Build a Binary Expression Tree for this expression",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"How to check for braces balance in a really large (1T) file in parallel?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

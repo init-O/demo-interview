@@ -1,0 +1,76 @@
+ 
+{
+    "FibonacciSequence":[
+    {
+    "sno":"1.",
+    "question":"What is Fibonacci Sequence of numbers?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is Golden Ratio?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Return the N-th value of the Fibonacci sequence Recursively",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Return the N-th value of the Fibonacci sequence. Solve in O(n) time",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Get the N-th Fibonacci number with O(n) time and O(1) space complexity",
+    "level":"Middle"
+    },
+    {
+    "sno":"6.",
+    "question":"Display startNumber to endNumber only from Fibonacci Sequence",
+    "level":"Middle"
+    },
+    {
+    "sno":"7.",
+    "question":"Test if a Number belongs to the Fibonacci Series",
+    "level":"Senior"
+    },
+    {
+    "sno":"8.",
+    "question":"Can a Fibonacci function be written to execute in O(1) time?",
+    "level":"Senior"
+    },
+    {
+    "sno":"9.",
+    "question":"How to use Memoization for N-th Fibonacci number?",
+    "level":"Senior"
+    },
+    {
+    "sno":"10.",
+    "question":"Binet's formula: How to calculate Fibonacci numbers without Recursion or Iteration?",
+    "level":"Senior"
+    },
+    {
+    "sno":"11.",
+    "question":"Calculate n-th Fibonacci number using Tail Recursion",
+    "level":"Senior"
+    },
+    {
+    "sno":"12.",
+    "question":"Get Fibonacci Number in O(log n) time using Matrix Exponentiation",
+    "level":"Senior"
+    },
+    {
+    "sno":"13.",
+    "question":"What is Fibonacci Search technique?",
+    "level":"Senior"
+    },
+    {
+    "sno":"14.",
+    "question":"Generating Fibonacci Sequence using ES6 generator functions",
+    "level":"Senior"
+    }
+    ]
+    }
+    

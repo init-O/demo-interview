@@ -1,0 +1,101 @@
+
+{
+    "GraphTheory":[
+    {
+    "sno":"1.",
+    "question":"What is a Graph?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What's the difference between the data structure Tree and Graph?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"List some ways of representing Graphs",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Explain the BSF (Breadth First Search) traversing method",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Name some common types and categories of Graphs",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is difference between BFS and Dijkstra's algorithms when looking for shortest path?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Explain what is DFS (Depth First Search) algorithm for a Graph and how does it work?",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"What are some applications of Graphs?",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"Provide some practical examples of using Depth-First Search (DFS) vs Breadth-First Search (BFS)?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Explain what is A* Search?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Compare Adjacency Lists or Adjacency Matrices for Graphs representation",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What are key differences between BFS and DFS?",
+    "level":"Senior"
+    },
+    {
+    "sno":"13.",
+    "question":"What is Bipartite Graph? How to detect one?",
+    "level":"Senior"
+    },
+    {
+    "sno":"14.",
+    "question":"Explain what is heuristic cost function in A* Search and how to calculate one?",
+    "level":"Senior"
+    },
+    {
+    "sno":"15.",
+    "question":"Why does a Breadth First Search (BFS) use more memory than Depth First Search (DFS)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"16.",
+    "question":"How do we know whether we need to use BSF or DSF algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"17.",
+    "question":"Why is the complexity of DFS O(V+E)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"18.",
+    "question":"Illustrate the difference in peak memory consumption between DFS and BFS",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"What's the difference between best-first search and A* Search?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

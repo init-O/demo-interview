@@ -1,0 +1,161 @@
+ 
+{
+    "HashTables":[
+    {
+    "sno":"1.",
+    "question":"What is Hash Table?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is the space complexity of a Hash Table?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Explain what is Hash Value?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Define what is a Hash Function?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is Hashing?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is the difference between Hashing and Hash Tables?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Provide a simple example of Hash Function",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"Detect if a List is Cyclic using Hash Table",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"What does \"bucket entries\" mean in the context of a hashtable?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Explain in simple terms how Hash Tables are implemented?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"What is the significance of load factor of a Hash Table?",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What is complexity of Hash Table?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"What is Hash Collision?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"What is hashing algorithm? How it works?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"What is MD5?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"How can Hash Functions be used to perform lookups?",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"Remove duplicates from an unsorted Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"Find similar elements from two Linked Lists and return the result as a Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"Explain some technics to handle collision in Hash Tables",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"What are some main advantages of Tries over Hash Tables",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"How To Choose Between a Hash Table and a Trie (Prefix Tree)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"What is the difference between HashMap and HashTable?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"Explain when to use Hashing on practice?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"Is it possible to decrypt MD5 hashes? Explain.",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"Compare lookup operation in Trie vs Hash Table",
+    "level":"Senior"
+    },
+    {
+    "sno":"26.",
+    "question":"What is the difference between a Hash Function and a Cryptographic Hash Function?",
+    "level":"Senior"
+    },
+    {
+    "sno":"27.",
+    "question":"What is a Salt and How Does It Make Password Hashing More Secure?",
+    "level":"Senior"
+    },
+    {
+    "sno":"28.",
+    "question":"Why all hash functions are \"broken\"? Explain.",
+    "level":"Senior"
+    },
+    {
+    "sno":"29.",
+    "question":"Explain types of Resistance any Cryptographic Hash Function shall have?",
+    "level":"Senior"
+    },
+    {
+    "sno":"30.",
+    "question":"How can I pair socks from a pile efficiently?",
+    "level":"Senior"
+    },
+    {
+    "sno":"31.",
+    "question":"How come that hash values are not reversible?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

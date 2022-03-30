@@ -1,0 +1,126 @@
+ 
+{
+    "Searching":[
+    {
+    "sno":"1.",
+    "question":"Explain what is Linear (Sequential) Search and when may we use one?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is Binary Search",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is an example of Interpolation Search being slower than Binary Search?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Explain some Linear Search optimization techniques",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Recursive and Iterative Binary Search: Which one is more efficient and why?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is Interpolation Search",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Why complexity of Binary Search is O(log n)?",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"Compare Binary Search vs Linear Search",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"What is a Jump (or Block) Search?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Which of the following algorithms would be the fastest?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Write a program for Recursive Binary Search",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What's wrong with this Recursive Binary Search function?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"How does the Sentinel Search work?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"Explain what is Ternary Search?",
+    "level":"Senior"
+    },
+    {
+    "sno":"15.",
+    "question":"For Binary Search why do we need round down the average? Could we round up instead?",
+    "level":"Senior"
+    },
+    {
+    "sno":"16.",
+    "question":"What is the optimal block size for a Jump Search? Explain.",
+    "level":"Senior"
+    },
+    {
+    "sno":"17.",
+    "question":"How to apply Binary Search O(log n) on a sorted Linked List?",
+    "level":"Senior"
+    },
+    {
+    "sno":"18.",
+    "question":"How is it possible to do Binary Search on a Doubly-Linked List in O(n) time?",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"Is Sentinel Linear Search better than normal Linear Search?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"Why would you ever do Binary Search on a Doubly-Linked list?",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"Why use Binary Search if there's ternary search?",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"When Jump Search is a better alternative than a Binary Search?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"What is Fibonacci Search technique?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"When and how to use Exponential (aka Doubling or Galloping) Search?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

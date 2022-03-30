@@ -1,0 +1,46 @@
+ 
+{
+    "Trie":[
+    {
+    "sno":"1.",
+    "question":"What is Trie?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Name some application of Trie data structure",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What are some Trie implementation strategies?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What are some advantages and disadvantages of Trie?",
+    "level":"Middle"
+    },
+    {
+    "sno":"5.",
+    "question":"What are some main advantages of Tries over Hash Tables",
+    "level":"Senior"
+    },
+    {
+    "sno":"6.",
+    "question":"What are main advantages of Tries over Binary Search Trees (BSTs)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"7.",
+    "question":"How To Choose Between a Hash Table and a Trie (Prefix Tree)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"8.",
+    "question":"Compare lookup operation in Trie vs Hash Table",
+    "level":"Senior"
+    }
+    ]
+    }
+    

@@ -1,0 +1,131 @@
+ 
+{
+    "Strings":[
+    {
+    "sno":"1.",
+    "question":"What is String in Data Structures?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is the difference between Strings vs. Char arrays?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is a null-terminated String?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is strings mutability and immutability?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Reverse a String using Stack",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Mentions some pros and cons of immutable vs mutable Strings",
+    "level":"Middle"
+    },
+    {
+    "sno":"7.",
+    "question":"Remove Invalid Parentheses",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"How to check if two Strings (words) are Anagrams?",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"How to check if String is a Palindrome?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Reverse the ordering of words in a String",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Find all the Permutations of a String",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"Why is char[] preferred over String for passwords?",
+    "level":"Senior"
+    },
+    {
+    "sno":"13.",
+    "question":"What are some limitations of Ropes?",
+    "level":"Senior"
+    },
+    {
+    "sno":"14.",
+    "question":"What are Pascal Strings?",
+    "level":"Senior"
+    },
+    {
+    "sno":"15.",
+    "question":"Explain Boyer-Moore Algorithm with Example",
+    "level":"Senior"
+    },
+    {
+    "sno":"16.",
+    "question":"What are some advantages of Rope data structure?",
+    "level":"Senior"
+    },
+    {
+    "sno":"17.",
+    "question":"What is Rope Data Structure is used for?",
+    "level":"Senior"
+    },
+    {
+    "sno":"18.",
+    "question":"Check for balanced parentheses in linear time using constant space",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"What are the main differences between the Knuth-Morris-Pratt search algorithm and the Boyer-Moore search algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"When is Rabin-Karp more effective than KMP or Boyer-Moore?",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"Compare Strings vs Ropes from the Performance Analysis",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"When to use Ropes over StringBuilders?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"What's the rationale for null terminated strings?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"Explain Knuth-Morris-Pratt (KMP) Algorithm in Plain English",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"Find all the repeating substrings in a given String (or DNA chromosome sequence)",
+    "level":"Senior"
+    }
+    ]
+    }
+    

@@ -1,0 +1,76 @@
+ 
+{
+    "Queues":[
+    {
+    "sno":"1.",
+    "question":"List some Queue real-life applications",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is Queue?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is Complexity Analysis of Queue operations?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What are some types of Queue?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Why and when should I use Stack or Queue data structures instead of Arrays/Lists?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Implement a Queue using two Stacks",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Implement Stack using Two Queues (with efficient push)",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"Name some Queue implementations and compare them by efficiency of operations",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"What are benefits of Circular Queue?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Compare Array-Based vs List-Based implementation of Queues",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"How to manage Full Circular Queue event?",
+    "level":"Senior"
+    },
+    {
+    "sno":"12.",
+    "question":"Name most efficient way to implement Stack and Queue together?",
+    "level":"Senior"
+    },
+    {
+    "sno":"13.",
+    "question":"How do I convert a Queue into the Stack?",
+    "level":"Senior"
+    },
+    {
+    "sno":"14.",
+    "question":"How implement a Queue using only One (1) Stack?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

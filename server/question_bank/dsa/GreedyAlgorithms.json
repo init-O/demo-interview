@@ -1,0 +1,41 @@
+ 
+{
+    "GreedyAlgorithms":[
+    {
+    "sno":"1.",
+    "question":"What is a Greedy Algorithm?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What Are Greedy Algorithms Used For?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is the difference between Dynamic Programming and Greedy Algorithms?",
+    "level":"Senior"
+    },
+    {
+    "sno":"4.",
+    "question":"What's the difference between Greedy and Heuristic algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"5.",
+    "question":"Compare Greedy vs Divide & Conquer vs Dynamic Programming Algorithms",
+    "level":"Senior"
+    },
+    {
+    "sno":"6.",
+    "question":"Is Dijkstra's algorithm a Greedy or Dynamic Programming algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"7.",
+    "question":"Are there any proof to decide if Greedy approach will produce the best solution?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

@@ -1,0 +1,166 @@
+ 
+{
+    "Trees":[
+    {
+    "sno":"1.",
+    "question":"Define Tree Data Structure",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Define Binary Tree",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is Height and Depth of a Tree and its Nodes?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What's the difference between the data structure Tree and Graph?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is Binary Search Tree?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"How to implement a tree data-structure? Provide some code.",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What is the difference between Tree Depth and Height?",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"Why do we want to use Binary Search Tree?",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"Provide some practical examples of using Depth-First Search (DFS) vs Breadth-First Search (BFS)?",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"What is Balanced Tree and why is that important?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"What are advantages and disadvantages of BST?",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"Explain the difference between Binary Tree and Binary Search Tree with an example?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"What is AVL Tree?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"What is Diameter of a Tree?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Classify Tree Traversal Algorithms. Provide some visual explanation.",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"What is the difference between Heap and Red-Black Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"17.",
+    "question":"How does inserting or deleting nodes affect a Red-Black tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"18.",
+    "question":"What is the time complexity for insert into Red-Black Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"19.",
+    "question":"What is Red-Black tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"20.",
+    "question":"Explain how to balance AVL Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"21.",
+    "question":"Explain a B-Tree data structure for 5 years old",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"Explain what is B-Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"Why does a Breadth First Search (BFS) use more memory than Depth First Search (DFS)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"Explain what the main differences between red-black (RB) trees and AVL trees",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"How do we know whether we need to use BSF or DSF algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"26.",
+    "question":"Is there any reason anyone should use BSTs instead of AVLs in the first place?",
+    "level":"Senior"
+    },
+    {
+    "sno":"27.",
+    "question":"What's the main reason for choosing Red Black (RB) trees instead of AVL trees?",
+    "level":"Senior"
+    },
+    {
+    "sno":"28.",
+    "question":"How is an AVL tree different from a B-tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"29.",
+    "question":"What are the differences between B trees and B+ trees?",
+    "level":"Senior"
+    },
+    {
+    "sno":"30.",
+    "question":"Why is a Hash Table not used instead of a B-Tree in order to access data inside a database?",
+    "level":"Senior"
+    },
+    {
+    "sno":"31.",
+    "question":"Why do we need a separate datastructure like B-Tree for database and file system?",
+    "level":"Senior"
+    },
+    {
+    "sno":"32.",
+    "question":"How are B-Trees used in practice?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

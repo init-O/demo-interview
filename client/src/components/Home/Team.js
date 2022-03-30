@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 const MitLiscense = () => {
   const history = useHistory();
   return (
-    <div class=" pt-20 ">
+    <div class=" pt-8 ">
       <div class=" px-4 mx-auto max-w-6xl flex flex-col md:flex-row">
-        <h2 class="mr-8 w-full md:w-1/3 text-3xl font-extrabold leading-9 text-blue-600">
+        <h2 class="mr-8 w-full md:w-1/3 text-6xl font-extrabold  text-blue-600 pt-32">
           Here are our heroes :
           <br />
-          <p className="text-lg leading-relaxed m-4 text-green-900">
+          <p className="text-lg leading-relaxed m-4 text-xl  text-green-900">
             All the developers are undergraduate students of Indian Institute of
             Information Technology Ranchi,which is one of the Indian Institutes
             of Information Technology, a chain of higher education institutes
@@ -52,7 +52,7 @@ const MitLiscense = () => {
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
                   Fullstack Developer
                   </p>
-                  <span className="font-fold text-lg py-2 mt-1 mb-2">Founder</span>
+                  <span className="font-fold text-lg py-2 mt-1 mb-2">Co-Founder</span>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
                      Full stack developer, competitve coder, machine learning and deep learning ethusiast,
                      blockchain developer and android developer
@@ -111,8 +111,9 @@ const MitLiscense = () => {
                     Saheb Kumar
                   </p>
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
-                    Backend Developer & Manager Corporate Relations & Networking
+                  Fullstack Developer
                   </p>
+                  <span className="font-fold text-lg py-2 mt-1 mb-2">Co-Founder</span>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
                     Saheb is working in web development, Competitive Coding ,
                     problem-solving, public speaking, and is an enthusiast
@@ -185,6 +186,7 @@ const MitLiscense = () => {
                   <p class="text-xl text-gray-500 dark:text-gray-200 font-light">
                     Fullstack Developer
                   </p>
+                  <span className="font-fold text-lg py-2 mt-1 mb-2">Co-Founder</span>
                   <p class="text-md text-purple-800 w-2/3 dark:text-gray-400 mx-auto py-1 font-light">
                     {/*   paste your about section from linkedin here */}
                   </p>

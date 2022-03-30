@@ -1,0 +1,136 @@
+ 
+{
+    "Sorting":[
+    {
+    "sno":"1.",
+    "question":"Why Sorting algorithms are important?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is meant by to \"Sort in Place\"?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Classify Sorting Algorithms",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What are advantages and disadvantages of Bubble Sort?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Explain what is ideal Sorting algorithm?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Explain how Bubble Sort works",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Explain how Insertion Sort works",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"How would you optimise Bubble Sort?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"Insert an item in a sorted Linked List maintaining order",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"Which sort algorithm works best on mostly sorted data?",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"When is Quicksort better than Mergesort?",
+    "level":"Middle"
+    },
+    {
+    "sno":"12.",
+    "question":"What is \"stability\" in sorting algorithms and why is it important?",
+    "level":"Middle"
+    },
+    {
+    "sno":"13.",
+    "question":"What's the difference between External vs Internal sorting?",
+    "level":"Middle"
+    },
+    {
+    "sno":"14.",
+    "question":"When is each Sorting algorithm used?",
+    "level":"Middle"
+    },
+    {
+    "sno":"15.",
+    "question":"Explain how Merge Sort works",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"Explain how Heap Sort works",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"Why would you use Merge Sort for a Linked List?",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"Which of the following algorithms would be the fastest?",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"Sort a Stack using another Stack",
+    "level":"Middle"
+    },
+    {
+    "sno":"20.",
+    "question":"Sort a Stack using Recursion",
+    "level":"Middle"
+    },
+    {
+    "sno":"21.",
+    "question":"Why is Merge sort preferred over Quick sort for sorting Linked Lists?",
+    "level":"Senior"
+    },
+    {
+    "sno":"22.",
+    "question":"When Merge Sort is preferred over Quick Sort?",
+    "level":"Senior"
+    },
+    {
+    "sno":"23.",
+    "question":"Explain how to find 100 largest numbers out of an array of 1 billion numbers",
+    "level":"Senior"
+    },
+    {
+    "sno":"24.",
+    "question":"Explain how Radix Sort works",
+    "level":"Senior"
+    },
+    {
+    "sno":"25.",
+    "question":"Explain how QuickSort works",
+    "level":"Senior"
+    },
+    {
+    "sno":"26.",
+    "question":"How can I pair socks from a pile efficiently?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

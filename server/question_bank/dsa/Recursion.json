@@ -1,0 +1,51 @@
+
+{
+    "Recursion":[
+    {
+    "sno":"1.",
+    "question":"How Dynamic Programming is different from Recursion and Memoization?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is a good example of Recursion (other than generating a Fibonacci sequence)?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is the difference between Backtracking and Recursion?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Explain what is DFS (Depth First Search) algorithm for a Graph and how does it work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Is it always possible to write a non-recursive form for every Recursive function?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"Can you convert this Recursion function into a loop?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Convert a Binary Tree to a Doubly Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"How to use Memoization for N-th Fibonacci number?",
+    "level":"Senior"
+    },
+    {
+    "sno":"9.",
+    "question":"How to recursively reverse a Linked List?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

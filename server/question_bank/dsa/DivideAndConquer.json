@@ -1,0 +1,36 @@
+ 
+{
+    "Divide And Conquer":[
+    {
+    "sno":"1.",
+    "question":"What is the difference between Divide and Conquer and Dynamic Programming Algorithms?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Compare Greedy vs Divide & Conquer vs Dynamic Programming Algorithms",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"How does Merge Sort work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Convert a Binary Tree to a Doubly Linked List",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"How does QuickSort work?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is Fibonacci Search technique?",
+    "level":"Junior"
+    }
+    ]
+    } 
+    

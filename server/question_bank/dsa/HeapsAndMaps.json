@@ -1,0 +1,66 @@
+ 
+{
+    "HeapsAndMaps":[
+    {
+    "sno":"1.",
+    "question":"What is Priority Queue?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is Heap?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"How is Binary Heap usually implemented?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is Binary Heap?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"Insert item into the Heap. Explain your actions.",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"When would you want to use a Heap?",
+    "level":"Middle"
+    },
+    {
+    "sno":"7.",
+    "question":"Compare Heaps vs Arrays to implement Priority Queue",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"What is the advantage of Heaps over Sorted Arrays?",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"Name some ways to implement Priority Queue",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Explain how Heap Sort works",
+    "level":"Middle"
+    },
+    {
+    "sno":"11.",
+    "question":"Explain how to find 100 largest numbers out of an array of 1 billion numbers",
+    "level":"Senior"
+    },
+    {
+    "sno":"12.",
+    "question":"What is the difference between Heap and Red-Black Tree?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

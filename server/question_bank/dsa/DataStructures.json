@@ -1,0 +1,226 @@
+ 
+{
+    "Data Structures":[
+    {
+    "sno":"1.",
+    "question":"Explain why Stack is a recursive data structure",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"What is Stack?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What is Queue?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"Name some characteristics of Array Data Structure",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What is Linked List?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is Tree Data Structure?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"What is Priority Queue?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"What is Heap?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"What is Hash Table?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"What is String in Data Structures?",
+    "level":"Junior"
+    },
+    {
+    "sno":"11.",
+    "question":"What is Binary Tree?",
+    "level":"Junior"
+    },
+    {
+    "sno":"12.",
+    "question":"What is a Graph?",
+    "level":"Junior"
+    },
+    {
+    "sno":"13.",
+    "question":"What is Trie?",
+    "level":"Junior"
+    },
+    {
+    "sno":"14.",
+    "question":"What is Complexity Analysis of Queue operations?",
+    "level":"Junior"
+    },
+    {
+    "sno":"15.",
+    "question":"Name some disadvantages of Linked Lists?",
+    "level":"Junior"
+    },
+    {
+    "sno":"16.",
+    "question":"What are some types of Queue?",
+    "level":"Junior"
+    },
+    {
+    "sno":"17.",
+    "question":"Why and when should I use Stack or Queue data structures instead of Arrays/Lists?",
+    "level":"Junior"
+    },
+    {
+    "sno":"18.",
+    "question":"What are Dynamic Arrays?",
+    "level":"Junior"
+    },
+    {
+    "sno":"19.",
+    "question":"What are some types of Linked List?",
+    "level":"Junior"
+    },
+    {
+    "sno":"20.",
+    "question":"What is the space complexity of a Hash Table?",
+    "level":"Junior"
+    },
+    {
+    "sno":"21.",
+    "question":"What is Binary Heap?",
+    "level":"Junior"
+    },
+    {
+    "sno":"22.",
+    "question":"What's the difference between the data structure Tree and Graph?",
+    "level":"Junior"
+    },
+    {
+    "sno":"23.",
+    "question":"What is Binary Search Tree?",
+    "level":"Junior"
+    },
+    {
+    "sno":"24.",
+    "question":"Under what circumstances are Linked Lists useful?",
+    "level":"Junior"
+    },
+    {
+    "sno":"25.",
+    "question":"What is the difference between Strings vs. Char arrays?",
+    "level":"Junior"
+    },
+    {
+    "sno":"26.",
+    "question":"What does Sparse Array mean?",
+    "level":"Middle"
+    },
+    {
+    "sno":"27.",
+    "question":"What is an Associative Array?",
+    "level":"Middle"
+    },
+    {
+    "sno":"28.",
+    "question":"Compare Heaps vs Arrays to implement Priority Queue",
+    "level":"Middle"
+    },
+    {
+    "sno":"29.",
+    "question":"What is complexity of Hash Table?",
+    "level":"Middle"
+    },
+    {
+    "sno":"30.",
+    "question":"Name some common types and categories of Graphs",
+    "level":"Middle"
+    },
+    {
+    "sno":"31.",
+    "question":"Name some application of Trie data structure",
+    "level":"Middle"
+    },
+    {
+    "sno":"32.",
+    "question":"What is Balanced Tree and why is that important?",
+    "level":"Middle"
+    },
+    {
+    "sno":"33.",
+    "question":"What is AVL Tree?",
+    "level":"Middle"
+    },
+    {
+    "sno":"34.",
+    "question":"Convert a Binary Tree to a Doubly Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"35.",
+    "question":"What is Red-Black tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"36.",
+    "question":"What are some main advantages of Tries over Hash Tables",
+    "level":"Senior"
+    },
+    {
+    "sno":"37.",
+    "question":"What is Bipartite Graph? How to detect one?",
+    "level":"Senior"
+    },
+    {
+    "sno":"38.",
+    "question":"What are Pascal Strings?",
+    "level":"Senior"
+    },
+    {
+    "sno":"39.",
+    "question":"Explain what is B-Tree?",
+    "level":"Senior"
+    },
+    {
+    "sno":"40.",
+    "question":"How To Choose Between a Hash Table and a Trie (Prefix Tree)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"41.",
+    "question":"When is doubly linked list more efficient than singly linked list?",
+    "level":"Senior"
+    },
+    {
+    "sno":"42.",
+    "question":"What is Rope Data Structure is used for?",
+    "level":"Senior"
+    },
+    {
+    "sno":"43.",
+    "question":"Compare lookup operation in Trie vs Hash Table",
+    "level":"Senior"
+    },
+    {
+    "sno":"44.",
+    "question":"How are B-Trees used in practice?",
+    "level":"Senior"
+    }
+    ]
+    } 
+    

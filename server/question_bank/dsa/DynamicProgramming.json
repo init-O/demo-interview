@@ -1,0 +1,66 @@
+
+{
+    "DynamicProgramming":[
+    {
+    "sno":"1.",
+    "question":"What is Dynamic Programming?",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"How Dynamic Programming is different from Recursion and Memoization?",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"What are some characteristics of Dynamic Programming?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What are pros and cons of Memoization or Top-Down approach?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What should you consider when choosing between Top-Down vs Bottom-Up solutions for the same problem?",
+    "level":"Middle"
+    },
+    {
+    "sno":"6.",
+    "question":"What are some pros and cons of Tabulation or Bottom-Up approach?",
+    "level":"Middle"
+    },
+    {
+    "sno":"7.",
+    "question":"What is the difference between Divide and Conquer and Dynamic Programming Algorithms?",
+    "level":"Middle"
+    },
+    {
+    "sno":"8.",
+    "question":"Provide an example of Dynamic Program but without Recursion",
+    "level":"Middle"
+    },
+    {
+    "sno":"9.",
+    "question":"Find length of the longest increasing subsequence (LIS) in the array using DP",
+    "level":"Middle"
+    },
+    {
+    "sno":"10.",
+    "question":"Compare Greedy vs Divide & Conquer vs Dynamic Programming Algorithms",
+    "level":"Senior"
+    },
+    {
+    "sno":"11.",
+    "question":"Is Dijkstra's algorithm a Greedy or Dynamic Programming algorithm?",
+    "level":"Senior"
+    },
+    {
+    "sno":"12.",
+    "question":"How to use Memoization for N-th Fibonacci number?",
+    "level":"Senior"
+    }
+    ]
+    }
+    

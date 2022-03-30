@@ -15,7 +15,7 @@ export default function Tag({name, category, setQuestionList, icons}) {
        })
     }
     return (
-        <button onClick={handleTopicChange} className="bg-white hover:bg-gray-100 focus:ring-2 focus:ring-blue-600 focus:text-blue-600 m-2 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-full shadow">
+        <button onClick={handleTopicChange} className="bg-white hover:bg-pink-300 focus:ring-2 focus:ring-blue-600 focus:text-blue-600  text-gray-800 font-semibold  px-2 m-1 text-xs border border-gray-400 rounded-full shadow">
            {name.length>6?icons[3]:name.length<6?icons[0]:name.length>9?icons[2]:icons[5]} {name}
         </button>
     )

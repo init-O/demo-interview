@@ -1,0 +1,221 @@
+ 
+{
+    "Linked Lists":[
+    {
+    "sno":"1.",
+    "question":"Name some advantages of Linked List",
+    "level":"Junior"
+    },
+    {
+    "sno":"2.",
+    "question":"Define Linked List",
+    "level":"Junior"
+    },
+    {
+    "sno":"3.",
+    "question":"Name some disadvantages of Linked Lists?",
+    "level":"Junior"
+    },
+    {
+    "sno":"4.",
+    "question":"What is a cycle/loop in the singly-linked list?",
+    "level":"Junior"
+    },
+    {
+    "sno":"5.",
+    "question":"What are some types of Linked List?",
+    "level":"Junior"
+    },
+    {
+    "sno":"6.",
+    "question":"What is time complexity of Linked List operations?",
+    "level":"Junior"
+    },
+    {
+    "sno":"7.",
+    "question":"Under what circumstances are Linked Lists useful?",
+    "level":"Junior"
+    },
+    {
+    "sno":"8.",
+    "question":"How to implement Linked List Using Stack?",
+    "level":"Junior"
+    },
+    {
+    "sno":"9.",
+    "question":"How to reverse a singly Linked List using only two pointers?",
+    "level":"Junior"
+    },
+    {
+    "sno":"10.",
+    "question":"What is complexity of push and pop for a Stack implemented using a LinkedList?",
+    "level":"Junior"
+    },
+    {
+    "sno":"11.",
+    "question":"Detect if a List is Cyclic using Hash Table",
+    "level":"Junior"
+    },
+    {
+    "sno":"12.",
+    "question":"Convert a Singly Linked List to Circular Linked List",
+    "level":"Junior"
+    },
+    {
+    "sno":"13.",
+    "question":"Insert an item in a sorted Linked List maintaining order",
+    "level":"Junior"
+    },
+    {
+    "sno":"14.",
+    "question":"Convert a Single Linked List to a Double Linked List",
+    "level":"Junior"
+    },
+    {
+    "sno":"15.",
+    "question":"When to use a Linked List over an Array/Array List?",
+    "level":"Middle"
+    },
+    {
+    "sno":"16.",
+    "question":"Compare Array based vs Linked List stack implementations",
+    "level":"Middle"
+    },
+    {
+    "sno":"17.",
+    "question":"Why does linked list delete and insert operation have complexity of O(1)?",
+    "level":"Middle"
+    },
+    {
+    "sno":"18.",
+    "question":"When should I use a List vs a LinkedList?",
+    "level":"Middle"
+    },
+    {
+    "sno":"19.",
+    "question":"When is a loop in a Linked List useful?",
+    "level":"Middle"
+    },
+    {
+    "sno":"20.",
+    "question":"Floyd's Cycle Detect Algorithm: How to detect a Cycle (or Loop) in a Linked List?",
+    "level":"Middle"
+    },
+    {
+    "sno":"21.",
+    "question":"Floyd's Cycle Detect Algorithm: Remove Cycle (Loop) from a Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"22.",
+    "question":"Floyd's Cycle Detect Algorithm: Explain how to find a starting node of a Cycle in a Linked List?",
+    "level":"Middle"
+    },
+    {
+    "sno":"23.",
+    "question":"Merge two sorted singly Linked Lists without creating new nodes",
+    "level":"Middle"
+    },
+    {
+    "sno":"24.",
+    "question":"How to find Nth element from the end of a singly Linked List?",
+    "level":"Middle"
+    },
+    {
+    "sno":"25.",
+    "question":"Implement Double Linked List from Stack with min complexity",
+    "level":"Middle"
+    },
+    {
+    "sno":"26.",
+    "question":"Convert a Binary Tree to a Doubly Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"27.",
+    "question":"Remove duplicates from an unsorted Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"28.",
+    "question":"Find similar elements from two Linked Lists and return the result as a Linked List",
+    "level":"Middle"
+    },
+    {
+    "sno":"29.",
+    "question":"Split the Linked List into k consecutive linked list \"parts\"",
+    "level":"Middle"
+    },
+    {
+    "sno":"30.",
+    "question":"Sum two numbers represented as Linked Lists",
+    "level":"Middle"
+    },
+    {
+    "sno":"31.",
+    "question":"How would you compare Dynamic Arrays with Linked Lists and vice versa?",
+    "level":"Senior"
+    },
+    {
+    "sno":"32.",
+    "question":"Why is Merge sort preferred over Quick sort for sorting Linked Lists?",
+    "level":"Senior"
+    },
+    {
+    "sno":"33.",
+    "question":"How would you traverse a Linked List in O(n1/2)?",
+    "level":"Senior"
+    },
+    {
+    "sno":"34.",
+    "question":"How to apply Binary Search O(log n) on a sorted Linked List?",
+    "level":"Senior"
+    },
+    {
+    "sno":"35.",
+    "question":"How is it possible to do Binary Search on a Doubly-Linked List in O(n) time?",
+    "level":"Senior"
+    },
+    {
+    "sno":"36.",
+    "question":"When is doubly linked list more efficient than singly linked list?",
+    "level":"Senior"
+    },
+    {
+    "sno":"37.",
+    "question":"Why would you ever do Binary Search on a Doubly-Linked list?",
+    "level":"Senior"
+    },
+    {
+    "sno":"38.",
+    "question":"How to recursively reverse a Linked List?",
+    "level":"Senior"
+    },
+    {
+    "sno":"39.",
+    "question":"Find Merge (Intersection) Point of Two Linked Lists",
+    "level":"Senior"
+    },
+    {
+    "sno":"40.",
+    "question":"Given a singly Linked List, determine if it is a Palindrome",
+    "level":"Senior"
+    },
+    {
+    "sno":"41.",
+    "question":"Find the length of a Linked List which contains cycle (loop)",
+    "level":"Senior"
+    },
+    {
+    "sno":"42.",
+    "question":"Do you know any better than than Floyd's algorithm for cycle detection?",
+    "level":"Senior"
+    },
+    {
+    "sno":"43.",
+    "question":"Copy a Linked List with Random (Arbitrary) Pointer using O(1) Space",
+    "level":"Senior"
+    }
+    ]
+    }
+    
